@@ -130,6 +130,8 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	}
 
 
+	private int trans = 0;
+	
 	/**
 	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
 	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
@@ -172,7 +174,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		}
 
 
-		int Trans = 0;
+		
 		if (getState() == "Reconstruction" && Trans > 0)
 		{
 			par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -193,7 +195,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 			par3World.setBlock(par4 - 1, par5, par6, Block.dirt.blockID);
 		}
 
-		else if (getState() == "Reconstructions" && Trans == 0) {
+		else if (getState() == "Reconstruction" && Trans == 0) {
 			par2EntityPlayer.sendChatToPlayer("You need to deconstruct before reconstructing!");
 		}
 
