@@ -66,10 +66,8 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister) {
 
-        this.icons[0] = iconRegister.registerIcon(Resources.MOD_ID
-                .toLowerCase() + ":" + "pStoneOff");
-        this.icons[1] = iconRegister.registerIcon(Resources.MOD_ID
-                .toLowerCase() + ":" + "pStoneOn");
+        this.icons[0] = iconRegister.registerIcon(Resources.MOD_ID.toLowerCase() + ":" + "pStoneOff");
+        this.icons[1] = iconRegister.registerIcon(Resources.MOD_ID.toLowerCase() + ":" + "pStoneOn");
     }
 
     @Override

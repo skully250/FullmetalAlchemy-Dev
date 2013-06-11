@@ -1,22 +1,19 @@
 package mods.fullmetalalchemy.core;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarFile;
+import java.util.logging.Logger;
 
 import mods.fullmetalalchemy.block.FMABlocks;
 import mods.fullmetalalchemy.core.client.ClientTickHandler;
-import mods.fullmetalalchemy.core.client.Reference;
 import mods.fullmetalalchemy.core.command.FMACommands;
 import mods.fullmetalalchemy.core.config.ConfigSettings;
 import mods.fullmetalalchemy.core.config.CoreConfiguration;
-import mods.fullmetalalchemy.core.module.ModuleFinder;
-import mods.fullmetalalchemy.core.module.ModuleLoader;
 import mods.fullmetalalchemy.core.packet.PacketManager;
 import mods.fullmetalalchemy.core.platform.Platform;
 import mods.fullmetalalchemy.core.server.ServerTickHandler;
+import mods.fullmetalalchemy.core.util.FMAIcons;
 import mods.fullmetalalchemy.core.util.FMAUtils;
 import mods.fullmetalalchemy.core.util.Resources;
 import mods.fullmetalalchemy.crafting.FMARecipes;
@@ -27,9 +24,8 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.world.WorldEvent;
-import apexapi.common.commandlib.ApexCommandFunctionPool;
-import apexapi.common.utils.ApexConditionalLogger;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -46,7 +42,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author viper283
@@ -58,7 +53,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = Resources.MOD_ID, name = Resources.MOD_NAME, version = Resources.MOD_VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"FMA"}, packetHandler = PacketManager.class)
-@SuppressWarnings("static-access")
 public class FullmetalAlchemy {
 
 	@SidedProxy(clientSide = Resources.CLIENT_PLATFORM_LOCATION, serverSide = Resources.PLATFORM_LOCATION)
@@ -69,59 +63,34 @@ public class FullmetalAlchemy {
 
 	public static boolean debugMode;
 
-	public static ApexConditionalLogger logger;
+	public static Logger logger = Logger.getLogger("FMA");
 
 	public static List<JarFile> modules;
 	public static List<Class<?>> classesToLoad;
 	public static List<Class<?>> loadedClasses;
-
-	public static ApexCommandFunctionPool pool;
+	
+	static {
+		
+		logger.setParent(FMLLog.getLogger());
+	}
 
 	@PreInit
 	public void preInitialize(FMLPreInitializationEvent evt) {
 
-		getConfig()
-		.initialize(new File(platform.getFMADir(), "properties.ini"));
-
-		logger = new ApexConditionalLogger("FMA", debugMode);
+		getConfig().initialize(new File(System.getProperty("user.dir"), "FullmetalAlchemy/properties.ini"));
 
 		MinecraftForge.EVENT_BUS.register(this);
 
 		LanguageRegistry.instance().loadLocalization("/mods/fullmetalalchemy/lang/en_US.properties", "en_US", false);
 		LanguageRegistry.instance().loadLocalization("/mods/fullmetalalchemy/lang/en_GB.properties", "en_GB", false);
 
-		platform.makeModules();
+		//platform.makeModules();
 		MinecraftForge.EVENT_BUS.register(new Sounds());
-
-		checkOFStatus();
-
-	}
-	@SideOnly(Side.CLIENT)
-	private static void checkOFStatus() {
-
-		try {
-
-			Class.forName("IWrUpdateListener");
-
-			System.out.println("[" + Reference.updaterName + "]" + "OptiFine Found, Using High Res Capes!");
-			Reference.optiFineInstalled = true;
-		} catch(Exception e) {
-
-			System.out.println("[" + Reference.updaterName + "]" + " OptiFine Not Installed, Using Low Res Capes!");
-			Reference.optiFineInstalled = false;
-		}
+		MinecraftForge.EVENT_BUS.register(new FMAIcons());
 	}
 
 	@Init
 	public void initialize(FMLInitializationEvent evt) {
-
-
-		loadModules();
-
-		FMAUtils.addIcons();
-
-		loadCommandLib();
-
 
 		FMAItems.initialize();
 		FMABlocks.initialize();
@@ -152,7 +121,7 @@ public class FullmetalAlchemy {
 
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER && evt.world.provider.dimensionId == 0) {
 
-			Resources.tagCompound = platform.loadData((WorldServer) evt.world);
+			FMAUtils.tagCompound = platform.loadData((WorldServer) evt.world);
 		}
 	}
 
@@ -161,43 +130,9 @@ public class FullmetalAlchemy {
 
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER && evt.world.provider.dimensionId == 0) {
 
-			platform.saveData((WorldServer) evt.world, Resources.nbtHelper.getNBT());
+			platform.saveData((WorldServer) evt.world, FMAUtils.nbtHelper.getNBT());
 		}
 	}
-
-	/**
-	 * 
-	 * Will be replaced with better code soon
-	 */
-	 @Deprecated
-	 public void loadModules() {
-
-		 modules = new ArrayList<JarFile>();
-		 classesToLoad = new ArrayList<Class<?>>();
-		 loadedClasses = new ArrayList<Class<?>>();
-
-		 try {
-
-			 ModuleFinder.findModules(platform.getModuleDir());
-		 } catch(IOException e) {
-
-			 throw new RuntimeException(e);
-		 }
-
-		 try {
-
-			 ModuleLoader.loadModules();
-		 } catch(Exception e) {
-
-			 throw new RuntimeException(e);
-		 }
-	 }
-
-	 private static void loadCommandLib() {
-
-		 pool = new ApexCommandFunctionPool(FMACommands.class, "FMA");
-		 pool.scanContainmentClass();
-	 }
 
 	 public static FullmetalAlchemy instance() {
 

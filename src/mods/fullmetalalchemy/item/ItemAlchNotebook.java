@@ -1,9 +1,5 @@
 package mods.fullmetalalchemy.item;
 
-import ibxm.Player;
-
-import java.util.Random;
-
 import mods.fullmetalalchemy.block.FMABlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -57,14 +53,12 @@ public class ItemAlchNotebook extends ItemFMA {
 		}
 		else
 		{
-			int i1 = par3World.getBlockId(par4, par5, par6);
-
-			int Chalk = FMAItems.ChalkStick.itemID;
+			int chalk = FMAItems.ChalkStick.itemID;
 			if (par2EntityPlayer.getCurrentEquippedItem() != null)
-				if (par2EntityPlayer.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
+				if (par2EntityPlayer.inventory.hasItem(chalk)) {
 					//par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 					par3World.setBlock(par4, par5, par6, FMABlocks.researchCircle.blockID);
-					par2EntityPlayer.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
+					par2EntityPlayer.inventory.consumeInventoryItem(chalk);
 				}
 			return true;
 		}

@@ -1,18 +1,25 @@
 package mods.fullmetalalchemy.core.command;
 
-import net.minecraft.client.Minecraft;
-import apexapi.common.commandlib.ApexCommand;
-import apexapi.core.annotations.ApexUniversalCommand;
-import apexapi.core.annotations.CommandFunction;
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommandSender;
+
 
 public class FMACommands {
 
-    @ApexUniversalCommand()
-    public static ApexCommand commandFma = new ApexCommand("version");
+    public static CommandBase commandFma = new FMACommand();
+    
+    public static class FMACommand extends CommandBase {
 
-    @CommandFunction("version")
-    public static void version() {
+		@Override
+		public String getCommandName() {
+			
+			return "fma";
+		}
 
-        Minecraft.getMinecraft().thePlayer.sendChatToPlayer("Version: ");
+		@Override
+		public void processCommand(ICommandSender sender, String[] args) {
+
+			
+		}
     }
 }

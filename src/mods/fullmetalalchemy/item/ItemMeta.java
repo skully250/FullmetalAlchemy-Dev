@@ -1,5 +1,7 @@
 package mods.fullmetalalchemy.item;
 
+import net.minecraft.util.Icon;
+
 /**
  * @author viper283
  * 
@@ -8,7 +10,7 @@ package mods.fullmetalalchemy.item;
  */
 public class ItemMeta extends ItemFMAMeta {
 
-    public ItemMeta(int par1, String[] names, String[] textures) {
+    public ItemMeta(int par1, String[] names, Icon[] textures) {
 
         super(par1, names, textures);
     }

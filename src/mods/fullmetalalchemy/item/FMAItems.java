@@ -6,10 +6,12 @@ import mods.fullmetalalchemy.api.module.Module.Load;
 import mods.fullmetalalchemy.core.config.ConfigSettings;
 import mods.fullmetalalchemy.core.enums.EnumState;
 import mods.fullmetalalchemy.core.enums.TattooEnumState;
+import mods.fullmetalalchemy.core.util.FMAIcons;
+import mods.fullmetalalchemy.core.util.FMAUtils;
 import mods.fullmetalalchemy.core.util.Resources;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import apexapi.common.utils.ApexUtils;
+import net.minecraft.util.Icon;
 
 /**
  * @author viper283
@@ -54,14 +56,6 @@ public class FMAItems {
 		"alchemicalWool", 
 		"alchemicalSilk"
 	};
-	public static String[] meta_textures = new String[] {
-		Resources.index.getIconFromIndex(meta_names[0]),
-		Resources.index.getIconFromIndex(meta_names[1]),
-		Resources.index.getIconFromIndex(meta_names[2]),
-		Resources.index.getIconFromIndex(meta_names[3]),
-		Resources.index.getIconFromIndex(meta_names[4]),
-		Resources.index.getIconFromIndex(meta_names[5]),
-	};
 	public static String[] meta_localized_names = new String[] {
 		"Chalk Dust", 
 		"Flacon", 
@@ -74,15 +68,8 @@ public class FMAItems {
 	@Load
 	public static void initialize() {
 
-		metaTest = new ItemMeta(ConfigSettings.metaID, meta_names,
-				meta_textures)
-		.setUnlocalizedName("fmaMetaItem")
-		.setCreativeTab(
-				CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
-		pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF)
-		.setUnlocalizedName("pStone")
-		.setCreativeTab(
-				CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		metaTest = new ItemMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+		pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
 		redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		stone0 = new Itemstone0(ConfigSettings.stone0).setUnlocalizedName("stone0").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
@@ -112,7 +99,6 @@ public class FMAItems {
 
 	private static void localize() {
 
-		ApexUtils.addLocalizedNamesToStacksFromMap(ApexUtils
-				.fillAndLocalizeItemStackToMap(metaTest, meta_localized_names));
+		//ApexUtils.addLocalizedNamesToStacksFromMap(ApexUtils.fillAndLocalizeItemStackToMap(metaTest, meta_localized_names));
 	}
 }

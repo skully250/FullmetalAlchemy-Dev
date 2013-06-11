@@ -10,8 +10,6 @@ import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClientTickHandler implements ITickHandler {
 	private Minecraft mc = Minecraft.getMinecraft();
@@ -33,9 +31,10 @@ public class ClientTickHandler implements ITickHandler {
 			RenderTick.onTick(Minecraft.getMinecraft());
 		}
 		
+		// TODO: Use Better Code
 		if(mc.theWorld != null && mc.theWorld.playerEntities.size() > 0) {
 
-			List players = mc.theWorld.playerEntities;
+			List<?> players = mc.theWorld.playerEntities;
 
 			for(int counter = 0; counter < players.size(); counter++) {
 

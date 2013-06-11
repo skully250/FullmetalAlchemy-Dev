@@ -1,6 +1,5 @@
 package mods.fullmetalalchemy.crafting;
 
-import mods.fullmetalalchemy.item.FMAItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

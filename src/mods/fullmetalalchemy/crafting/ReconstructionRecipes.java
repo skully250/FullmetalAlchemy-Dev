@@ -4,7 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 import static mods.fullmetalalchemy.item.FMAItems.*;
-import mods.fullmetalalchemy.crafting.*;
 
 public class ReconstructionRecipes {
 	public static void initialize() {
