@@ -25,10 +25,10 @@ public class BlockCircles extends BlockFMA
 	 */
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player,int par6, float par7, float par8, float par9)
 	{
-		boolean First = true;
-		boolean Second = true;
-		boolean Third = true;
-		boolean Fourth = true;
+//		boolean First = true;
+//		boolean Second = true;
+//		boolean Third = true;
+//		boolean Fourth = true;
 		if (world.isRemote)
 		{
 			return true;
@@ -54,7 +54,7 @@ public class BlockCircles extends BlockFMA
 						waitTime--;
 					}
 					player.inventory.consumeInventoryItem(Item.blazePowder.itemID);
-					long time = world.getWorldTime();
+//					long time = world.getWorldTime();
 					player.inventory.consumeInventoryItem(FMAItems.Kunai.itemID);
 					player.inventoryContainer.detectAndSendChanges();
 					player.inventory.addItemStackToInventory(new ItemStack(FMAItems.KunaiFire));

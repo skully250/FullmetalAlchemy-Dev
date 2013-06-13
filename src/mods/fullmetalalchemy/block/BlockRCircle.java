@@ -1,7 +1,5 @@
 package mods.fullmetalalchemy.block;
 
-import java.util.Random;
-
 import mods.fullmetalalchemy.crafting.AlchFireRecipes;
 import mods.fullmetalalchemy.crafting.AlchIceRecipes;
 import mods.fullmetalalchemy.crafting.AlchRecRecipes;
@@ -37,7 +35,7 @@ public class BlockRCircle extends BlockFMA
 			int Chalk = FMAItems.ChalkStick.itemID;
 			if (player.getCurrentEquippedItem() != null)
 				if (player.getCurrentEquippedItem().getItem() == FMAItems.ChalkStick && player.inventory.hasItem(FMAItems.AlchNotebook.itemID) && player.inventory.hasItem(Chalk) && First == true) {
-					Random rand = new Random();
+//					Random rand = new Random();
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);

@@ -1,17 +1,12 @@
 package mods.fullmetalalchemy.item;
 
 import mods.fullmetalalchemy.api.CoreApi;
-import mods.fullmetalalchemy.api.module.Module;
-import mods.fullmetalalchemy.api.module.Module.Load;
 import mods.fullmetalalchemy.core.config.ConfigSettings;
 import mods.fullmetalalchemy.core.enums.EnumState;
 import mods.fullmetalalchemy.core.enums.TattooEnumState;
 import mods.fullmetalalchemy.core.util.FMAIcons;
-import mods.fullmetalalchemy.core.util.FMAUtils;
-import mods.fullmetalalchemy.core.util.Resources;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.util.Icon;
 
 /**
  * @author viper283
@@ -19,7 +14,6 @@ import net.minecraft.util.Icon;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * 
  */
-@Module(id = "items", name = "FMA Items", version = "%VERSION%")
 public class FMAItems {
 
 	public static Item metaTest;
@@ -65,7 +59,6 @@ public class FMAItems {
 		"Alchemical Silk"
 	};
 
-	@Load
 	public static void initialize() {
 
 		metaTest = new ItemMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));

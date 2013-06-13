@@ -130,7 +130,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	}
 
 
-	private int trans = 0;
+//	private int trans = 0;
 	
 	/**
 	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
