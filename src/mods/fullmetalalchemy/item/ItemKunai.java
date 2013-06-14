@@ -9,6 +9,5 @@ public class ItemKunai extends ItemFMA {
 	public ItemKunai(int par1) {
 		super(par1);
         this.maxStackSize = 5;
-        this.weaponDamage = 7;
 	}
 }

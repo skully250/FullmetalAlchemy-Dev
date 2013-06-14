@@ -11,6 +11,7 @@ public class ItemChalkStick extends ItemFMA
 
 	public ItemChalkStick(int par1) {
 		super(par1);
+		setMaxStackSize(1);
 	}
 
 	/**

@@ -33,6 +33,7 @@ public class ConfigSettings {
     public static int Kunai;
     public static int KunaiFire;
     public static int KunaiEnder;
+    public static int ChalkBag;
     
     // Blocks
     public static int chalkOreID;

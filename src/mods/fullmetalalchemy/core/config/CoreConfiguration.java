@@ -63,6 +63,7 @@ public class CoreConfiguration {
             ConfigSettings.Kunai = cfg.getItem(item, "Item.Kunai.id", 3861, "Kunai ItemID").getInt();
             ConfigSettings.KunaiFire = cfg.getItem(item, "Item.KunaiFire.id", 3863, "FireKunai ItemID").getInt();
             ConfigSettings.KunaiEnder = cfg.getItem(item, "Item.KunaiEnder.id", 3864, "EnderKunai ItemID").getInt();
+            ConfigSettings.ChalkBag = cfg.getItem(item, "Item.ChalkBag.id", 3865, "ChalkBag ItemID").getInt();
             
 
             // Booleans

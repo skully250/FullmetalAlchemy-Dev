@@ -2,6 +2,7 @@ package mods.fullmetalalchemy.item;
 
 import mods.fullmetalalchemy.api.CoreApi;
 import mods.fullmetalalchemy.core.config.ConfigSettings;
+import mods.fullmetalalchemy.core.enums.BagEnumState;
 import mods.fullmetalalchemy.core.enums.EnumState;
 import mods.fullmetalalchemy.core.enums.TattooEnumState;
 import mods.fullmetalalchemy.core.util.FMAIcons;
@@ -40,6 +41,7 @@ public class FMAItems {
 	public static Item Kunai;
 	public static Item KunaiFire;
 	public static Item KunaiEnder;
+	public static Item ChalkBag;
 
 
 	public static String[] meta_names = new String[] {
@@ -83,6 +85,7 @@ public class FMAItems {
 		Kunai = new ItemKunai(ConfigSettings.Kunai).setUnlocalizedName("Kunai").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		KunaiFire = new ItemKunaiFire(ConfigSettings.KunaiFire).setUnlocalizedName("KunaiFire").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		KunaiEnder = new ItemKunaiEnder(ConfigSettings.KunaiEnder).setUnlocalizedName("KunaiEnder").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		ChalkBag = new ItemChalkBag(ConfigSettings.ChalkBag, BagEnumState.OFF).setUnlocalizedName("ChalkBag").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 
 
 		pStone.setContainerItem(pStone);

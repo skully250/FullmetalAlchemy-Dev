@@ -43,6 +43,7 @@ public class BlockRCircle extends BlockFMA
 
 					ReconstructionRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
+					player.inventoryContainer.detectAndSendChanges();
 					First = false;
 				}
 
@@ -54,6 +55,7 @@ public class BlockRCircle extends BlockFMA
 
 					AlchFireRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
+					player.inventoryContainer.detectAndSendChanges();
 					Second = false;
 				}
 
@@ -65,6 +67,7 @@ public class BlockRCircle extends BlockFMA
 
 					AlchIceRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
+					player.inventoryContainer.detectAndSendChanges();
 					Third = false;
 				}
 
@@ -76,6 +79,7 @@ public class BlockRCircle extends BlockFMA
 
 					AlchRecRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
+					player.inventoryContainer.detectAndSendChanges();
 					Fourth = false;
 				}
 
