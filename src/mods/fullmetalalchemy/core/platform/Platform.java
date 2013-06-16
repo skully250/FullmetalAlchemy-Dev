@@ -1,11 +1,11 @@
 package mods.fullmetalalchemy.core.platform;
 
+import apex.util.ApexNBTUtils;
 import mods.fullmetalalchemy.core.FullmetalAlchemy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import apex.util.ApexNBTUtils;
 
 /**
  * @author viper283

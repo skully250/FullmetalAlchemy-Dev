@@ -1,7 +1,7 @@
 package mods.fullmetalalchemy.item;
 
-import net.minecraft.util.Icon;
 import apex.item.ApexMetaItemBase;
+import net.minecraft.util.Icon;
 
 /**
  * @author viper283

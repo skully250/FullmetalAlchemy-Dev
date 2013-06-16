@@ -1,11 +1,10 @@
 package mods.fullmetalalchemy.core.util;
 
+import static mods.fullmetalalchemy.item.FMAItems.meta_names;
 import apex.util.ApexIconIndexer;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-
-import static mods.fullmetalalchemy.item.FMAItems.meta_names;
 
 public class FMAIcons {
 	

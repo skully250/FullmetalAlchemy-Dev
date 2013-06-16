@@ -68,9 +68,9 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	public void registerIcons(IconRegister iconRegister) {
 
 		this.icons[0] = iconRegister.registerIcon(Resources.MOD_ID
-				.toLowerCase() + ":" + "ReconstructionCircleOff");
+				.toLowerCase() + ":" + "ChalkBagOff");
 		this.icons[1] = iconRegister.registerIcon(Resources.MOD_ID
-				.toLowerCase() + ":" + "ReconstructionCircleOn");
+				.toLowerCase() + ":" + "ChalkBagOn");
 	}
 
 	@Override
@@ -138,19 +138,19 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	 */
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
 	{
+		if(par2World.isRemote)
 		if(getState() == "Holding" && player.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
-			PChalk = Chalk - 1;
 			player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
-			Chalk = Chalk + 1;
+			Chalk++;
 			player.inventoryContainer.detectAndSendChanges();
-			player.sendChatToPlayer("you have " + PChalk + " in this bag");
+			player.sendChatToPlayer("you have " + Chalk + " in this bag");
 			return par1ItemStack;
 			
-		} else if (getState() == "Taking" && Chalk >= 2) {
+		} else if (getState() == "Taking" && Chalk > 0) {
 			player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
-			Chalk = Chalk + 1;
+			Chalk--;
 			player.inventoryContainer.detectAndSendChanges();
-			player.sendChatToPlayer("you have " + PChalk + " remaining in this bag");
+			player.sendChatToPlayer("you have " + (Chalk - 1) + " remaining in this bag");
 			return par1ItemStack;
 		}
 		return par1ItemStack;

@@ -1,9 +1,9 @@
 package mods.fullmetalalchemy.core.util;
 
+import apex.util.ApexNBTHelper;
 import mods.fullmetalalchemy.creativetab.CreativeTabFMA;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.nbt.NBTTagCompound;
-import apex.util.ApexNBTHelper;
 
 /**
  * @author viper283
