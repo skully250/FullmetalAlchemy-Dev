@@ -39,7 +39,7 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer("My research has yielded new Items and Transmutation possibilities!");
+					player.addChatMessage("My research has yielded new Items and Transmutation possibilities!");
 
 					ReconstructionRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
@@ -51,7 +51,7 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer("New alchemical fire abilities have been revealed to me!");
+					player.addChatMessage("New alchemical fire abilities have been revealed to me!");
 
 					AlchFireRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
@@ -63,7 +63,7 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer("New alchemical ice abilities have been revealed to me!");
+					player.addChatMessage("New alchemical ice abilities have been revealed to me!");
 
 					AlchIceRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
@@ -75,7 +75,7 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer("Reconstruction and Deconstruction has been revealed to me!");
+					player.addChatMessage("Reconstruction and Deconstruction has been revealed to me!");
 
 					AlchRecRecipes.initialize();
 					player.inventory.consumeInventoryItem(Chalk);
@@ -84,7 +84,7 @@ public class BlockRCircle extends BlockFMA
 				}
 
 				else if (player.getCurrentEquippedItem().getItem() == FMAItems.ChalkStick) {
-					player.sendChatToPlayer("Writing notes on this Circle may yield new alchemical opportunities.");
+					player.addChatMessage("Writing notes on this Circle may yield new alchemical opportunities.");
 				}
 
 				else if(First == false) {

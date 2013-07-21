@@ -17,7 +17,7 @@ public class BlockCTest extends BlockFMA {
 	{
 	if (player.getCurrentEquippedItem().getItem() == FMAItems.pStone)
 	{
-		player.sendChatToPlayer("Immortality has been granted upon you");
+		player.addChatMessage("Immortality has been granted upon you");
 		player.setEntityHealth(900);
 		player.attackEntityFrom(DamageSource.magic, 899);
 	}

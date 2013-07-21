@@ -1,7 +1,6 @@
 package mods.fullmetalalchemy.core.util;
 
 import static mods.fullmetalalchemy.item.FMAItems.meta_names;
-import apex.util.ApexIconIndexer;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -13,11 +12,11 @@ public class FMAIcons {
 	@ForgeSubscribe
 	public void addIcons(TextureStitchEvent.Pre evt) {
 		
-		ApexIconIndexer index = new ApexIconIndexer("fullmetalalchemy", evt);
+		//ApexIconIndexer index = new ApexIconIndexer("fullmetalalchemy", evt);
 		
 		for(int i = 0; i < meta_names.length; i++) {
 			
-			metaItemIcons[i] = index.getIcon(meta_names[i], false);
+			//metaItemIcons[i] = index.getIcon(meta_names[i], false);
 		}
 	}
 }

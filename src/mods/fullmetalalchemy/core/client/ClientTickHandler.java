@@ -31,7 +31,7 @@ public class ClientTickHandler implements ITickHandler {
 			RenderTick.onTick(Minecraft.getMinecraft());
 		}
 		
-		// TODO: Use Better Code
+		/*// TODO: Use Better Code
 		if(mc.theWorld != null && mc.theWorld.playerEntities.size() > 0) {
 
 			List<?> players = mc.theWorld.playerEntities;
@@ -71,7 +71,7 @@ public class ClientTickHandler implements ITickHandler {
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 	@Override

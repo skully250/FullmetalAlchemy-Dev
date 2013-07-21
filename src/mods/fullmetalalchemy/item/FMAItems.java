@@ -63,7 +63,7 @@ public class FMAItems {
 
 	public static void initialize() {
 
-		metaTest = new ItemMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+		//metaTest = new ItemMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
 		pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
 		redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));

@@ -37,7 +37,7 @@ public class ItemKunaiFire extends ItemFMA {
 
             if (!par2World.isRemote)
             {
-                par2World.spawnEntityInWorld(new EntityKunaiFire(par2World, par3EntityPlayer));
+                //par2World.spawnEntityInWorld(new EntityKunaiFire(par2World, par3EntityPlayer));
             }
 
             return par1ItemStack;
