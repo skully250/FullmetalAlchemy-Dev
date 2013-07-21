@@ -29,7 +29,7 @@ public class FMARecipes
 		GameRegistry.addRecipe(new ItemStack(stone1), "XXX", "XYX", "XXX", 'X', eash, 'Y', stone0);
 		GameRegistry.addRecipe(new ItemStack(stone2), "XXX", "XYX", "XXX", 'X', gash, 'Y', stone0);
 		GameRegistry.addRecipe(new ItemStack(stone0), "XYX", "YZY", "XYX", 'X', Block.stone, 'Y', Item.ingotGold, 'Z', Item.diamond);
-		GameRegistry.addRecipe(new ItemStack(pStone), "   ", "XYZ", "   ", 'X', stone1, 'Y', Item.netherStar, 'Z', stone2);
+		//GameRegistry.addRecipe(new ItemStack(pStone), "   ", "XYZ", "   ", 'X', stone1, 'Y', Item.netherStar, 'Z', stone2);
 		GameRegistry.addRecipe(new ItemStack(ChalkPyramid), "X X", " X ", "X X", 'X', ChalkStick);
 		GameRegistry.addRecipe(new ItemStack(ChalkCircle), "XXX", "X X", "XXX", 'X', ChalkStick);
 		GameRegistry.addRecipe(new ItemStack(FireCircle), "X", "Y", 'X', ChalkPyramid, 'Y', ChalkCircle);

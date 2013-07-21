@@ -49,14 +49,14 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	@Override
 	public String getState() {
 
-		String state = FMAUtils.nbtHelper.readString("ChalkBagState");
+		String state = FMAUtils.nbtHelper.getString(new ItemStack(FMAItems.ChalkBag), "ChalkBagState");
 
 		return state;
 	}
 
 	public void setState(BagEnumState defaultState) {
 
-		FMAUtils.nbtHelper.writeString("ChalkBagState", defaultState.getName());
+		FMAUtils.nbtHelper.setString(new ItemStack(FMAItems.ChalkBag), "ChalkBagState", defaultState.getName());
 	}
 
 	@Override

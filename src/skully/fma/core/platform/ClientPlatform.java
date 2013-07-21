@@ -28,7 +28,7 @@ public class ClientPlatform extends Platform {
 
 	@Override
 	public void registerRenderThings() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityKunaiEnder.class, new RenderKunaiEnder(FMAItems.KunaiEnder));
+		//RenderingRegistry.registerEntityRenderingHandler(EntityKunaiEnder.class, new RenderKunaiEnder(FMAItems.KunaiEnder));
 	}
 
 	@Override

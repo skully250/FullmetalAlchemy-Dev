@@ -2,23 +2,21 @@ package skully.fma.core.client;
 
 import java.util.EnumSet;
 
-import org.lwjgl.input.Keyboard;
-
-import skully.fma.core.implement.IKeyBound;
-import skully.fma.core.util.ChatUtils;
-import skully.fma.core.util.Resources;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import skully.fma.core.implement.IKeyBound;
+import skully.fma.core.util.ChatUtils;
+import skully.fma.core.util.Resources;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;
 
 public class ClientKeybindHandler extends KeyHandler {
 
-    private static KeyBinding debugKeybind = new KeyBinding("FMA Debug Mode", Keyboard.KEY_COMMA);
-    private static KeyBinding item = new KeyBinding("Special Item Abilty", Keyboard.KEY_G);
+    private static KeyBinding debugKeybind = new KeyBinding("FMA Debug Mode", 51);
+    private static KeyBinding item = new KeyBinding("Special Item Abilty", 34);
 
     private static EntityPlayer player;
 

@@ -48,14 +48,14 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	@Override
 	public String getState() {
 
-		String state = FMAUtils.nbtHelper.readString("ReconstructionCircleState");
+		String state = FMAUtils.nbtHelper.getString(new ItemStack(FMAItems.ReconstructionCircle), "ReconstructionCircleState");
 
 		return state;
 	}
 
 	public void setState(TattooEnumState defaultState) {
 
-		FMAUtils.nbtHelper.writeString("ReconstructionCircleState", defaultState.getName());
+		FMAUtils.nbtHelper.setString(new ItemStack(FMAItems.ReconstructionCircle), "ReconstructionCircleState", defaultState.getName());
 	}
 
 	@Override

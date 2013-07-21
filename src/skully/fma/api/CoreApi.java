@@ -14,7 +14,7 @@ public class CoreApi {
 
     private Class<?> FMAUtils;
 
-    private static final String FMA_CLASS_LOCATION = "mods.fullmetalalchemy.core.util.FMAUtils";
+    private static final String FMA_CLASS_LOCATION = "skully.fma.core.util.FMAUtils";
 
     public static CoreApi getInstance() {
 

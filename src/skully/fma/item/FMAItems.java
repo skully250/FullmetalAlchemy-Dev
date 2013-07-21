@@ -64,7 +64,7 @@ public class FMAItems {
 	public static void initialize() {
 
 		metaTest = new ItemMeta(ConfigSettings.metaID/*, meta_names, FMAIcons.metaItemIcons*/).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
-		pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		//pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
 		redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		stone0 = new Itemstone0(ConfigSettings.stone0).setUnlocalizedName("stone0").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
@@ -79,16 +79,16 @@ public class FMAItems {
 		ChalkCircle = new ItemChalkCircle(ConfigSettings.ChalkCircle).setUnlocalizedName("ChalkCircle").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		ChalkPyramid = new ItemChalkPyramid(ConfigSettings.ChalkPyramid).setUnlocalizedName("ChalkPyramid").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		IceGauntlet = new ItemIceGauntlet(ConfigSettings.IceGauntlet).setUnlocalizedName("IceGauntlet").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabCombat));
-		ReconstructionCircle = new ItemReconstructionCircle(ConfigSettings.ReconstructionCircle, TattooEnumState.OFF).setUnlocalizedName("ReconstructionCircle").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
+		//ReconstructionCircle = new ItemReconstructionCircle(ConfigSettings.ReconstructionCircle, TattooEnumState.OFF).setUnlocalizedName("ReconstructionCircle").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		AlchNotebook = new ItemAlchNotebook(ConfigSettings.AlchNotebook).setUnlocalizedName("AlchNotebook").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		AlchNotes = new ItemAlchNotes(ConfigSettings.AlchNotes).setUnlocalizedName("AlchNotes").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		Kunai = new ItemKunai(ConfigSettings.Kunai).setUnlocalizedName("Kunai").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		KunaiFire = new ItemKunaiFire(ConfigSettings.KunaiFire).setUnlocalizedName("KunaiFire").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		KunaiEnder = new ItemKunaiEnder(ConfigSettings.KunaiEnder).setUnlocalizedName("KunaiEnder").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
-		ChalkBag = new ItemChalkBag(ConfigSettings.ChalkBag, BagEnumState.OFF).setUnlocalizedName("ChalkBag").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		//ChalkBag = new ItemChalkBag(ConfigSettings.ChalkBag, BagEnumState.OFF).setUnlocalizedName("ChalkBag").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 
 
-		pStone.setContainerItem(pStone);
+		//pStone.setContainerItem(pStone);
 
 		localize();
 	}

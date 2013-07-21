@@ -9,7 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class AlchRecRecipes {
 
 	public static void initialize() {
-		GameRegistry.addRecipe(new ItemStack(ReconstructionCircle), "XYX", "XZX", "LXK", 'X', Item.ingotGold, 'Y', Block.blockDiamond, 'Z', ChalkCircle, 'L', new ItemStack(Item.dyePowder, 1, 0), 'K', new ItemStack(Item.dyePowder, 1, 15));
+		//GameRegistry.addRecipe(new ItemStack(ReconstructionCircle), "XYX", "XZX", "LXK", 'X', Item.ingotGold, 'Y', Block.blockDiamond, 'Z', ChalkCircle, 'L', new ItemStack(Item.dyePowder, 1, 0), 'K', new ItemStack(Item.dyePowder, 1, 15));
 	}
 
 }
