@@ -51,7 +51,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
     @Override
     public String getState() {
 
-        //String state = FMAUtils.nbtHelper.readString("PStoneState");
+        String state = FMAUtils.nbtHelper.readString("PStoneState");
 
         return state;
     }
@@ -59,7 +59,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
     @Override
     public void setState(EnumState state) {
 
-       // FMAUtils.nbtHelper.writeString("PStoneState", state.getName());
+        FMAUtils.nbtHelper.writeString("PStoneState", state.getName());
     }
 
     @Override

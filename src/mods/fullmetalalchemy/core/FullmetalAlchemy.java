@@ -130,7 +130,7 @@ public class FullmetalAlchemy {
 
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER && evt.world.provider.dimensionId == 0) {
 
-			//platform.saveData((WorldServer) evt.world, FMAUtils.nbtHelper.getNBT());
+			platform.saveData((WorldServer) evt.world, FMAUtils.nbtHelper.getNBT());
 		}
 	}
 

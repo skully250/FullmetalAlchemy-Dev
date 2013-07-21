@@ -33,8 +33,8 @@ public class FMARecipes
 		GameRegistry.addRecipe(new ItemStack(ChalkPyramid), "X X", " X ", "X X", 'X', ChalkStick);
 		GameRegistry.addRecipe(new ItemStack(ChalkCircle), "XXX", "X X", "XXX", 'X', ChalkStick);
 		GameRegistry.addRecipe(new ItemStack(FireCircle), "X", "Y", 'X', ChalkPyramid, 'Y', ChalkCircle);
-		//GameRegistry.addRecipe(new ItemStack(metaTest, 4, 6), "X X", " Y ", "X X", 'X', Item.silk, 'Y', Item.enderPearl);
-		//GameRegistry.addRecipe(new ItemStack(metaTest, 1, 4), "XX ", "XX ", 'X', new ItemStack(metaTest, 1, 5));
+		GameRegistry.addRecipe(new ItemStack(metaTest, 4, 6), "X X", " Y ", "X X", 'X', Item.silk, 'Y', Item.enderPearl);
+		GameRegistry.addRecipe(new ItemStack(metaTest, 1, 4), "XX ", "XX ", 'X', new ItemStack(metaTest, 1, 5));
 		GameRegistry.addRecipe(new ItemStack(AlchNotebook), "XYZ", "ZZZ", "   ", 'X', Item.leather, 'Y', Item.silk, 'Z', AlchNotes);
 		GameRegistry.addRecipe(new ItemStack(Kunai, 2), " X ", "YXY", "ZG ", 'X', Item.ingotIron, 'Y', Item.silk, 'Z', new ItemStack(Item.dyePowder, 1, 9), 'G', Item.feather);
 		//shaped

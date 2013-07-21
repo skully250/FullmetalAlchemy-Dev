@@ -6,22 +6,21 @@ import mods.fullmetalalchemy.core.enums.EnumState;
 import mods.fullmetalalchemy.core.enums.TattooEnumState;
 import mods.fullmetalalchemy.core.implement.IKeyBound;
 import mods.fullmetalalchemy.core.implement.IStatedItem;
+import mods.fullmetalalchemy.core.util.FMAUtils;
 import mods.fullmetalalchemy.core.util.Resources;
 import mods.fullmetalalchemy.crafting.ReconstructionRecipes;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IKeyBound  {
-
+	
 	public int Trans = 0;
 
 	public ItemReconstructionCircle(int par1, TattooEnumState defaultState) {
@@ -34,7 +33,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 			getState();
 		} else {
 
-			//setState(defaultState);
+			setState(defaultState);
 		}
 	}
 
@@ -48,14 +47,14 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	@Override
 	public String getState() {
 
-		//String state = FMAUtils.nbtHelper.readString("ReconstructionCircleState");
+		String state = FMAUtils.nbtHelper.readString("ReconstructionCircleState");
 
 		return state;
 	}
 
 	public void setState(TattooEnumState defaultState) {
 
-		//FMAUtils.nbtHelper.writeString("ReconstructionCircleState", defaultState.getName());
+		FMAUtils.nbtHelper.writeString("ReconstructionCircleState", defaultState.getName());
 	}
 
 	@Override
@@ -84,9 +83,8 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	})
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		//list.add("\u00a78" + getState());
-		list.add("This is a test");
-		list.add("to work out Item stuffs");
+
+		list.add("\u00a78" + getState());
 	}
 
 	@Override
@@ -120,19 +118,19 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 
 		if(getState().equals("Reconstruction")) {
 
-			//setState(TattooEnumState.OFF);
+			setState(TattooEnumState.OFF);
 		} else if(getState().equals("Deconstruction")) {
 
-			//setState(TattooEnumState.ON);
+			setState(TattooEnumState.ON);
 			ReconstructionRecipes.initialize();
 		} else {
 
-			//setState(TattooEnumState.OFF);
+			setState(TattooEnumState.OFF);
 		}
 	}
 
 
-
+	
 	/**
 	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
 	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
@@ -175,7 +173,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		}
 
 
-
+		
 		if (getState() == "Reconstruction" && Trans > 0)
 		{
 			par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
@@ -197,7 +195,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		}
 
 		else if (getState() == "Reconstruction" && Trans == 0) {
-			par2EntityPlayer.addChatMessage("You need to deconstruct before reconstructing!");
+			par2EntityPlayer.sendChatToPlayer("You need to deconstruct before reconstructing!");
 		}
 
 		else if (getState() == "Deconstruction")

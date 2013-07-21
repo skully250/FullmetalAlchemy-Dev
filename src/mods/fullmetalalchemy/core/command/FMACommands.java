@@ -21,10 +21,5 @@ public class FMACommands {
 
 			
 		}
-
-		@Override
-		public String getCommandUsage(ICommandSender icommandsender) {
-			return null;
-		}
     }
 }

@@ -8,13 +8,13 @@ import static mods.fullmetalalchemy.item.FMAItems.*;
 public class ReconstructionRecipes {
 	public static void initialize() {
 		GameRegistry.addShapelessRecipe(new ItemStack(ChalkStick), new Object[] {
-			//new ItemStack(metaTest, 1, 0), new ItemStack(metaTest, 1, 0), new ItemStack(metaTest, 1, 0),
+			new ItemStack(metaTest, 1, 0), new ItemStack(metaTest, 1, 0), new ItemStack(metaTest, 1, 0),
 			new ItemStack(ReconstructionCircle),
 		});
-		/*GameRegistry.addShapelessRecipe(new ItemStack(metaTest, 3, 1), new Object[] {
+		GameRegistry.addShapelessRecipe(new ItemStack(metaTest, 3, 1), new Object[] {
 			new ItemStack(ChalkStick), new ItemStack(ReconstructionCircle),
-		});*/
-		GameRegistry.addShapelessRecipe(new ItemStack(Item.glowstone, 2), new Object[] {
+		});
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.lightStoneDust, 2), new Object[] {
 			new ItemStack(Item.redstone), new ItemStack(Item.redstone), 
 			new ItemStack(Item.redstone), new ItemStack(Item.redstone), 
 			new ItemStack(ReconstructionCircle),

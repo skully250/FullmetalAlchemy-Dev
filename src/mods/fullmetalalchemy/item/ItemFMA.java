@@ -3,8 +3,6 @@ package mods.fullmetalalchemy.item;
 import mods.fullmetalalchemy.core.util.Resources;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,8 +14,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemFMA extends Item {
 
-	public String state;
-	
     /**
      * @param par1
      */

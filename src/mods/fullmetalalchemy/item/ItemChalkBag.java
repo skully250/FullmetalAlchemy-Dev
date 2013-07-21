@@ -48,14 +48,14 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	@Override
 	public String getState() {
 
-		//String state = FMAUtils.nbtHelper.readString("ChalkBagState");
+		String state = FMAUtils.nbtHelper.readString("ChalkBagState");
 
 		return state;
 	}
 
 	public void setState(BagEnumState defaultState) {
 
-		//FMAUtils.nbtHelper.writeString("ChalkBagState", defaultState.getName());
+		FMAUtils.nbtHelper.writeString("ChalkBagState", defaultState.getName());
 	}
 
 	@Override
@@ -143,14 +143,14 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 			player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
 			Chalk++;
 			player.inventoryContainer.detectAndSendChanges();
-			player.addChatMessage("you have " + Chalk + " in this bag");
+			player.sendChatToPlayer("you have " + Chalk + " in this bag");
 			return par1ItemStack;
 			
 		} else if (getState() == "Taking" && Chalk > 0) {
 			player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
 			Chalk--;
 			player.inventoryContainer.detectAndSendChanges();
-			player.addChatMessage("you have " + (Chalk - 1) + " remaining in this bag");
+			player.sendChatToPlayer("you have " + (Chalk - 1) + " remaining in this bag");
 			return par1ItemStack;
 		}
 		return par1ItemStack;

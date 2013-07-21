@@ -39,7 +39,7 @@ public class ItemKunaiEnder extends ItemFMA {
 
 			if (!par2World.isRemote)
 			{
-				//par2World.spawnEntityInWorld(new EntityKunaiEnder(par2World, par3EntityPlayer));
+				par2World.spawnEntityInWorld(new EntityKunaiEnder(par2World, par3EntityPlayer));
 			}
 			return par1ItemStack;
 		}

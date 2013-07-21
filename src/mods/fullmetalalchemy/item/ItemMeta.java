@@ -1,6 +1,5 @@
 package mods.fullmetalalchemy.item;
 
-import apex.item.ApexMetaItemBase;
 import net.minecraft.util.Icon;
 
 /**
@@ -9,12 +8,9 @@ import net.minecraft.util.Icon;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * 
  */
-public class ItemFMAMeta extends ApexMetaItemBase {
+public class ItemMeta extends ItemFMAMeta {
 
-    /**
-     * @param par1
-     */
-    public ItemFMAMeta(int par1, String[] names, Icon[] textures) {
+    public ItemMeta(int par1, String[] names, Icon[] textures) {
 
         super(par1, names, textures);
     }

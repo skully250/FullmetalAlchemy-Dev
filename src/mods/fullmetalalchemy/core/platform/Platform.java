@@ -1,5 +1,6 @@
 package mods.fullmetalalchemy.core.platform;
 
+import apex.util.ApexNBTUtils;
 import mods.fullmetalalchemy.core.FullmetalAlchemy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,13 +25,12 @@ public class Platform {
 
 	public void saveData(WorldServer world, NBTTagCompound tag) {
 
-		//ApexNBTUtils.saveData(world, tag, "FMA");
+		ApexNBTUtils.saveData(world, tag, "FMA");
 	}
 
 	public NBTTagCompound loadData(WorldServer world) {
 
-		//return ApexNBTUtils.loadData(world, "FMA");
-		return null;
+		return ApexNBTUtils.loadData(world, "FMA");
 	}
 
 	public void registerKeyBinds() {
@@ -39,6 +39,6 @@ public class Platform {
 
 	public void transmuteBlock(int x, int y, int z, int blockID, int meta, EntityPlayer player, World world) {
 
-		player.addChatMessage("HEHE");
+		player.sendChatToPlayer("HEHE");
 	}
 }

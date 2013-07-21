@@ -1,5 +1,6 @@
 package mods.fullmetalalchemy.core.util;
 
+import apex.util.ApexNBTHelper;
 import mods.fullmetalalchemy.creativetab.CreativeTabFMA;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +16,7 @@ public class FMAUtils {
     public static final CreativeTabs fmaTab = new CreativeTabFMA();
     
     public static NBTTagCompound tagCompound = new NBTTagCompound();
-    //public static final ApexNBTHelper nbtHelper = new ApexNBTHelper(tagCompound);
+    public static final ApexNBTHelper nbtHelper = new ApexNBTHelper(tagCompound);
 
     @Deprecated
     public static void addIcons() {
