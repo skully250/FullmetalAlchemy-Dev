@@ -1,14 +1,10 @@
 package skully.fma.core.platform;
 
-import skully.fma.core.FullmetalAlchemy;
-import skully.fma.core.client.ClientKeybindHandler;
-import skully.fma.core.renderer.RenderKunaiEnder;
-import skully.fma.entities.EntityKunaiEnder;
-import skully.fma.item.FMAItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import skully.fma.core.FullmetalAlchemy;
+import skully.fma.core.client.ClientKeybindHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

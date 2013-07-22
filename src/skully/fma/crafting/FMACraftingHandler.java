@@ -1,9 +1,9 @@
 package skully.fma.crafting;
 
-import skully.fma.item.FMAItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import skully.fma.item.FMAItems;
 import cpw.mods.fml.common.ICraftingHandler;
 
 public class FMACraftingHandler implements ICraftingHandler {

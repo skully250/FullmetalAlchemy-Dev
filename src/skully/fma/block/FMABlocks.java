@@ -43,14 +43,14 @@ public class FMABlocks {
         .setHardness(0.0F);
         
         Test = new BlockCTest(ConfigSettings.Test)
-        .setUnlocalizedName("BCircle")
-        .setCreativeTab(
-        		CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+        .setUnlocalizedName("BCircle");
+        //.setCreativeTab(
+        		//CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
         
         infuser = new BlockInfuser(ConfigSettings.infuser)
-        .setUnlocalizedName("infuser")
-        .setCreativeTab(
-        		CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+        .setUnlocalizedName("infuser");
+        //.setCreativeTab(
+        		//CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
 
         registerBlocks();
         

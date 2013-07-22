@@ -11,7 +11,6 @@ import net.minecraft.util.Icon;
 public class ItemMeta extends ItemFMAMeta {
 
     public ItemMeta(int par1) {
-
         super(par1);
     }
 }

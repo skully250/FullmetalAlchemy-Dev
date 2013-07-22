@@ -79,8 +79,8 @@ public class FullmetalAlchemy {
 
 		MinecraftForge.EVENT_BUS.register(this);
 
-		LanguageRegistry.instance().loadLocalization("/mods/fullmetalalchemy/lang/en_US.properties", "en_US", false);
-		LanguageRegistry.instance().loadLocalization("/mods/fullmetalalchemy/lang/en_GB.properties", "en_GB", false);
+		LanguageRegistry.instance().loadLocalization("/assets/fullmetalalchemy/lang/en_US.properties", "en_US", false);
+		LanguageRegistry.instance().loadLocalization("/assets/fullmetalalchemy/lang/en_GB.properties", "en_GB", false);
 
 		//platform.makeModules();
 		MinecraftForge.EVENT_BUS.register(new Sounds());

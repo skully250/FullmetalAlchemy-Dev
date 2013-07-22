@@ -13,16 +13,18 @@ import skully.fma.core.util.Resources;
 import skully.fma.crafting.ReconstructionRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
-	
+
 	public int Chalk = 0;
 	public int PChalk;
 
@@ -35,7 +37,7 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 			getState();
 		} else {
 
-//			setState(defaultState);
+			//			setState(defaultState);
 		}
 	}
 
@@ -49,14 +51,15 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	@Override
 	public String getState() {
 
-		String state = FMAUtils.nbtHelper.getString(new ItemStack(FMAItems.ChalkBag), "ChalkBagState");
+		//String state = FMAUtils.nbtHelper.getString(null, "ChalkBagState");
+		String state = "Test";
 
 		return state;
 	}
 
 	public void setState(BagEnumState defaultState) {
 
-		FMAUtils.nbtHelper.setString(new ItemStack(FMAItems.ChalkBag), "ChalkBagState", defaultState.getName());
+		//FMAUtils.nbtHelper.setString(null, "ChalkBagState", defaultState.getName());
 	}
 
 	@Override
@@ -85,8 +88,11 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	})
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-
-		list.add("\u00a78" + getState());
+		if (player.isSneaking())
+			//list.add("\u00a78" + getState());
+			list.add("Testing Things");
+		else
+			list.add("Hold <Shift> for more info");
 	}
 
 	@Override
@@ -132,7 +138,7 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	}
 
 
-	
+
 	/**
 	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
 	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
@@ -140,20 +146,20 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
 	{
 		if(par2World.isRemote)
-		if(getState() == "Holding" && player.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
-			player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
-			Chalk++;
-			player.inventoryContainer.detectAndSendChanges();
-			player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + Chalk + " in this bag"));
-			return par1ItemStack;
-			
-		} else if (getState() == "Taking" && Chalk > 0) {
-			player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
-			Chalk--;
-			player.inventoryContainer.detectAndSendChanges();
-			player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + (Chalk - 1) + " remaining in this bag"));
-			return par1ItemStack;
-		}
+			if(getState() == "Holding" && player.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
+				player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
+				Chalk++;
+				player.inventoryContainer.detectAndSendChanges();
+				player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + Chalk + " in this bag"));
+				return par1ItemStack;
+
+			} else if (getState() == "Taking" && Chalk > 0) {
+				player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
+				Chalk--;
+				player.inventoryContainer.detectAndSendChanges();
+				player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + (Chalk - 1) + " remaining in this bag"));
+				return par1ItemStack;
+			}
 		return par1ItemStack;
 	}
 }
