@@ -18,7 +18,7 @@ public class FMAIcons {
 
 				metaItemIcons[i] = evt.map.registerIcon("fullmetalalchemy:" + FMAIcons.metaItemIcons[i]);
 			}
-		} else if(evt.map.textureType == 1) {
+		} else if(evt.map.textureType == 0) {
 
 		}
 		//		ApexIconIndexer index = new ApexIconIndexer("fullmetalalchemy", evt);
