@@ -1,6 +1,14 @@
 package skully.fma.item;
 
+import java.util.List;
+
+import skully.fma.core.util.FMAIcons;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
 /**
@@ -9,13 +17,42 @@ import net.minecraft.util.Icon;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * 
  */
-public class ItemFMAMeta extends Item {
+public class ItemFMAMeta extends ItemFMA {
 
-    /**
-     * @param par1
-     */
-    public ItemFMAMeta(int par1) {
+	private String[] names;
+	private Icon[] icons;
 
-        super(par1);
-    }
+	public ItemFMAMeta(int par1, String[] names, Icon[] icons) {
+
+		super(par1);
+		assert names.length == icons.length;
+//		setHasSubtypes(true);
+		this.names = names;
+		this.icons = icons;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {}
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+
+		return "item." + names[stack.getItemDamage()];
+	}
+
+	@Override
+	public Icon getIconFromDamage(int damage) {
+
+		return FMAIcons.metaItemIcons[damage];
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+
+		for (int j = 0; j < names.length; ++j){
+
+			par3List.add(new ItemStack(par1, 1, j));
+		}
+	}
 }
