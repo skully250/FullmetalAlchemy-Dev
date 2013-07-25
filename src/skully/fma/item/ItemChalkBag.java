@@ -88,11 +88,9 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 	})
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		if (player.isSneaking())
 			//list.add("\u00a78" + getState());
-			list.add("Testing Things");
-		else
-			list.add("Hold <Shift> for more info");
+			list.add("Stores your Chalk Sticks");
+			list.add("Chalk sticks held: " + (Chalk / 2));
 	}
 
 	@Override
@@ -148,14 +146,14 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound  {
 		if(par2World.isRemote)
 			if(getState() == "Holding" && player.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
 				player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
-				Chalk++;
+				Chalk += 1;
 				player.inventoryContainer.detectAndSendChanges();
 				player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + Chalk + " in this bag"));
 				return par1ItemStack;
 
 			} else if (getState() == "Taking" && Chalk > 0) {
 				player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
-				Chalk--;
+				Chalk += -1;
 				player.inventoryContainer.detectAndSendChanges();
 				player.sendChatToPlayer(ChatUtils.toChatComponent("you have " + (Chalk - 1) + " remaining in this bag"));
 				return par1ItemStack;

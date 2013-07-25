@@ -1,5 +1,7 @@
 package skully.fma.item;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -13,7 +15,9 @@ public class ItemKunaiEnder extends ItemFMA {
 		this.setMaxStackSize(5);
 	}
 
-
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		list.add("With 5, will teleport player to location");
+	}
 
 	/**
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer

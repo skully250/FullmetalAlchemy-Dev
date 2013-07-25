@@ -1,5 +1,7 @@
 package skully.fma.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,6 +13,11 @@ public class ItemIceGauntlet extends ItemFMA {
 	public ItemIceGauntlet(int par1) {
 		super(par1);
         setMaxStackSize(1);
+	}
+	
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		list.add("if snowball is in the inventory");
+		list.add("Then will freeze 3x3 to ice");
 	}
 
 	/**

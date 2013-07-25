@@ -1,5 +1,7 @@
 package skully.fma.item;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,6 +13,11 @@ public class ItemFireGlove extends ItemFMA {
 	public ItemFireGlove(int par1) {
 		super(par1);
         setMaxStackSize(1);
+	}
+	
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		list.add("if flint is in the inventory");
+		list.add("Then will light 3x3 on fire");
 	}
 
 

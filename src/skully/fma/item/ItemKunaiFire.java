@@ -1,5 +1,7 @@
 package skully.fma.item;
 
+import java.util.List;
+
 import skully.fma.entities.EntityKunaiFire;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -10,6 +12,10 @@ public class ItemKunaiFire extends ItemFMA {
 	public ItemKunaiFire(int par1) {
 		super(par1);
 		this.setMaxStackSize(5);
+	}
+	
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		list.add("With 5, will cause an explosion when thrown");
 	}
 	
     /**

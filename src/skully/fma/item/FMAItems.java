@@ -62,7 +62,7 @@ public class FMAItems {
 		"Alchemical Wool", 
 		"Alchemical Silk",
 		"Evil Stone",
-		"Good Ston"
+		"Good Stone"
 	};
 
 	public static void initialize() {

@@ -11,6 +11,7 @@ public class FMAIcons {
 	@ForgeSubscribe
 	public void addIcons(TextureStitchEvent.Pre evt) {
 		
+		
 //		ApexIconIndexer index = new ApexIconIndexer("fullmetalalchemy", evt);
 //		
 //		for(int i = 0; i < meta_names.length; i++) {
