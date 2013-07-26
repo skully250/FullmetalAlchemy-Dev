@@ -42,6 +42,7 @@ public class FMAItems {
 	public static Item KunaiFire;
 	public static Item KunaiEnder;
 	public static Item ChalkBag;
+	public static Item energyMeasurer;
 
 
 	public static String[] meta_names = new String[] {
@@ -90,6 +91,7 @@ public class FMAItems {
 		KunaiFire = new ItemKunaiFire(ConfigSettings.KunaiFire).setUnlocalizedName("KunaiFire").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		KunaiEnder = new ItemKunaiEnder(ConfigSettings.KunaiEnder).setUnlocalizedName("KunaiEnder").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		ChalkBag = new ItemChalkBag(ConfigSettings.ChalkBag, BagEnumState.OFF).setUnlocalizedName("ChalkBag").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		energyMeasurer = new ItemEnergyMeasurer(ConfigSettings.energyMeasurer).setUnlocalizedName("EnergyMeasure").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 
 
 		pStone.setContainerItem(pStone);

@@ -34,6 +34,7 @@ public class ConfigSettings {
     public static int KunaiFire;
     public static int KunaiEnder;
     public static int ChalkBag;
+    public static int energyMeasurer;
     
     // Blocks
     public static int chalkOreID;
