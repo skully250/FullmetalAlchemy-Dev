@@ -1,5 +1,7 @@
 package skully.fma.core.config;
 
+import net.minecraftforge.common.Property;
+
 /**
  * @author viper283
  * 
@@ -45,5 +47,6 @@ public class ConfigSettings {
     
     // General
     public static boolean moduleLoadingSpammyMode;
+    public static boolean firstRun;
 
 }

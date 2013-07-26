@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.world.WorldEvent;
@@ -59,6 +60,7 @@ public class FullmetalAlchemy {
 	public static List<JarFile> modules;
 	public static List<Class<?>> classesToLoad;
 	public static List<Class<?>> loadedClasses;
+	NBTTagCompound compound;
 	
 	static {
 		
@@ -83,6 +85,7 @@ public class FullmetalAlchemy {
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent evt) {
 
+		//Class Initializations
 		FMAItems.initialize();
 		FMABlocks.initialize();
 		FMARecipes.initialize();

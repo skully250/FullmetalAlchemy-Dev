@@ -1,5 +1,6 @@
 package skully.fma.block;
 
+import skully.fma.core.util.Resources;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +34,22 @@ public class BlockInfuser extends BlockFMA {
 		this.field_94461_a = par1IconRegister.registerIcon("fullmetalalchemy:ITop");
 		this.field_94460_b = par1IconRegister.registerIcon("fullmetalalchemy:IBottom");
 	}
+	
+    /**
+     * Called upon block activation (right click on the block.)
+     */
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {
+        if (par1World.isRemote)
+        {
+            return true;
+        }
+        else
+        {
+            par5EntityPlayer.openGui(Resources.MOD_ID, par6, par1World, par2, par3, par4);
+            return true;
+        }
+    }
 
 	/**
 	 * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two

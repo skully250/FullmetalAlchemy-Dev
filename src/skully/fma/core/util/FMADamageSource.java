@@ -11,7 +11,7 @@ import net.minecraft.util.DamageSource;
 public class FMADamageSource extends DamageSource {
 
     public static DamageSource crimsonAlchemy = new FMADamageSource(
-            "crimsonAlchemy").setFireDamage();
+            "crimsonAlchemy").setMagicDamage();
 
     public FMADamageSource(String par1Str) {
 

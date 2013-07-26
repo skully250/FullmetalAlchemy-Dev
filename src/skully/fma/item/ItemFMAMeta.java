@@ -25,26 +25,26 @@ public class ItemFMAMeta extends ItemFMA {
 	public ItemFMAMeta(int par1, String[] names, Icon[] icons) {
 
 		super(par1);
+		this.setMaxDamage(0);
 		assert names.length == icons.length;
-//		setHasSubtypes(true);
+		setHasSubtypes(true);
 		this.names = names;
 		this.icons = icons;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {}
+	public void registerIcons(IconRegister iconRegister) {
+	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-
 		return "item." + names[stack.getItemDamage()];
 	}
 
 	@Override
-	public Icon getIconFromDamage(int damage) {
-
-		return FMAIcons.metaItemIcons[damage];
+	public Icon getIconFromDamage(int meta) {
+		return this.icons[meta];
 	}
 
 	@SideOnly(Side.CLIENT)

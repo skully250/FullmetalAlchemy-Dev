@@ -8,10 +8,9 @@ import net.minecraft.world.World;
 import skully.fma.world.FMATransPower;
 
 public class ItemEnergyMeasurer extends ItemFMA {
-
+	
 	public ItemEnergyMeasurer(int par1) {
 		super(par1);
-		FMATransPower.transEnergy = 100;
 	}
 
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
@@ -25,7 +24,12 @@ public class ItemEnergyMeasurer extends ItemFMA {
 	}
 	
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		FMATransPower.modifyDecay(25);
-		return par1ItemStack;	
+		if (par3EntityPlayer.isSneaking()) {
+			FMATransPower.modifyDecay(25);
+			return par1ItemStack;
+		} else {
+		FMATransPower.modifyDecay(-25);
+		return par1ItemStack;
+		}
 	}
 }

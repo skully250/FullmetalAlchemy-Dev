@@ -1,6 +1,7 @@
 package skully.fma.block;
 
 import skully.fma.core.util.ChatUtils;
+import skully.fma.core.util.FMADamageSource;
 import skully.fma.item.FMAItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -18,9 +19,7 @@ public class BlockCTest extends BlockFMA {
 	{
 	if (player.getCurrentEquippedItem().getItem() == FMAItems.pStone)
 	{
-		player.sendChatToPlayer(ChatUtils.toChatComponent("Immortality has been granted upon you"));
-		player.setEntityHealth(900);
-		player.attackEntityFrom(DamageSource.magic, 899);
+		player.attackEntityFrom(FMADamageSource.crimsonAlchemy, 9001);
 	}
 	return true;
 	}

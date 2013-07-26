@@ -48,9 +48,9 @@ public class FMABlocks {
         		//CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
         
         infuser = new BlockInfuser(ConfigSettings.infuser)
-        .setUnlocalizedName("infuser");
-        //.setCreativeTab(
-        		//CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+        .setUnlocalizedName("infuser")
+        .setCreativeTab(
+        		CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
 
         registerBlocks();
         
