@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
+	<classpathentry kind="lib" path="C:/Users/Skully/Desktop/eclipse/forge/mcp/jars/libraries/org/lwjgl/lwjgl/lwjgl/2.9.0/lwjgl-2.9.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Skully/Desktop/eclipse/forge/mcp/jars/libraries/org/lwjgl/lwjgl/lwjgl/2.9.0/lwjgl-2.9.0-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

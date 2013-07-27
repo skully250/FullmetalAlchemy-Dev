@@ -1,5 +1,6 @@
 package skully.fma.core.util;
 
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.util.DamageSource;
 
 /**
@@ -12,9 +13,11 @@ public class FMADamageSource extends DamageSource {
 
     public static DamageSource crimsonAlchemy = new FMADamageSource(
             "crimsonAlchemy").setMagicDamage();
+    
+    public static DamageSource humanTransmutation = new FMADamageSource(
+    		"humanTransmutation").setMagicDamage();
 
     public FMADamageSource(String par1Str) {
-
         super(par1Str);
     }
 }

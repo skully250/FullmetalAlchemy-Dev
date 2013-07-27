@@ -1,13 +1,21 @@
 package skully.fma.item;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import skully.fma.api.CoreApi;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.core.enums.BagEnumState;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
 import skully.fma.core.util.FMAIcons;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import skully.fma.item.alchemical.ItemEnergyMeasurer;
+import skully.fma.item.alchemical.ItemEnergyStore;
+import skully.fma.item.alchemical.ItemFireGlove;
+import skully.fma.item.alchemical.ItemIceGauntlet;
+import skully.fma.item.alchemical.ItemKunaiEnder;
+import skully.fma.item.alchemical.ItemKunaiFire;
+import skully.fma.item.alchemical.ItemPStone;
+import skully.fma.item.alchemical.ItemReconstructionCircle;
 
 /**
  * @author viper283
@@ -43,6 +51,7 @@ public class FMAItems {
 	public static Item KunaiEnder;
 	public static Item ChalkBag;
 	public static Item energyMeasurer;
+	public static Item EnergyStore;
 
 
 	public static String[] meta_names = new String[] {
@@ -92,8 +101,9 @@ public class FMAItems {
 		KunaiEnder = new ItemKunaiEnder(ConfigSettings.KunaiEnder).setUnlocalizedName("KunaiEnder").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		ChalkBag = new ItemChalkBag(ConfigSettings.ChalkBag, BagEnumState.OFF).setUnlocalizedName("ChalkBag").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		energyMeasurer = new ItemEnergyMeasurer(ConfigSettings.energyMeasurer).setUnlocalizedName("EnergyMeasure").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+		EnergyStore = new ItemEnergyStore(ConfigSettings.energyStore).setUnlocalizedName("EnergyStore").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 
-
+		
 		pStone.setContainerItem(pStone);
 
 		localize();

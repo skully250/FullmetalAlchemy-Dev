@@ -12,12 +12,24 @@ public class NBThelper {
      *            The ItemStack for which its NBT Tag Compound is being checked
      *            for initialization
      */
-	
 	  private static void initNBTTagCompound(ItemStack itemStack) {
 
 	        if (itemStack.stackTagCompound == null) {
 	            itemStack.setTagCompound(new NBTTagCompound());
 	        }
+	    }
+	  
+	    public static NBTTagCompound getNBTCompoundForItemStack(ItemStack itemStack)
+	    {
+	        if (itemStack != null) {
+	            NBTTagCompound tag = itemStack.getTagCompound();
+	            if (tag == null) {
+	                tag = new NBTTagCompound();
+	                itemStack.setTagCompound(tag);
+	            }
+	            return tag;
+	        }
+	        return null;
 	    }
 
 	    public static boolean hasTag(ItemStack itemStack, String keyName) {

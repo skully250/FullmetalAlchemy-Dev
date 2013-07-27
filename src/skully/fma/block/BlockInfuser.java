@@ -1,5 +1,7 @@
 package skully.fma.block;
 
+import skully.fma.core.FullmetalAlchemy;
+import skully.fma.core.lib.GuiIDs;
 import skully.fma.core.util.Resources;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -38,15 +40,16 @@ public class BlockInfuser extends BlockFMA {
     /**
      * Called upon block activation (right click on the block.)
      */
-    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
-        if (par1World.isRemote)
+        if (player.isSneaking())
         {
-            return true;
+            return false;
         }
         else
         {
-            par5EntityPlayer.openGui(Resources.MOD_ID, par6, par1World, par2, par3, par4);
+            player.openGui(FullmetalAlchemy.instance, GuiIDs.INFUSER, world, 
+            		x, y, z);
             return true;
         }
     }

@@ -1,6 +1,6 @@
 package skully.fma.block;
 
-import skully.fma.core.util.ChatUtils;
+import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.FMADamageSource;
 import skully.fma.item.FMAItems;
 import net.minecraft.block.material.Material;

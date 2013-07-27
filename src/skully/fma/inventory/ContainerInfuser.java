@@ -1,6 +1,5 @@
 package skully.fma.inventory;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -10,13 +9,14 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
+import skully.fma.block.FMABlocks;
+import skully.fma.crafting.FMACraftingManager;
 
 public class ContainerInfuser extends Container {
 	
     /** The crafting matrix inventory (3x3). */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 3);
     public IInventory craftResult = new InventoryCraftResult();
     private World worldObj;
     private int posX;
@@ -33,7 +33,7 @@ public class ContainerInfuser extends Container {
         int l;
         int i1;
 
-        for (l = 0; l < 3; ++l)
+        for (l = 0; l < 4; ++l)
         {
             for (i1 = 0; i1 < 3; ++i1)
             {
@@ -62,7 +62,7 @@ public class ContainerInfuser extends Container {
      */
     public void onCraftMatrixChanged(IInventory par1IInventory)
     {
-        this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+        this.craftResult.setInventorySlotContents(0, FMACraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
 
     /**
@@ -89,7 +89,7 @@ public class ContainerInfuser extends Container {
     @Override
     public boolean canInteractWith(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != Block.workbench.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != FMABlocks.infuser.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
     }
 
     /**

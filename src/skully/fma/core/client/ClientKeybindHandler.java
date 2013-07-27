@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import skully.fma.core.implement.IKeyBound;
-import skully.fma.core.util.ChatUtils;
+import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.Resources;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.TickType;
@@ -47,7 +47,7 @@ public class ClientKeybindHandler extends KeyHandler {
 
         if(kb.equals(debugKeybind)) {
 
-            player.sendChatToPlayer(ChatUtils.toChatComponent("[FMA] Debug"));
+            player.sendChatToPlayer(ConvertUtil.toChatComponent("[FMA] Debug"));
 
             toggleDebug();
         } else if(kb.equals(item)) {

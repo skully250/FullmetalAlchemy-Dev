@@ -1,14 +1,11 @@
 package skully.fma.block;
 
-import skully.fma.core.util.ChatUtils;
-import skully.fma.crafting.AlchFireRecipes;
-import skully.fma.crafting.AlchIceRecipes;
-import skully.fma.crafting.AlchRecRecipes;
-import skully.fma.crafting.ReconstructionRecipes;
-import skully.fma.item.FMAItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import skully.fma.core.util.ConvertUtil;
+import skully.fma.crafting.FMAResearchRecipes;
+import skully.fma.item.FMAItems;
 
 public class BlockRCircle extends BlockFMA 
 {
@@ -23,6 +20,7 @@ public class BlockRCircle extends BlockFMA
 	 */
 	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer player,int par6, float par7, float par8, float par9)
 	{
+		FMAResearchRecipes recipes = new FMAResearchRecipes();
 		boolean First = true;
 		boolean Second = true;
 		boolean Third = true;
@@ -40,9 +38,9 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer(ChatUtils.toChatComponent("My research has yielded new Items and Transmutation possibilities!"));
+					player.sendChatToPlayer(ConvertUtil.toChatComponent("My research has yielded new Items and Transmutation possibilities!"));
 
-					ReconstructionRecipes.initialize();
+					recipes.initializeAlchemy();
 					player.inventory.consumeInventoryItem(Chalk);
 					player.inventoryContainer.detectAndSendChanges();
 					First = false;
@@ -52,9 +50,9 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer(ChatUtils.toChatComponent("New alchemical fire abilities have been revealed to me!"));
+					player.sendChatToPlayer(ConvertUtil.toChatComponent("New alchemical fire abilities have been revealed to me!"));
 
-					AlchFireRecipes.initialize();
+					recipes.initializeFire();
 					player.inventory.consumeInventoryItem(Chalk);
 					player.inventoryContainer.detectAndSendChanges();
 					Second = false;
@@ -64,9 +62,9 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer(ChatUtils.toChatComponent("New alchemical ice abilities have been revealed to me!"));
+					player.sendChatToPlayer(ConvertUtil.toChatComponent("New alchemical ice abilities have been revealed to me!"));
 
-					AlchIceRecipes.initialize();
+					recipes.initializeIce();
 					player.inventory.consumeInventoryItem(Chalk);
 					player.inventoryContainer.detectAndSendChanges();
 					Third = false;
@@ -76,28 +74,32 @@ public class BlockRCircle extends BlockFMA
 					int i1 = world.getBlockMetadata(par2, par3, par4);
 					int k1 = 8 - (i1 & 8);
 					world.playSoundEffect((double)par2 + 0.5D, (double)par3 + 0.5D, (double)par4 + 0.5D, "Writing", 0.3F, k1 > 0 ? 0.6F : 0.5F);
-					player.sendChatToPlayer(ChatUtils.toChatComponent("Reconstruction and Deconstruction has been revealed to me!"));
+					player.sendChatToPlayer(ConvertUtil.toChatComponent("Reconstruction and Deconstruction has been revealed to me!"));
 
-					AlchRecRecipes.initialize();
+					recipes.initializeRec();
 					player.inventory.consumeInventoryItem(Chalk);
 					player.inventoryContainer.detectAndSendChanges();
 					Fourth = false;
 				}
 
 				else if (player.getCurrentEquippedItem().getItem() == FMAItems.ChalkStick) {
-					player.sendChatToPlayer(ChatUtils.toChatComponent("Writing notes on this Circle may yield new alchemical opportunities."));
+					player.sendChatToPlayer(ConvertUtil.toChatComponent("Writing notes on this Circle may yield new alchemical opportunities."));
 				}
 
 				else if(First == false) {
-					ReconstructionRecipes.initialize();
+					recipes.initializeAlchemy();
 				}
 
 				else if(Second == false) {
-					AlchFireRecipes.initialize();
+					recipes.initializeFire();
 				}
 
 				else if(Third == false) {
-					AlchIceRecipes.initialize();
+					recipes.initializeIce();
+				}
+			
+				else if(Fourth == false) {
+					recipes.initializeRec();
 				}
 		}
 		return true;

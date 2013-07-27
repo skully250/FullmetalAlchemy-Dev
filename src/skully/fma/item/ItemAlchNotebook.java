@@ -1,6 +1,7 @@
 package skully.fma.item;
 
 import skully.fma.block.FMABlocks;
+import skully.fma.core.util.FMADamageSource;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -56,9 +57,7 @@ public class ItemAlchNotebook extends ItemFMA {
 			int chalk = FMAItems.ChalkStick.itemID;
 			if (par2EntityPlayer.getCurrentEquippedItem() != null)
 				if (par2EntityPlayer.inventory.hasItem(chalk)) {
-					//par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-					par3World.setBlock(par4, par5, par6, FMABlocks.researchCircle.blockID);
-					par2EntityPlayer.inventory.consumeInventoryItem(chalk);
+					par2EntityPlayer.attackEntityFrom(FMADamageSource.humanTransmutation, 1000);
 				}
 			return true;
 		}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import skully.fma.world.FMATransPower;
+import skully.fma.energy.FMAPower;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -41,8 +41,8 @@ public class TransValues {
 					Material mat = block.blockMaterial != null  ? block.blockMaterial : Material.air;
 
 					if(mat.isSolid()) {
-						if (FMATransPower.transEnergy > 0){
-							FMATransPower.modifyEnergy(-5);
+						if (FMAPower.transEnergy > 0){
+							FMAPower.modifyEnergy(-5);
 							blocks.add(block);
 						}
 					}
