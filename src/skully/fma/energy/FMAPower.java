@@ -1,7 +1,7 @@
 package skully.fma.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
-import skully.fma.core.util.NBThelper;
+import skully.fma.core.helper.NBThelper;
 
 
 public class FMAPower {
@@ -11,7 +11,7 @@ public class FMAPower {
 	public static int transDecay = compound.getInteger("Alchemical Decay");
 	
 	public FMAPower() {
-		setEnergy(100);
+		//setEnergy(100);
 	}
 
 	public static void modifyEnergy(double amount) {

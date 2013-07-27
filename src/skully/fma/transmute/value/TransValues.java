@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import skully.fma.energy.FMAPower;
+import skully.fma.gui.overlay.GuiOverlayEnergy;
+import skully.fma.item.FMAItems;
+import skully.fma.item.alchemical.ItemEnergyStore;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -41,14 +43,10 @@ public class TransValues {
 					Material mat = block.blockMaterial != null  ? block.blockMaterial : Material.air;
 
 					if(mat.isSolid()) {
-						if (FMAPower.transEnergy > 0){
-							FMAPower.modifyEnergy(-5);
 							blocks.add(block);
-						}
 					}
 				}
 			}
-
 		}
 
 		Random rand = new Random();

@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IKeyBound  {
 
-	public int Trans = 0;
+	public static int Trans = 0;
 
 	public ItemReconstructionCircle(int par1, TattooEnumState defaultState) {
 		super(par1);

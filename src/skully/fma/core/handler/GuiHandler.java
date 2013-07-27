@@ -2,9 +2,9 @@ package skully.fma.core.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import skully.fma.container.ContainerInfuser;
 import skully.fma.core.lib.GuiIDs;
 import skully.fma.gui.GuiInfuser;
-import skully.fma.inventory.ContainerInfuser;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {

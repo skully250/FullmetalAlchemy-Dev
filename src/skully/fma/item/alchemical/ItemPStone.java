@@ -14,10 +14,12 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import skully.fma.core.enums.EnumState;
+import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.util.Resources;
-import skully.fma.core.util.TransHelper;
+import skully.fma.gui.overlay.GuiOverlayEnergy;
+import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -151,10 +153,10 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 			} else {
 
 				if(state == 1) {
-
 					addTransCost(ID);
 					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, (WorldServer)par3World, player);
 					player.swingItem();
+					//}
 				}
 				return true;
 			}

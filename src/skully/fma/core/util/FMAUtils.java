@@ -2,6 +2,7 @@ package skully.fma.core.util;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.nbt.NBTTagCompound;
+import skully.fma.core.helper.NBThelper;
 import skully.fma.creativetab.CreativeTabFMA;
 
 /**

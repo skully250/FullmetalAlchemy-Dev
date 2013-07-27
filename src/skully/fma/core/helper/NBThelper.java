@@ -1,4 +1,4 @@
-package skully.fma.core.util;
+package skully.fma.core.helper;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

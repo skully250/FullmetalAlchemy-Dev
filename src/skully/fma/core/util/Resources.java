@@ -18,5 +18,4 @@ public class Resources {
     public static final String CLIENT_PLATFORM_LOCATION = "skully.fma.core.platform.ClientPlatform";
     public static final String PLATFORM_LOCATION = "skully.fma.core.platform.Platform";
     public static boolean debugMode = false;
-    public static boolean firstRun = ConfigSettings.firstRun;
 }

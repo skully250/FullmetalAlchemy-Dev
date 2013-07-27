@@ -55,12 +55,12 @@ public class GuiOverlayEnergy extends Gui {
         }
 	}
 	
-    private void renderEnergyOverlay(Minecraft minecraft, EntityPlayer player)
+    public static void renderEnergyOverlay(Minecraft minecraft, EntityPlayer player)
     {
-        int maxEnergy = 0;
-        int currentEnergy = 0;
-        int cellsInInv = 0;
-        int fullCellsInInv = 0;
+    	int maxEnergy = 0;
+    	int currentEnergy = 0;
+    	int cellsInInv = 0;
+    	int fullCellsInInv = 0;
         
         int offsetX = 0;
         int offsetText = 0;
@@ -78,10 +78,10 @@ public class GuiOverlayEnergy extends Gui {
                     ItemEnergyStore cell = (ItemEnergyStore) stack2.getItem();
                     
                     maxEnergy = maxEnergy + 1000;
-                    currentEnergy = currentEnergy + (1000 - cell.getEnergy(stack2));
+                    currentEnergy = currentEnergy + (1000 - cell.getEnergy(stack2));             
                     cellsInInv++;
                     
-                    if(!(cellsInInv > 4))
+                    if(!(cellsInInv > 1))
                     {
                         stackList.put(i, stack2);
                     }
@@ -94,9 +94,9 @@ public class GuiOverlayEnergy extends Gui {
         for(ItemStack stack : stackCollection)
         {
             ItemEnergyStore cell = (ItemEnergyStore) stack.getItem();
-            int currentCellEnergy = 1000 - cell.getEnergy(stack);
+            int currentCellEnergy = (1000 - cell.getEnergy(stack));
             
-            //RenderHelperSC.bindTexture("FullmetalAlchemy:textures/gui/astral_energy_cell_hud.png");
+            //FMARenderUtil.instance().bindTexture(Resources.MOD_ID, "FullmetalAlchemy:textures/items/pStoneOff.png");
             
             if(cell.getEnergy(stack) < 1000)
             {
@@ -104,11 +104,11 @@ public class GuiOverlayEnergy extends Gui {
                 
                 int scale = currentCellEnergy / 4;
                 
-                //RenderHelperSC.bindTexture("FullmetalAlchemy:textures/gui/astral_energy_cell_hud.png");
-                FMARenderUtil.instance().drawTextureRect(1, 1 + offsetX, 0, 0, scale, 256, 0.05f, 0.05f, 0.05f, 1.0, 1.0, 1.0);
+                //FMARenderUtil.instance().bindTexture(Resources.MOD_ID, "FullmetalAlchemy:textures/items/pStoneOff.png");
+                //FMARenderUtil.instance().drawTextureRect(1, 1 + offsetX, 0, 0, scale, 256, 0.05f, 0.05f, 0.05f, 1.0, 1.0, 1.0);
             }
             
-            minecraft.fontRenderer.drawStringWithShadow("\2477" + currentCellEnergy + "/" + maxEnergy, 16, 3 + offsetText, 0xffffff);
+            minecraft.fontRenderer.drawStringWithShadow("\2477" + currentEnergy/*currentCellEnergy*/ + "/" + maxEnergy, 16, 3 + offsetText, 0xffffff);
             
             offsetX += 256 + 48;
             offsetText += 15;
@@ -145,7 +145,7 @@ public class GuiOverlayEnergy extends Gui {
                 minecraft.fontRenderer.drawStringWithShadow("\2477" + AstralManager.getMode(stone.getMode(stack)).name, FMARenderUtil.width - minecraft.fontRenderer.getStringWidth(AstralManager.getMode(stone.getMode(stack)).name) - 2, 2, 0xffffff);
             } else*/
                 {
-                    minecraft.fontRenderer.drawStringWithShadow("This is a test", FMARenderUtil.width - minecraft.fontRenderer.getStringWidth("This is a test") - 2, 2, 0xffffff);
+                    minecraft.fontRenderer.drawStringWithShadow(stone.getState(), FMARenderUtil.instance().width - minecraft.fontRenderer.getStringWidth("This is a test") - 2, 2, 0xffffff);
                 }
         
         /*stoneMode mode = AstralManager.getMode(stone.getMode(stack));
@@ -157,11 +157,11 @@ public class GuiOverlayEnergy extends Gui {
             energyRequirementMap.put(type, mode.energyRequired(type, player));
         }
         
-        Collection<Integer> energyRequirementCollection = energyRequirementMap.values();
+        Collection<Integer> energyRequirementCollection = energyRequirementMap.values();*/
         
         int offsetText = 15;
         
-        for(EnumUseType type : EnumUseType.values())
+        /*for(EnumUseType type : EnumUseType.values())
         {
             if(energyRequirementMap.get(type) <= 0)
             {

@@ -1,4 +1,4 @@
-package skully.fma.inventory;
+package skully.fma.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,7 +16,7 @@ import skully.fma.crafting.FMACraftingManager;
 public class ContainerInfuser extends Container {
 	
     /** The crafting matrix inventory (3x3). */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 3);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 4);
     public IInventory craftResult = new InventoryCraftResult();
     private World worldObj;
     private int posX;
@@ -33,11 +33,12 @@ public class ContainerInfuser extends Container {
         int l;
         int i1;
 
-        for (l = 0; l < 4; ++l)
+        for (l = 0; l < 3; ++l)
         {
-            for (i1 = 0; i1 < 3; ++i1)
+            for (i1 = 0; i1 < 4; ++i1)
             {
-                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
+                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 10 + i1 * 18, 17 + l * 18));
+                this.detectAndSendChanges();
             }
         }
 

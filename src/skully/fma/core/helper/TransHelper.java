@@ -1,4 +1,4 @@
-package skully.fma.core.util;
+package skully.fma.core.helper;
 
 import skully.fma.core.packet.PacketTransmute;
 import skully.fma.transmute.value.TransValues;
