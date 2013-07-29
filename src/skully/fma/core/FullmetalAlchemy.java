@@ -20,6 +20,7 @@ import skully.fma.core.packet.PacketManager;
 import skully.fma.core.platform.Platform;
 import skully.fma.core.server.ServerTickHandler;
 import skully.fma.core.util.FMAIcons;
+import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
 import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
@@ -113,6 +114,7 @@ public class FullmetalAlchemy {
 		Platform.instance().registerRenderThings();
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
+		RenderUtil.instance().loadRenderingUtils();
 
 		platform.registerKeyBinds();
 	}
@@ -142,7 +144,6 @@ public class FullmetalAlchemy {
 	}
 
 	 public static FullmetalAlchemy instance() {
-
 		 return instance;
 	 }
 

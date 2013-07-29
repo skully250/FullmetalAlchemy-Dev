@@ -16,6 +16,9 @@ import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.alchemical.ItemReconstructionCircle;
 import skully.fma.item.energy.ItemEnergyMeasurer;
 import skully.fma.item.energy.ItemEnergyStore;
+import skully.fma.item.research.ItemAlchNotebook;
+import skully.fma.item.research.ItemAlchNotes;
+import skully.fma.item.research.ItemChalkStick;
 
 /**
  * @author viper283

@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 import org.lwjgl.input.Keyboard;
 
 import skully.fma.core.enums.EnumState;
+import skully.fma.core.helper.NBThelper;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
@@ -32,6 +32,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 	private Icon icons[] = new Icon[256];
+	public static String power = "Transmutational Power";
+	public static int power2;
 
 	/**
 	 * 0 - inactive 1 - on
@@ -43,6 +45,9 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 		super(par1);
 		setMaxStackSize(1);
+		power();
+		this.power2 = NBThelper.getInt(new ItemStack(this), power);
+		
 
 		if(getState() != null && !(getState().equals(""))) {
 
@@ -50,6 +55,14 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		} else {
 
 			setState(defaultState);
+		}
+	}
+	
+	public void power() {
+		if (NBThelper.hasTag(new ItemStack(this), power)) {
+			NBThelper.getInt(new ItemStack(this), power);
+		} else {
+			NBThelper.setInteger(new ItemStack(this), power, 0);
 		}
 	}
 
@@ -93,14 +106,18 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if (Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak.keyCode))	{
 			list.add("\u00a78" + getState());
-			list.add("Will randomly transmute blocks");
+			list.add("Will randomly transmute, so long");
+			list.add("as power is provided");
+			list.add("Power: " + NBThelper.getInt(new ItemStack(this), power));
 		} else
 			list.add("Hold Shift for more info");
 	}
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-
+		
+		par1ItemStack.setItemDamage(NBThelper.getInt(new ItemStack(this), power));
+		
 		boolean updateTextures = getState() != null ? true : false;
 
 		if(updateTextures) {

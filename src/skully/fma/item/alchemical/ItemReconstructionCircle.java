@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
@@ -15,22 +16,28 @@ import org.lwjgl.input.Keyboard;
 
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
+import skully.fma.core.helper.NBThelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.Resources;
+import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IKeyBound  {
 
-	public static int Trans = 0;
-
+	NBTTagCompound compound;
+	public static int trans;
+	public static String oState;
+	
 	public ItemReconstructionCircle(int par1, TattooEnumState defaultState) {
 		super(par1);
 		setMaxStackSize(1);
 		setMaxDamage(1024);
+		transmutations(compound);
+		this.trans = NBThelper.getInt(new ItemStack(this), "Transmutations");
 
 		if(getState() != null && !(getState().equals("")))
 			getState();
@@ -50,13 +57,20 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	public String getState() {
 
 		//String state = FMAUtils.nbtHelper.getString(new ItemStack(FMAItems.ReconstructionCircle), "ReconstructionCircleState");
-		String oState = null;
 		if (state == 0)
-			oState = "Deconstruction";
+			oState = "Construct";
 		else if (state == 1)
-			oState = "Reconstruction";
+			oState = "Dismantle";
 
 		return oState;
+	}
+	
+	public void transmutations(NBTTagCompound par1) {
+		if (NBThelper.hasTag(new ItemStack(this), "Transmutations")) {
+			NBThelper.getInt(new ItemStack(this), "Transmutations");
+		} else {
+			NBThelper.setInteger(new ItemStack(this), "Transmutations", 0);
+		}
 	}
 
 	public void setState(TattooEnumState defaultState) {
@@ -95,12 +109,10 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		case 0 :
 			list.add("Reconstruction");
 			list.add("Will Reconstruct 3x3x3 of dirt where clicked");
-			list.add("Transmutations available: " + (Trans / 2));
 			break;
 		case 1 :
 			list.add("Deconstruction");
 			list.add("Will Deconstruct 3x3x3 where clicked");
-			list.add("Transmutations available: " + (Trans / 2));
 			break;
 		}
 		} else
@@ -190,11 +202,11 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 
 		switch(state) {
 		case 0 :
-			if (Trans > 0) {
+			if (trans > 0) {
 				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-				Trans += -1;
-				System.out.println(Trans);
+				trans += -1;
+				//System.out.println(Trans);
 
 				par3World.setBlock(par4, par5, par6, Block.dirt.blockID) ;
 				par3World.setBlock(par4 + 1, par5, par6, Block.dirt.blockID);
@@ -214,8 +226,8 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		case 1 :			
 			par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-			Trans += 1;
-			System.out.println(Trans);
+			trans += 1;
+			//System.out.println(Trans);
 
 			par3World.setBlock(par4, par5 - 1, par6, 0);
 			par3World.setBlock(par4 + 1, par5 - 1, par6, 0);

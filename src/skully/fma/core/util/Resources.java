@@ -10,7 +10,7 @@ package skully.fma.core.util;
  */
 public class Resources {
 
-    public static final String MOD_ID = "FullmetalAlchemy";
+    public static final String MOD_ID = "fullmetalalchemy";
     public static final String MOD_NAME = "Fullmetal Alchemy";
     public static final String MOD_VERSION = "0.0.6";
     public static final String CLIENT_PLATFORM_LOCATION = "skully.fma.core.platform.ClientPlatform";

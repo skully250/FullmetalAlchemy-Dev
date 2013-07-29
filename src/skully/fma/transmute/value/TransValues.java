@@ -6,10 +6,16 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
+import skully.fma.core.helper.NBThelper;
+import skully.fma.item.FMAItems;
+import skully.fma.item.alchemical.ItemPStone;
 
 
 public class TransValues {
 
+	private static Minecraft mc;
 	private static List<Block> blocks = new ArrayList<Block>();
 
 	// private static List DTrans = new Block.blocksList[5];
@@ -27,30 +33,37 @@ public class TransValues {
 	 */
 	public static Block getRandomBlock() {
 
-		for(Block block : Block.blocksList) {
-			if(block != null)
-			{
-				boolean hasTile = block.hasTileEntity(0);
+		if (ItemPStone.power2 >= 20) {
+			for(Block block : Block.blocksList) {
+				if(block != null)
+				{
+					boolean hasTile = block.hasTileEntity(0);
 
-				if (block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
-					//this.add(DTrans);
-				}
-				else if(block.blockID != 0 && !(hasTile)) {
-					Material mat = block.blockMaterial != null  ? block.blockMaterial : Material.air;
+					if (block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
+						//this.add(DTrans);
+					}
+					else if(block.blockID != 0 && !(hasTile)) {
+						Material mat = block.blockMaterial != null  ? block.blockMaterial : Material.air;
 
-					if(mat.isSolid()) {
+						if(mat.isSolid()) {
 							blocks.add(block);
+							ItemPStone.power2 = NBThelper.getInt(new ItemStack(FMAItems.pStone), ItemPStone.power) - 20;
+						} 
 					}
 				}
 			}
+
+			Random rand = new Random();
+
+			int random = rand.nextInt(blocks.size());
+
+			Block block = blocks.get(random);
+
+			return block;
+		} else {
+			Block block = new Block(0, Material.air);
+			mc.thePlayer.addChatMessage("You do not have enough Transmutational Energy");
+			return block;
 		}
-
-		Random rand = new Random();
-
-		int random = rand.nextInt(blocks.size());
-
-		Block block = blocks.get(random);
-
-		return block;
 	}
 }

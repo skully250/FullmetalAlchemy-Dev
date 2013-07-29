@@ -1,9 +1,11 @@
-package skully.fma.item;
+package skully.fma.item.research;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import skully.fma.core.util.FMADamageSource;
+import skully.fma.item.FMAItems;
+import skully.fma.item.ItemFMA;
 
 public class ItemAlchNotebook extends ItemFMA {
 

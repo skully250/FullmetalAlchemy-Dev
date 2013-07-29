@@ -1,4 +1,4 @@
-package skully.fma.item;
+package skully.fma.item.research;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import skully.fma.block.FMABlocks;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
+import skully.fma.item.ItemFMA;
 
 
 public class ItemChalkStick extends ItemFMA implements IKeyBound, IStatedItem
