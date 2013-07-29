@@ -1,6 +1,5 @@
 package skully.fma.core.util;
 
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.util.DamageSource;
 
 /**

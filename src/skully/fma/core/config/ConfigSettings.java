@@ -1,6 +1,5 @@
 package skully.fma.core.config;
 
-import net.minecraftforge.common.Property;
 
 /**
  * @author viper283

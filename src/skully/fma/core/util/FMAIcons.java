@@ -1,9 +1,9 @@
 package skully.fma.core.util;
 
-import skully.fma.item.FMAItems;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import skully.fma.item.FMAItems;
 
 public class FMAIcons {
 

@@ -1,11 +1,11 @@
 package skully.fma.block;
 
-import skully.fma.api.CoreApi;
-import skully.fma.core.config.ConfigSettings;
-import skully.fma.item.FMAItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import skully.fma.api.CoreApi;
+import skully.fma.core.config.ConfigSettings;
+import skully.fma.item.FMAItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -42,7 +42,7 @@ public class FMABlocks {
         .setUnlocalizedName("TCircle")
         .setHardness(0.0F);
         
-        Test = new BlockCTest(ConfigSettings.Test)
+        Test = new CircleTransmutation(ConfigSettings.Test)
         .setUnlocalizedName("BCircle");
         //.setCreativeTab(
         		//CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));

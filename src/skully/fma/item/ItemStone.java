@@ -9,6 +9,7 @@ public class ItemStone extends ItemFMA {
 	public ItemStone(int par1) {
 		super(par1);
 	}
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack)
 	{

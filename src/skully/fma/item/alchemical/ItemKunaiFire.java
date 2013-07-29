@@ -2,12 +2,12 @@ package skully.fma.item.alchemical;
 
 import java.util.List;
 
-import skully.fma.entity.EntityKunaiFire;
-import skully.fma.item.FMAItems;
-import skully.fma.item.ItemFMA;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import skully.fma.entity.EntityKunaiFire;
+import skully.fma.item.FMAItems;
+import skully.fma.item.ItemFMA;
 
 public class ItemKunaiFire extends ItemFMA {
 
@@ -16,6 +16,7 @@ public class ItemKunaiFire extends ItemFMA {
 		this.setMaxStackSize(5);
 	}
 	
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		list.add("With 5, will cause an explosion when thrown");
 	}
@@ -23,7 +24,8 @@ public class ItemKunaiFire extends ItemFMA {
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    @Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         if (par3EntityPlayer.capabilities.isCreativeMode)
         {

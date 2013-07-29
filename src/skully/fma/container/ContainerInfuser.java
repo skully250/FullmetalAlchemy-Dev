@@ -61,7 +61,8 @@ public class ContainerInfuser extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
-    public void onCraftMatrixChanged(IInventory par1IInventory)
+    @Override
+	public void onCraftMatrixChanged(IInventory par1IInventory)
     {
         this.craftResult.setInventorySlotContents(0, FMACraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
@@ -69,7 +70,8 @@ public class ContainerInfuser extends Container {
     /**
      * Called when the container is closed.
      */
-    public void onContainerClosed(EntityPlayer par1EntityPlayer)
+    @Override
+	public void onContainerClosed(EntityPlayer par1EntityPlayer)
     {
         super.onContainerClosed(par1EntityPlayer);
 
@@ -90,7 +92,7 @@ public class ContainerInfuser extends Container {
     @Override
     public boolean canInteractWith(EntityPlayer par1EntityPlayer)
     {
-        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != FMABlocks.infuser.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != FMABlocks.infuser.blockID ? false : par1EntityPlayer.getDistanceSq(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D) <= 64.0D;
     }
 
     /**
@@ -155,7 +157,8 @@ public class ContainerInfuser extends Container {
         return itemstack;
     }
 
-    public boolean func_94530_a(ItemStack par1ItemStack, Slot par2Slot)
+    @Override
+	public boolean func_94530_a(ItemStack par1ItemStack, Slot par2Slot)
     {
         return par2Slot.inventory != this.craftResult && super.func_94530_a(par1ItemStack, par2Slot);
     }

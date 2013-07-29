@@ -1,6 +1,5 @@
 package skully.fma.item;
 
-import skully.fma.core.FullmetalAlchemy;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.relauncher.Side;

@@ -2,16 +2,16 @@ package skully.fma.item;
 
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+
+import org.lwjgl.input.Keyboard;
+
 import skully.fma.core.enums.BagEnumState;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.implement.IKeyBound;

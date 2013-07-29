@@ -31,7 +31,8 @@ public class EntityKunaiFire extends EntityThrowable
     /**
      * Called when this EntityThrowable hits a block or entity.
      */
-    protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+    @Override
+	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
     {
         if (!this.worldObj.isRemote)
         {

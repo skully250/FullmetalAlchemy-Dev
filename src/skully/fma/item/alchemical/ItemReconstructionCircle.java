@@ -2,8 +2,6 @@ package skully.fma.item.alchemical;
 
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -12,6 +10,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+
+import org.lwjgl.input.Keyboard;
+
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
 import skully.fma.core.implement.IKeyBound;
@@ -126,6 +127,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		}
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {
 		return true;
@@ -148,6 +150,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
 	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
 	 */
+	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 	{
 		if (par7 == 0)
@@ -188,7 +191,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		switch(state) {
 		case 0 :
 			if (Trans > 0) {
-				par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
 				Trans += -1;
 				System.out.println(Trans);
@@ -209,7 +212,7 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 					par2EntityPlayer.sendChatToPlayer(ConvertUtil.toChatComponent("You need to deconstruct before reconstructing"));
 			break;
 		case 1 :			
-			par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+			par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
 			Trans += 1;
 			System.out.println(Trans);

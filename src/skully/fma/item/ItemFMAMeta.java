@@ -2,14 +2,12 @@ package skully.fma.item;
 
 import java.util.List;
 
-import skully.fma.core.util.FMAIcons;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author viper283
@@ -47,6 +45,7 @@ public class ItemFMAMeta extends ItemFMA {
 		return this.icons[meta];
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 

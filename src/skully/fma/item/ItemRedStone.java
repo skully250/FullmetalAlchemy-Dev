@@ -1,9 +1,9 @@
 package skully.fma.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
-import net.minecraft.client.renderer.texture.IconRegister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

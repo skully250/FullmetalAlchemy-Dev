@@ -1,11 +1,9 @@
 package skully.fma.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,7 +32,8 @@ public class EntityKunaiEnder extends EntityThrowable
     /**
      * Called when this EntityThrowable hits a block or entity.
      */
-    protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
+    @Override
+	protected void onImpact(MovingObjectPosition par1MovingObjectPosition)
     {
         for (int i = 0; i < 32; ++i)
         {

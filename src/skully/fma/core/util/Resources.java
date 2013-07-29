@@ -1,7 +1,5 @@
 package skully.fma.core.util;
 
-import net.minecraftforge.common.Property;
-import skully.fma.core.config.ConfigSettings;
 
 
 /**

@@ -1,6 +1,12 @@
 package skully.fma.crafting;
 
-import static skully.fma.item.FMAItems.*;
+import static skully.fma.item.FMAItems.ChalkCircle;
+import static skully.fma.item.FMAItems.ChalkStick;
+import static skully.fma.item.FMAItems.FireCircle;
+import static skully.fma.item.FMAItems.FireGlove;
+import static skully.fma.item.FMAItems.IceGauntlet;
+import static skully.fma.item.FMAItems.ReconstructionCircle;
+import static skully.fma.item.FMAItems.metaTest;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

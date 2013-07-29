@@ -1,8 +1,8 @@
 package skully.fma.item;
 
-import skully.fma.core.util.Resources;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
+import skully.fma.core.util.Resources;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

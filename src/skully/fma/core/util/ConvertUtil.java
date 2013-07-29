@@ -5,8 +5,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class ConvertUtil {
 
-	public static ResourceLocation getResourceLocation(String modId, String location) {
-		return new ResourceLocation(modId, location);
+	public static ResourceLocation getResourceLocation(String modid, String location) {
+		return new ResourceLocation(modid, location);
 	}
 	
 	public static ChatMessageComponent toChatComponent(String message) {

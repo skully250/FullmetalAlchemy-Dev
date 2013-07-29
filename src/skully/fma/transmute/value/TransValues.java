@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import skully.fma.gui.overlay.GuiOverlayEnergy;
-import skully.fma.item.FMAItems;
-import skully.fma.item.alchemical.ItemEnergyStore;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

@@ -26,6 +26,7 @@ public class ItemChalkStick extends ItemFMA implements IKeyBound, IStatedItem
 		chalkState = 0;
 	}
 
+	@Override
 	public boolean shouldRotateAroundWhenRendering()
 	{
 		if (chalkState == 0) {
@@ -37,6 +38,7 @@ public class ItemChalkStick extends ItemFMA implements IKeyBound, IStatedItem
 		}
 	}
 
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if (chalkState == 0 && Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak.keyCode))
 			list.add("Drawing crafting circle");
@@ -56,6 +58,7 @@ public void setState(EnumState state) {
 
 }
 
+@Override
 public void keyBindActions() {
 	if (chalkState == 0)
 		chalkState = 1;
@@ -69,6 +72,7 @@ public void keyBindActions() {
  * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
  * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
  */
+@Override
 public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 {
 	if (par7 == 0)
@@ -112,7 +116,7 @@ public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer,
 
 			if (i1 == 0)
 			{
-				par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 				par3World.setBlock(par4, par5, par6, FMABlocks.craftingCircle.blockID);
 				--par1ItemStack.stackSize;
 			}
@@ -121,7 +125,7 @@ public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer,
 
 			if (i1 == 0)
 			{
-				par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "ChalkDraw", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 				par3World.setBlock(par4, par5, par6, FMABlocks.researchCircle.blockID);
 				--par1ItemStack.stackSize;
 			}

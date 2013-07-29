@@ -2,8 +2,6 @@ package skully.fma.item.alchemical;
 
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
@@ -13,13 +11,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+
+import org.lwjgl.input.Keyboard;
+
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.util.Resources;
-import skully.fma.gui.overlay.GuiOverlayEnergy;
-import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -119,6 +118,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		}
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean hasEffect(ItemStack par1ItemStack) {
 
@@ -137,6 +137,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 	}
 
 
+	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer player, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 
 		int ID = par3World.getBlockId(par4, par5, par6);
@@ -154,7 +155,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 				if(state == 1) {
 					addTransCost(ID);
-					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, (WorldServer)par3World, player);
+					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
 					player.swingItem();
 					//}
 				}

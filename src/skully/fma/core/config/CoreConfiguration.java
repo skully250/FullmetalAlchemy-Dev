@@ -2,8 +2,8 @@ package skully.fma.core.config;
 
 import java.io.File;
 
-import skully.fma.core.FullmetalAlchemy;
 import net.minecraftforge.common.Configuration;
+import skully.fma.core.FullmetalAlchemy;
 
 /**
  * @author viper283

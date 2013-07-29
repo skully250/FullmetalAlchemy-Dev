@@ -1,6 +1,19 @@
 package skully.fma.crafting;
 
-import static skully.fma.item.FMAItems.*;
+import static skully.fma.item.FMAItems.AlchNotebook;
+import static skully.fma.item.FMAItems.AlchNotes;
+import static skully.fma.item.FMAItems.ChalkCircle;
+import static skully.fma.item.FMAItems.ChalkPyramid;
+import static skully.fma.item.FMAItems.ChalkStick;
+import static skully.fma.item.FMAItems.FireCircle;
+import static skully.fma.item.FMAItems.Kunai;
+import static skully.fma.item.FMAItems.ash;
+import static skully.fma.item.FMAItems.eash;
+import static skully.fma.item.FMAItems.gash;
+import static skully.fma.item.FMAItems.metaTest;
+import static skully.fma.item.FMAItems.stone0;
+import static skully.fma.item.FMAItems.stone1;
+import static skully.fma.item.FMAItems.stone2;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

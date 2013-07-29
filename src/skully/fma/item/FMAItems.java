@@ -8,14 +8,14 @@ import skully.fma.core.enums.BagEnumState;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
 import skully.fma.core.util.FMAIcons;
-import skully.fma.item.alchemical.ItemEnergyMeasurer;
-import skully.fma.item.alchemical.ItemEnergyStore;
 import skully.fma.item.alchemical.ItemFireGlove;
 import skully.fma.item.alchemical.ItemIceGauntlet;
 import skully.fma.item.alchemical.ItemKunaiEnder;
 import skully.fma.item.alchemical.ItemKunaiFire;
 import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.alchemical.ItemReconstructionCircle;
+import skully.fma.item.energy.ItemEnergyMeasurer;
+import skully.fma.item.energy.ItemEnergyStore;
 
 /**
  * @author viper283

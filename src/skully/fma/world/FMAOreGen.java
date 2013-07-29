@@ -2,10 +2,10 @@ package skully.fma.world;
 
 import java.util.Random;
 
-import skully.fma.block.FMABlocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import skully.fma.block.FMABlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**

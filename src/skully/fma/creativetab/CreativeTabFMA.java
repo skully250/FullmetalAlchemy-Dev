@@ -1,8 +1,8 @@
 package skully.fma.creativetab;
 
-import skully.fma.item.FMAItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import skully.fma.item.FMAItems;
 
 /**
  * @author viper283

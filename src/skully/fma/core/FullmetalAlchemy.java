@@ -24,7 +24,7 @@ import skully.fma.core.util.Resources;
 import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
 import skully.fma.gui.overlay.GuiOverlayEnergy;
-import skully.fma.gui.overlay.GuiOverlayTransmutations;
+import skully.fma.gui.overlay.GuiOverlayReconstructions;
 import skully.fma.item.FMAItems;
 import skully.fma.item.Sounds;
 import skully.fma.world.FMAOreGen;
@@ -88,8 +88,8 @@ public class FullmetalAlchemy {
 		MinecraftForge.EVENT_BUS.register(new Sounds());
 		MinecraftForge.EVENT_BUS.register(new FMAIcons());
 		MinecraftForge.EVENT_BUS.register(new GuiOverlayEnergy(Minecraft.getMinecraft()));
-		MinecraftForge.EVENT_BUS.register(new GuiOverlayTransmutations(Minecraft.getMinecraft()));
-	}
+		MinecraftForge.EVENT_BUS.register(new GuiOverlayReconstructions(Minecraft.getMinecraft()));
+		}
 
 	@Mod.EventHandler
 	public void initialize(FMLInitializationEvent evt) {
@@ -103,6 +103,7 @@ public class FullmetalAlchemy {
 		FMAPower power = new FMAPower();
 
 		GameRegistry.registerWorldGenerator(new FMAOreGen());
+		GameRegistry.registerTileEntity(skully.fma.tileEntity.TileEntityCircle.class, "Transmutation Circle");
 	}
 
 	@Mod.EventHandler

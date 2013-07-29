@@ -3,8 +3,8 @@
  */
 package skully.fma.item;
 
-import skully.fma.core.implement.IKeyBound;
 import net.minecraft.item.Item;
+import skully.fma.core.implement.IKeyBound;
 
 
 /**

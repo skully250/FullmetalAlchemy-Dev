@@ -1,9 +1,9 @@
 package skully.fma.core.helper;
 
-import skully.fma.core.packet.PacketTransmute;
-import skully.fma.transmute.value.TransValues;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import skully.fma.core.packet.PacketTransmute;
+import skully.fma.transmute.value.TransValues;
 import cpw.mods.fml.common.network.PacketDispatcher;
 
 

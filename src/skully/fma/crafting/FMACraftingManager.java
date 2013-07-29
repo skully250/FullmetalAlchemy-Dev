@@ -38,7 +38,7 @@ public class FMACraftingManager {
 
         if (par2ArrayOfObj[i] instanceof String[])
         {
-            String[] astring = (String[])((String[])par2ArrayOfObj[i++]);
+            String[] astring = ((String[])par2ArrayOfObj[i++]);
 
             for (int l = 0; l < astring.length; ++l)
             {

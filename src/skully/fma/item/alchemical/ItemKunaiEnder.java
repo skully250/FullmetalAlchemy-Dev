@@ -17,6 +17,7 @@ public class ItemKunaiEnder extends ItemFMA {
 		this.setMaxStackSize(5);
 	}
 
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		list.add("With 5, will teleport player to location");
 	}
@@ -24,6 +25,7 @@ public class ItemKunaiEnder extends ItemFMA {
 	/**
 	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
 	 */
+	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
 		if (par3EntityPlayer.capabilities.isCreativeMode)
