@@ -161,6 +161,9 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		int meta = par3World.getBlockMetadata(par4, par5, par6);
 		TileEntity te = par3World.getBlockTileEntity(par4, par5, par6);
 
+		if (player.isSneaking()) {
+			NBThelper.setInteger(new ItemStack(this), power, 10);
+		}
 		if(!par3World.isRemote) {
 
 			if(te != null) {
@@ -169,13 +172,16 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 				return false;
 			} else {
-
-				if(state == 1) {
+				if (state == 0) {
+					NBThelper.setInteger(new ItemStack(this), power, 50);
+				} else if(state == 1 && power2 >= 10) {
 					addTransCost(ID);
 					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
 					player.swingItem();
 					//}
-				}
+				} else {
+					player.addChatMessage("You need more transmutational energy for this transmutation");
+					}
 				return true;
 			}
 		} else {

@@ -3,6 +3,8 @@ package skully.fma.gui.overlay;
 import java.util.Collection;
 import java.util.HashMap;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +16,7 @@ import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import skully.fma.block.BlockFuelConverter;
 import skully.fma.core.util.RenderUtil;
+import skully.fma.core.util.Resources;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.energy.ItemEnergyStore;
@@ -73,9 +76,6 @@ public class GuiOverlayEnergy extends Gui {
 		int cellsInInv = 0;
 		int fullCellsInInv = 0;
 
-		int offsetX = 0;
-		int offsetText = 0;
-
 		HashMap<Integer, ItemStack> stackList = new HashMap<Integer, ItemStack>();
 
 		for(int i = 0; i < player.inventory.mainInventory.length; i++)
@@ -114,14 +114,15 @@ public class GuiOverlayEnergy extends Gui {
 				int scale = currentCellEnergy / 4;
 			}
 			
-			Icon icon = FMAItems.pStone.getIconIndex(new ItemStack(FMAItems.pStone));
-			this.drawTexturedModelRectFromIcon(0, 0, icon, 16, 16);
-			RenderUtil.instance().drawTextureRect(0, 0, 32, 32, 30, 7, 5);
-			minecraft.fontRenderer.drawStringWithShadow("\2477" + currentEnergy + "/" + maxEnergy, 16, 3 + offsetText, 0xffffff);
-			minecraft.standardGalacticFontRenderer.drawStringWithShadow("JakeMichie helped with this", 16, 3 + 15, 0xffffff);
-
-			offsetX += 256 + 48;
-			offsetText += 15;
+			RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/ChalkCircle.png");
+			GL11.glPushMatrix();
+			GL11.glScalef(0.2f, 0.2f, 0.2f);
+			RenderUtil.instance().drawTextureRect(1, 1, 0, 0, 256, 256, 1);
+			GL11.glPopMatrix();
+			minecraft.fontRenderer.drawStringWithShadow("\2477" + currentEnergy, 13, 12, 0xffffff);
+			minecraft.fontRenderer.drawStringWithShadow("_____", 11, 20, 0xffffff);
+			minecraft.fontRenderer.drawStringWithShadow("\2477" + maxEnergy, 13, 35, 0xffffff);
+			//minecraft.standardGalacticFontRenderer.drawStringWithShadow("JakeMichie helped with this", 16, 3 + 15, 0xffffff);
 		}
 	}
 

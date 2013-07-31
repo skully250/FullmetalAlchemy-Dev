@@ -11,6 +11,7 @@ import org.lwjgl.opengl.GL11;
 
 import skully.fma.block.BlockRCircle;
 import skully.fma.container.ContainerInfuser;
+import skully.fma.core.util.Resources;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -19,7 +20,7 @@ public class GuiInfuser extends GuiContainer {
 
 	Minecraft mc;
 
-	private static final ResourceLocation field_110422_t = new ResourceLocation("FullmetalAlchemy:textures/guis/infusing.png");
+	private static final ResourceLocation texture = new ResourceLocation("FullmetalAlchemy:textures/guis/infusing.png");
 
 	public GuiInfuser(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
 	{
@@ -28,24 +29,17 @@ public class GuiInfuser extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		if (BlockRCircle.Third == true) {
-			this.fontRenderer.drawString("", 28, 6, 4210752);
-		} else if (BlockRCircle.Fourth == true)
-				this.fontRenderer.drawString("container.infusion", 28, 6, 4210752);
-				else {
-					mc.standardGalacticFontRenderer.drawString("Infuser", 28, 6, 4210752);
-				}
 		this.fontRenderer.drawString(I18n.func_135053_a("container.infusion"), 28, 6, 4210752);
 		this.fontRenderer.drawString(I18n.func_135053_a("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.func_110434_K().func_110577_a(field_110422_t);
-		int k = (this.width - this.xSize) / 2;
-		int l = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.mc.func_110434_K().func_110577_a(texture);
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 	}
 
 }

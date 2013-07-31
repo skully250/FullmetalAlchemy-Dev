@@ -64,6 +64,7 @@ public class GuiOverlayReconstructions extends Gui {
 		RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/pStoneOff.png");
 		GL11.glPushMatrix();
 		GL11.glScalef(0.2f, 0.2f, 0.2f);
+		GL11.glColor4d(1, 1, 1, 0.1);
 		RenderUtil.instance().drawTextureRect(1, 1, 0, 0, 256, 256, 1);
 		GL11.glPopMatrix();
 		if (ItemReconstructionCircle.trans >= 20) {
