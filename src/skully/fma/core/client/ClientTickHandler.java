@@ -4,9 +4,14 @@ import java.util.EnumSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import skully.fma.core.helper.NBThelper;
 import skully.fma.core.tick.GameTick;
 import skully.fma.core.tick.RenderTick;
+import skully.fma.item.FMAItems;
+import skully.fma.item.alchemical.ItemPStone;
+import skully.fma.item.alchemical.ItemReconstructionCircle;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
@@ -14,11 +19,14 @@ public class ClientTickHandler implements ITickHandler {
 	private Minecraft mc = Minecraft.getMinecraft();
 
 	public void onClientWorldLoad(Minecraft mc, World world) {
-		
+		NBThelper.getNBTCompoundForItemStack(new ItemStack(FMAItems.pStone));
+		NBThelper.getNBTCompoundForItemStack(new ItemStack(FMAItems.ReconstructionCircle));
+		NBThelper.getNBTCompoundForItemStack(new ItemStack(FMAItems.ChalkBag));
 	}
 
 	public void onClientWorldUnload(Minecraft mc, World world) {
-		
+		NBThelper.setDouble(new ItemStack(FMAItems.pStone), "Alchemical Energy", ItemPStone.power2);
+		NBThelper.setDouble(new ItemStack(FMAItems.ReconstructionCircle), "Transmutations", ItemReconstructionCircle.trans);
 	}
 
 	public void onClientWorldTick(Minecraft mc, World world) {

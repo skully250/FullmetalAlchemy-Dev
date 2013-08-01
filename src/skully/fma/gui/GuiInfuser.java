@@ -20,7 +20,7 @@ public class GuiInfuser extends GuiContainer {
 
 	Minecraft mc;
 
-	private static final ResourceLocation texture = new ResourceLocation("FullmetalAlchemy:textures/guis/infusing.png");
+	private static final ResourceLocation texture = new ResourceLocation("fullmetalalchemy: /textures/guis/infusing.png");
 
 	public GuiInfuser(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
 	{
