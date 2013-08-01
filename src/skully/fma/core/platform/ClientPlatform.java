@@ -2,9 +2,11 @@ package skully.fma.core.platform;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import skully.fma.client.render.RenderPlayerFMA;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,6 +26,7 @@ public class ClientPlatform extends Platform {
 
 	@Override
 	public void registerRenderThings() {
+	    RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerFMA());
 		//RenderingRegistry.registerEntityRenderingHandler(EntityKunaiEnder.class, new RenderKunaiEnder(FMAItems.KunaiEnder));
 	}
 
