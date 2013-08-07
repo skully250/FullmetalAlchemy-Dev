@@ -17,15 +17,15 @@ public class FMAResearchRecipes {
 	static FMACraftingManager recipe = new FMACraftingManager();
 	
 	public static void initializeFire() {
-		recipe.addRecipe(new ItemStack(FireGlove), "XXX", "YZY", " Y ", 'X', new ItemStack(metaTest, 1, 6), 'Y', new ItemStack(metaTest, 1, 5), 'Z', FireCircle);
+		GameRegistry.addRecipe(new ItemStack(FireGlove), "XXX", "YZY", " Y ", 'X', new ItemStack(metaTest, 1, 6), 'Y', new ItemStack(metaTest, 1, 5), 'Z', FireCircle);
 	}
 	
 	public static void initializeIce() {
-		recipe.addRecipe(new ItemStack(IceGauntlet), "XYX", "XZX", " X ", 'X', Item.ingotIron, 'Y', Block.ice, 'Z', ChalkCircle);
+		GameRegistry.addRecipe(new ItemStack(IceGauntlet), "XYX", "XZX", " X ", 'X', Item.ingotIron, 'Y', Block.ice, 'Z', ChalkCircle);
 	}
 	
 	public static void initializeRec() {
-		recipe.addRecipe(new ItemStack(ReconstructionCircle), "XYX", "XZX", "LXK", 'X', Item.ingotGold, 'Y', Block.blockDiamond, 'Z', ChalkCircle, 'L', new ItemStack(Item.dyePowder, 1, 0), 'K', new ItemStack(Item.dyePowder, 1, 15));
+		GameRegistry.addRecipe(new ItemStack(ReconstructionCircle), "XYX", "XZX", "LXK", 'X', Item.ingotGold, 'Y', Block.blockDiamond, 'Z', ChalkCircle, 'L', new ItemStack(Item.dyePowder, 1, 0), 'K', new ItemStack(Item.dyePowder, 1, 15));
 	}
 	
 	public static void initializeAlchemy() {

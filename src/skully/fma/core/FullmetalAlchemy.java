@@ -16,6 +16,8 @@ import skully.fma.core.command.FMACommands;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.handler.GuiHandler;
+import skully.fma.core.handler.LocalizationHandler;
+import skully.fma.core.handler.WorldEventHandler;
 import skully.fma.core.packet.PacketManager;
 import skully.fma.core.platform.Platform;
 import skully.fma.core.server.ServerTickHandler;
@@ -79,7 +81,7 @@ public class FullmetalAlchemy {
 		getConfig().initialize(new File(System.getProperty("user.dir"), "FullmetalAlchemy/properties.ini"));
 
 		MinecraftForge.EVENT_BUS.register(this);
-
+		
 		LanguageRegistry.instance().loadLocalization("/assets/fullmetalalchemy/lang/en_US.properties", "en_US", false);
 		LanguageRegistry.instance().loadLocalization("/assets/fullmetalalchemy/lang/en_GB.properties", "en_GB", false);
 		LanguageRegistry.instance().addStringLocalization("death.attack." + "humanTransmutation", "You were killed for attempting Human Transmutation");
@@ -88,6 +90,7 @@ public class FullmetalAlchemy {
 		//platform.makeModules();
 		MinecraftForge.EVENT_BUS.register(new Sounds());
 		MinecraftForge.EVENT_BUS.register(new FMAIcons());
+		//MinecraftForge.EVENT_BUS.register(new WorldEventHandler());
 		MinecraftForge.EVENT_BUS.register(new GuiOverlayEnergy(Minecraft.getMinecraft()));
 		MinecraftForge.EVENT_BUS.register(new GuiOverlayReconstructions(Minecraft.getMinecraft()));
 		}
