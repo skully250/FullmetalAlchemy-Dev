@@ -1,4 +1,4 @@
-package skully.fma.core.util;
+package skully.fma.core.util.registers;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;

@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import skully.fma.client.render.RenderPlayerFMA;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
+import skully.fma.core.util.registers.FMAEventRegister;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -22,6 +23,11 @@ public class ClientPlatform extends Platform {
 	public static Platform instance() {
 
 		return FullmetalAlchemy.platform;
+	}
+	
+	@Override
+	public void registerHandlers() {
+		FMAEventRegister.registerOverlays();
 	}
 
 	@Override

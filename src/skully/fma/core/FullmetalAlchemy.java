@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.world.WorldEvent;
 import skully.fma.block.FMABlocks;
 import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.command.FMACommands;
@@ -19,16 +17,13 @@ import skully.fma.core.handler.SoundHandler;
 import skully.fma.core.packet.PacketManager;
 import skully.fma.core.platform.Platform;
 import skully.fma.core.server.ServerTickHandler;
-import skully.fma.core.util.FMAEventRegister;
 import skully.fma.core.util.FMAIcons;
-import skully.fma.core.util.FMALanguageRegister;
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
+import skully.fma.core.util.registers.FMALanguageRegister;
 import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
 import skully.fma.item.FMAItems;
-import skully.fma.item.alchemical.ItemPStone;
-import skully.fma.item.alchemical.ItemReconstructionCircle;
 import skully.fma.world.FMAOreGen;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -83,10 +78,9 @@ public class FullmetalAlchemy {
 		
 		FMALanguageRegister.loadLanguageLocalizations();
 
-		//platform.makeModules();
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		MinecraftForge.EVENT_BUS.register(new FMAIcons());
-		FMAEventRegister.registerOverlays();
+		platform.registerHandlers();
 		}
 
 	@EventHandler
@@ -101,7 +95,6 @@ public class FullmetalAlchemy {
 		FMAPower power = new FMAPower();
 
 		GameRegistry.registerWorldGenerator(new FMAOreGen());
-		GameRegistry.registerTileEntity(skully.fma.tileEntity.TileEntityCircle.class, "Transmutation Circle");
 	}
 
 	@EventHandler
@@ -121,19 +114,6 @@ public class FullmetalAlchemy {
 	public void addCommands(FMLServerStartingEvent evt) {
 
 		evt.registerServerCommand(FMACommands.commandFma);
-	}
-
-	@ForgeSubscribe
-	public void onWorldLoad(WorldEvent.Load evt) {
-		//Make NBT Load :/
-	}
-
-	@ForgeSubscribe
-	public void onWorldSave(WorldEvent.Save evt) {
-		//Make NBT Properly save :/
-		NBTTagCompound compound = new NBTTagCompound();
-		compound.setInteger("Reconstructions", ItemReconstructionCircle.trans);
-		compound.setInteger("Alchemical Energy", ItemPStone.power2);
 	}
 
 	 public static FullmetalAlchemy instance() {

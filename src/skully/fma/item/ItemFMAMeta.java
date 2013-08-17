@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import skully.fma.core.util.Resources;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,7 +24,7 @@ public class ItemFMAMeta extends ItemFMA {
 	public ItemFMAMeta(int par1, String[] names, Icon[] icons) {
 
 		super(par1);
-		this.setMaxDamage(0);
+		//this.setMaxDamage(0);
 		assert names.length == icons.length;
 		setHasSubtypes(true);
 		this.names = names;
@@ -32,7 +33,15 @@ public class ItemFMAMeta extends ItemFMA {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
+	public void registerIcons(IconRegister ir) {
+		this.icons[0] = ir.registerIcon(Resources.MOD_ID + ":" + "ChalkDust");
+		this.icons[1] = ir.registerIcon(Resources.MOD_ID + ":" + "flacon");
+		this.icons[2] = ir.registerIcon(Resources.MOD_ID + ":" + "flask");
+		this.icons[3] = ir.registerIcon(Resources.MOD_ID + ":" + "bloodDrop");
+		this.icons[4] = ir.registerIcon(Resources.MOD_ID + ":" + "alchemicalWool");
+		this.icons[5] = ir.registerIcon(Resources.MOD_ID + ":" + "alchemicalSilk");
+		this.icons[6] = ir.registerIcon(Resources.MOD_ID + ":" + "EStone");
+		this.icons[7] = ir.registerIcon(Resources.MOD_ID + ":" + "GStone");
 	}
 
 	@Override
@@ -40,10 +49,10 @@ public class ItemFMAMeta extends ItemFMA {
 		return "item." + names[stack.getItemDamage()];
 	}
 
-	@Override
+	/*@Override
 	public Icon getIconFromDamage(int meta) {
 		return this.icons[meta];
-	}
+	}*/
 
 	@Override
 	@SideOnly(Side.CLIENT)

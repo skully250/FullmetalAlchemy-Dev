@@ -1,4 +1,4 @@
-package skully.fma.core.util;
+package skully.fma.core.util.registers;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 

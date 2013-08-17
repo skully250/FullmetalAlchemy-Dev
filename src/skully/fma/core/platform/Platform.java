@@ -11,6 +11,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.util.ConvertUtil;
+import skully.fma.crafting.FMACraftingHandler;
+import skully.fma.tileEntity.TileEntityCircle;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author viper283
@@ -27,6 +30,14 @@ public class Platform {
 
 	public void registerRenderThings() {
 
+	}
+	
+	public void loadTileEntities() {
+		GameRegistry.registerTileEntity(TileEntityCircle.class, "TileTransCircle");
+	}
+	
+	public void registerHandlers() {
+		GameRegistry.registerCraftingHandler(new FMACraftingHandler());
 	}
 
 	public static void saveData(WorldServer world, NBTTagCompound tag, String fileName) {
