@@ -49,10 +49,10 @@ public class ItemFMAMeta extends ItemFMA {
 		return "item." + names[stack.getItemDamage()];
 	}
 
-	/*@Override
+	@Override
 	public Icon getIconFromDamage(int meta) {
 		return this.icons[meta];
-	}*/
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
