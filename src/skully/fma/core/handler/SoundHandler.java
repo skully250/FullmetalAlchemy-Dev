@@ -1,11 +1,11 @@
-package skully.fma.item;
+package skully.fma.core.handler;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Sounds 
+public class SoundHandler 
 {
     @ForgeSubscribe
     @SideOnly(Side.CLIENT)

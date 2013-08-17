@@ -40,32 +40,56 @@ public class CoreConfiguration {
 					"Items with metadata ID").getInt();
 			ConfigSettings.pStoneID = cfg.getItem(item, "item.pStone.id", 3841,
 					"Philosophers' Stone ID").getInt();
-			ConfigSettings.alchemicCrystal = cfg.getItem(item, "item.achemicCrystal.id",
-					3842, "Alchemic Crystal ID").getInt();
-			ConfigSettings.redStone = cfg.getItem(item, "item.redStone.id", 3843, "Red-Stone Item ID").getInt();
-			ConfigSettings.Stone = cfg.getItem(item, "item.Stone.id", 3844, "Stone Item ID").getInt();
-			ConfigSettings.stone0 = cfg.getItem(item, "item.stone0.id", 3845, "Stone0 Item ID").getInt();
-			ConfigSettings.stone1 = cfg.getItem(item, "item.stone1.id", 3846, "Stone1 Item ID").getInt();
-			ConfigSettings.stone2 = cfg.getItem(item, "item.stone2.id", 3847, "Stone2 Item ID").getInt();
-			ConfigSettings.ash = cfg.getItem(item, "item.ash.id", 3848, "Ash Item ID").getInt();
-			ConfigSettings.eash = cfg.getItem(item, "item.eash.id", 3849, "Eash Item ID").getInt();
-			ConfigSettings.gash = cfg.getItem(item, "item.gash.id", 3850, "Gash Item ID").getInt();
-			ConfigSettings.AlchNotebook = cfg.getItem(item, "item.AlchNotebook.id", 3851, "AlchNotebook Item ID").getInt();
-			ConfigSettings.ChalkStick = cfg.getItem(item, "Item.ChalkStick.id", 3852, "ChalkStick Item ID").getInt();
-			ConfigSettings.FireGlove = cfg.getItem(item, "Item.FireGlove.id", 3853, "FireGlove ItemID").getInt();
-			ConfigSettings.AlchSilk = cfg.getItem(item, "Item.AlchSilk.id", 3854, "AlchSilk ItemID").getInt();
-			ConfigSettings.FireCircle = cfg.getItem(item, "Item.FireCircle.id", 3855, "FireCircle ItemID").getInt();
-			ConfigSettings.ChalkCircle = cfg.getItem(item, "Item.ChalkCircle.id", 3856, "ChalkCircle ItemID").getInt();
-			ConfigSettings.ChalkPyramid = cfg.getItem(item, "Item.ChalkPyramid.ID", 3857, "ChalkPyramid ItemID").getInt();
-			ConfigSettings.IceGauntlet = cfg.getItem(item, "Item.IceGauntlet.ID", 3858, "IceGauntlet ItemID").getInt();
-			ConfigSettings.ReconstructionCircle = cfg.getItem(item, "Item.ReconstructionCircle.ID", 3859, "ReconstructionsCircle ItemID").getInt();
-			ConfigSettings.AlchNotes = cfg.getItem(item, "Item.AlchNote.id", 3860, "AlchNotes ItemID").getInt();
-			ConfigSettings.Kunai = cfg.getItem(item, "Item.Kunai.id", 3861, "Kunai ItemID").getInt();
-			ConfigSettings.KunaiFire = cfg.getItem(item, "Item.KunaiFire.id", 3863, "FireKunai ItemID").getInt();
-			ConfigSettings.KunaiEnder = cfg.getItem(item, "Item.KunaiEnder.id", 3864, "EnderKunai ItemID").getInt();
-			ConfigSettings.ChalkBag = cfg.getItem(item, "Item.ChalkBag.id", 3865, "ChalkBag ItemID").getInt();
-			ConfigSettings.energyMeasurer = cfg.getItem(item, "Item.energyMeasure.id", 3866, "Energy Measurer ItemID").getInt();
-			ConfigSettings.energyStore =  cfg.getItem(item, "Item.energyStore.id", 3867, "Energy Storer ItemID").getInt();
+			ConfigSettings.alchemicCrystal = cfg.getItem(item, "item.achemicCrystal.id", 3842, 
+					"Alchemic Crystal ID").getInt();
+			ConfigSettings.redStone = cfg.getItem(item, "item.redStone.id", 3843, 
+					"Red-Stone Item ID").getInt();
+			ConfigSettings.Stone = cfg.getItem(item, "item.Stone.id", 3844, 
+					"Stone Item ID").getInt();
+			ConfigSettings.stone0 = cfg.getItem(item, "item.stone0.id", 3845, 
+					"Stone0 Item ID").getInt();
+			ConfigSettings.stone1 = cfg.getItem(item, "item.stone1.id", 3846, 
+					"Stone1 Item ID").getInt();
+			ConfigSettings.stone2 = cfg.getItem(item, "item.stone2.id", 3847, 
+					"Stone2 Item ID").getInt();
+			ConfigSettings.ash = cfg.getItem(item, "item.ash.id", 3848, 
+					"Ash Item ID").getInt();
+			ConfigSettings.eash = cfg.getItem(item, "item.eash.id", 3849, 
+					"Eash Item ID").getInt();
+			ConfigSettings.gash = cfg.getItem(item, "item.gash.id", 3850, 
+					"Gash Item ID").getInt();
+			ConfigSettings.AlchNotebook = cfg.getItem(item, "item.AlchNotebook.id", 3851, 
+					"AlchNotebook Item ID").getInt();
+			ConfigSettings.ChalkStick = cfg.getItem(item, "Item.ChalkStick.id", 3852, 
+					"ChalkStick Item ID").getInt();
+			ConfigSettings.FireGlove = cfg.getItem(item, "Item.FireGlove.id", 3853, 
+					"FireGlove ItemID").getInt();
+			ConfigSettings.AlchSilk = cfg.getItem(item, "Item.AlchSilk.id", 3854, 
+					"AlchSilk ItemID").getInt();
+			ConfigSettings.FireCircle = cfg.getItem(item, "Item.FireCircle.id", 3855, 
+					"FireCircle ItemID").getInt();
+			ConfigSettings.ChalkCircle = cfg.getItem(item, "Item.ChalkCircle.id", 3856, 
+					"ChalkCircle ItemID").getInt();
+			ConfigSettings.ChalkPyramid = cfg.getItem(item, "Item.ChalkPyramid.ID", 3857, 
+					"ChalkPyramid ItemID").getInt();
+			ConfigSettings.IceGauntlet = cfg.getItem(item, "Item.IceGauntlet.ID", 3858, 
+					"IceGauntlet ItemID").getInt();
+			ConfigSettings.ReconstructionCircle = cfg.getItem(item, "Item.ReconstructionCircle.ID", 3859, 
+					"ReconstructionsCircle ItemID").getInt();
+			ConfigSettings.AlchNotes = cfg.getItem(item, "Item.AlchNote.id", 3860, 
+					"AlchNotes ItemID").getInt();
+			ConfigSettings.Kunai = cfg.getItem(item, "Item.Kunai.id", 3861, 
+					"Kunai ItemID").getInt();
+			ConfigSettings.KunaiFire = cfg.getItem(item, "Item.KunaiFire.id", 3863, 
+					"FireKunai ItemID").getInt();
+			ConfigSettings.KunaiEnder = cfg.getItem(item, "Item.KunaiEnder.id", 3864, 
+					"EnderKunai ItemID").getInt();
+			ConfigSettings.ChalkBag = cfg.getItem(item, "Item.ChalkBag.id", 3865, 
+					"ChalkBag ItemID").getInt();
+			ConfigSettings.energyMeasurer = cfg.getItem(item, "Item.energyMeasure.id", 3866, 
+					"Energy Measurer ItemID").getInt();
+			ConfigSettings.energyStore =  cfg.getItem(item, "Item.energyStore.id", 3867, 
+					"Energy Storer ItemID").getInt();
 
 
 			// Booleans

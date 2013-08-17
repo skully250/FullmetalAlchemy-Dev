@@ -20,6 +20,6 @@ public class CreativeTabFMA extends CreativeTabs {
     @Override
     public Item getTabIconItem() {
 
-        return FMAItems.metaTest;
+        return FMAItems.pStone;
     }
 }

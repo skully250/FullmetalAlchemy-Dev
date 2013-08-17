@@ -8,6 +8,7 @@ import skully.fma.core.enums.BagEnumState;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
 import skully.fma.core.util.FMAIcons;
+import skully.fma.item.alchemical.ItemAlchemicCrystal;
 import skully.fma.item.alchemical.ItemFireGlove;
 import skully.fma.item.alchemical.ItemIceGauntlet;
 import skully.fma.item.alchemical.ItemKunaiEnder;

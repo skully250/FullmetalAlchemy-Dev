@@ -101,7 +101,7 @@ public class RenderPlayerFMA extends RenderPlayer {
                 GL11.glPushMatrix();
                 GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
                 GL11.glRotatef(f4, 1.0F, 0.0F, 0.0F);
-                GL11.glTranslatef(0.375F * (float)(i * 2 - 1), 0.0F, 0.0F);
+                GL11.glTranslatef(0.375F * (i * 2 - 1), 0.0F, 0.0F);
                 GL11.glTranslatef(0.0F, -0.375F, 0.0F);
                 GL11.glRotatef(-f4, 1.0F, 0.0F, 0.0F);
                 GL11.glRotatef(-f3, 0.0F, 1.0F, 0.0F);
@@ -253,9 +253,9 @@ public class RenderPlayerFMA extends RenderPlayer {
                 for (j = 0; j < itemstack1.getItem().getRenderPasses(itemstack1.getItemDamage()); ++j)
                 {
                     int k = itemstack1.getItem().getColorFromItemStack(itemstack1, j);
-                    f13 = (float)(k >> 16 & 255) / 255.0F;
-                    f12 = (float)(k >> 8 & 255) / 255.0F;
-                    f6 = (float)(k & 255) / 255.0F;
+                    f13 = (k >> 16 & 255) / 255.0F;
+                    f12 = (k >> 8 & 255) / 255.0F;
+                    f6 = (k & 255) / 255.0F;
                     GL11.glColor4f(f13, f12, f6, 1.0F);
                     this.renderManager.itemRenderer.renderItem(player, itemstack1, j);
                 }
@@ -263,9 +263,9 @@ public class RenderPlayerFMA extends RenderPlayer {
             else
             {
                 j = itemstack1.getItem().getColorFromItemStack(itemstack1, 0);
-                float f14 = (float)(j >> 16 & 255) / 255.0F;
-                f13 = (float)(j >> 8 & 255) / 255.0F;
-                f12 = (float)(j & 255) / 255.0F;
+                float f14 = (j >> 16 & 255) / 255.0F;
+                f13 = (j >> 8 & 255) / 255.0F;
+                f12 = (j & 255) / 255.0F;
                 GL11.glColor4f(f14, f13, f12, 1.0F);
                 this.renderManager.itemRenderer.renderItem(player, itemstack1, 0);
             }
@@ -286,12 +286,12 @@ public class RenderPlayerFMA extends RenderPlayer {
             Minecraft.getMinecraft().renderEngine.func_110577_a(new ResourceLocation(skully.fma.core.util.Resources.MOD_ID.toLowerCase(Locale.ENGLISH), "textures/capes/admin.png"));
             GL11.glPushMatrix();
             GL11.glTranslatef(0.0F, 0.0F, 0.125F);
-            double d0 = player.field_71091_bM + (player.field_71094_bP - player.field_71091_bM) * (double)par2 - (player.prevPosX + (player.posX - player.prevPosX) * (double)par2);
-            double d1 = player.field_71096_bN + (player.field_71095_bQ - player.field_71096_bN) * (double)par2 - (player.prevPosY + (player.posY - player.prevPosY) * (double)par2);
-            double d2 = player.field_71097_bO + (player.field_71085_bR - player.field_71097_bO) * (double)par2 - (player.prevPosZ + (player.posZ - player.prevPosZ) * (double)par2);
+            double d0 = player.field_71091_bM + (player.field_71094_bP - player.field_71091_bM) * par2 - (player.prevPosX + (player.posX - player.prevPosX) * par2);
+            double d1 = player.field_71096_bN + (player.field_71095_bQ - player.field_71096_bN) * par2 - (player.prevPosY + (player.posY - player.prevPosY) * par2);
+            double d2 = player.field_71097_bO + (player.field_71085_bR - player.field_71097_bO) * par2 - (player.prevPosZ + (player.posZ - player.prevPosZ) * par2);
             float f6 = player.prevRenderYawOffset + (player.renderYawOffset - player.prevRenderYawOffset) * par2;
-            double d3 = (double)MathHelper.sin(f6 * (float)Math.PI / 180.0F);
-            double d4 = (double)(-MathHelper.cos(f6 * (float)Math.PI / 180.0F));
+            double d3 = MathHelper.sin(f6 * (float)Math.PI / 180.0F);
+            double d4 = (-MathHelper.cos(f6 * (float)Math.PI / 180.0F));
             float f7 = (float)d1 * 10.0F;
 
             if (f7 < -6.0F)

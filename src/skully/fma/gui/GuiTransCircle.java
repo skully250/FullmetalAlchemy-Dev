@@ -4,30 +4,27 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
 import skully.fma.container.ContainerInfuser;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiInfuser extends GuiContainer {
+public class GuiTransCircle extends GuiContainer {
 
 	Minecraft mc;
+	
+	private static final ResourceLocation texture = new ResourceLocation("fullmetalalchemy: /textures/guis/infusing.png");
 
-	private static final ResourceLocation texture = new ResourceLocation("fullmetalalchemy: /textures/guis/transmutation.png");
-
-	public GuiInfuser(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
-	{
-		super(new ContainerInfuser(par1InventoryPlayer, par2World, par3, par4, par5));
+	public GuiTransCircle(Container par1Container) {
+		super(par1Container);
 	}
-
+	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		this.fontRenderer.drawString(I18n.func_135053_a("container.trans"), 28, 6, 4210752);
+		this.fontRenderer.drawString(I18n.func_135053_a("container.infusion"), 28, 6, 4210752);
 		this.fontRenderer.drawString(I18n.func_135053_a("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
 	}
 
@@ -39,5 +36,4 @@ public class GuiInfuser extends GuiContainer {
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 	}
-
 }

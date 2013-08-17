@@ -1,7 +1,6 @@
 package skully.fma.gui.overlay;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -63,8 +62,8 @@ public class GuiOverlayReconstructions extends Gui {
 	public void renderReconstructionOverlay(Minecraft mc, EntityPlayer player) {
 		RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/pStoneOff.png");
 		GL11.glPushMatrix();
+		GL11.glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
 		GL11.glScalef(0.2f, 0.2f, 0.2f);
-		GL11.glColor4d(1, 1, 1, 0.1);
 		RenderUtil.instance().drawTextureRect(1, 1, 0, 0, 256, 256, 1);
 		GL11.glPopMatrix();
 		if (ItemReconstructionCircle.trans >= 20) {

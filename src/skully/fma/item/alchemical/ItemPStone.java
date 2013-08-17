@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -19,6 +20,7 @@ import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.util.Resources;
+import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -46,8 +48,12 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		super(par1);
 		setMaxStackSize(1);
 		power();
-		this.power2 = NBThelper.getInt(new ItemStack(this), power);
-		
+		ItemPStone.power2 = NBThelper.getInt(new ItemStack(this), power);
+
+		if (Keyboard.isKeyDown(Keyboard.KEY_H)) {
+			chargePStone();
+		}
+
 
 		if(getState() != null && !(getState().equals(""))) {
 
@@ -57,7 +63,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 			setState(defaultState);
 		}
 	}
-	
+
 	public void power() {
 		if (NBThelper.hasTag(new ItemStack(this), power)) {
 			NBThelper.getInt(new ItemStack(this), power);
@@ -77,6 +83,11 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 			oState = "On";
 
 		return oState;
+	}
+
+	@Override
+	public boolean func_111207_a(ItemStack stack, EntityPlayer player, EntityLivingBase target) {
+		return false;
 	}
 
 	@Override
@@ -115,9 +126,9 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		
+
 		par1ItemStack.setItemDamage(NBThelper.getInt(new ItemStack(this), power));
-		
+
 		boolean updateTextures = getState() != null ? true : false;
 
 		if(updateTextures) {
@@ -142,9 +153,14 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		return true;
 	}
 
+	public void chargePStone() {
+		if (Minecraft.getMinecraft().thePlayer.inventory.hasItem(FMAItems.EnergyStore.itemID)) {
+			power2 += 1;
+		}
+	}
+
 	@Override
 	public void keyBindActions() {
-
 		if (state == 0)
 			state = 1;
 		else if (state == 1)
@@ -172,16 +188,16 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 				return false;
 			} else {
-				if (state == 0) {
+				/*if (state == 0) {
 					NBThelper.setInteger(new ItemStack(this), power, 50);
-				} else if(state == 1 && power2 >= 10) {
-					addTransCost(ID);
-					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
-					player.swingItem();
-					//}
-				} else {
+				} else if(state == 1 && power2 >= 10) {*/
+				addTransCost(ID);
+				TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
+				player.swingItem();
+				//}
+				/*} else {
 					player.addChatMessage("You need more transmutational energy for this transmutation");
-					}
+					}*/
 				return true;
 			}
 		} else {

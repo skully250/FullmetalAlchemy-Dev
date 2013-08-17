@@ -1,7 +1,7 @@
 /**
  * 
  */
-package skully.fma.item;
+package skully.fma.item.alchemical;
 
 import net.minecraft.item.Item;
 import skully.fma.core.implement.IKeyBound;

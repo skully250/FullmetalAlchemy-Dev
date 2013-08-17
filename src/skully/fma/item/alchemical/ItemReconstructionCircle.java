@@ -21,7 +21,6 @@ import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.Resources;
-import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,8 +35,6 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 		super(par1);
 		setMaxStackSize(1);
 		setMaxDamage(1024);
-		transmutations(compound);
-		this.trans = NBThelper.getInt(new ItemStack(this), "Transmutations");
 
 		if(getState() != null && !(getState().equals("")))
 			getState();
@@ -63,14 +60,6 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 			oState = "Dismantle";
 
 		return oState;
-	}
-	
-	public void transmutations(NBTTagCompound par1) {
-		if (NBThelper.hasTag(new ItemStack(this), "Transmutations")) {
-			NBThelper.getInt(new ItemStack(this), "Transmutations");
-		} else {
-			NBThelper.setInteger(new ItemStack(this), "Transmutations", 0);
-		}
 	}
 
 	public void setState(TattooEnumState defaultState) {
