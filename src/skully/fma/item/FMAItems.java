@@ -86,8 +86,6 @@ public class FMAItems {
 		alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
 		redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone");//.setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 		stone0 = new Itemstone0(ConfigSettings.stone0).setUnlocalizedName("stone0").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
-		stone1 = new Itemstone1(ConfigSettings.stone1).setUnlocalizedName("EStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
-		stone2 = new Itemstone2(ConfigSettings.stone2).setUnlocalizedName("GStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		ash = new ItemAsh(ConfigSettings.ash).setUnlocalizedName("ash").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		eash = new ItemEash(ConfigSettings.eash).setUnlocalizedName("eash").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
 		gash = new ItemGash(ConfigSettings.gash).setUnlocalizedName("gash").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));

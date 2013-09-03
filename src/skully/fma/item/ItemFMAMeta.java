@@ -32,19 +32,6 @@ public class ItemFMAMeta extends ItemFMA {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister ir) {
-		this.icons[0] = ir.registerIcon(Resources.MOD_ID + ":" + "ChalkDust");
-		this.icons[1] = ir.registerIcon(Resources.MOD_ID + ":" + "flacon");
-		this.icons[2] = ir.registerIcon(Resources.MOD_ID + ":" + "flask");
-		this.icons[3] = ir.registerIcon(Resources.MOD_ID + ":" + "bloodDrop");
-		this.icons[4] = ir.registerIcon(Resources.MOD_ID + ":" + "alchemicalWool");
-		this.icons[5] = ir.registerIcon(Resources.MOD_ID + ":" + "alchemicalSilk");
-		this.icons[6] = ir.registerIcon(Resources.MOD_ID + ":" + "EStone");
-		this.icons[7] = ir.registerIcon(Resources.MOD_ID + ":" + "GStone");
-	}
-
-	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return "item." + names[stack.getItemDamage()];
 	}
@@ -52,6 +39,16 @@ public class ItemFMAMeta extends ItemFMA {
 	@Override
 	public Icon getIconFromDamage(int meta) {
 		return this.icons[meta];
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister ir) {
+		icons = new Icon[8];
+		
+		for (int i = 0; i < icons.length; i++) {
+			icons[i] = ir.registerIcon(Resources.MOD_ID + ":meta/" + (this.getUnlocalizedName().substring(5)) + i);
+		}
 	}
 
 	@Override
