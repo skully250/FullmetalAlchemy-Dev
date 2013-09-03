@@ -12,14 +12,11 @@ import static skully.fma.item.FMAItems.eash;
 import static skully.fma.item.FMAItems.gash;
 import static skully.fma.item.FMAItems.metaTest;
 import static skully.fma.item.FMAItems.stone0;
-import static skully.fma.item.FMAItems.stone1;
-import static skully.fma.item.FMAItems.stone2;
-import skully.fma.item.FMAItems;
-import skully.fma.item.ItemFMAMeta;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import skully.fma.item.FMAItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class FMARecipes
@@ -59,7 +56,11 @@ public class FMARecipes
 				"YZY", 
 				"XYX", 
 				'X', Block.stone, 'Y', Item.ingotGold, 'Z', Item.diamond);
-		//GameRegistry.addRecipe(new ItemStack(pStone), "   ", "XYZ", "   ", 'X', stone1, 'Y', Item.netherStar, 'Z', stone2);
+		GameRegistry.addRecipe(new ItemStack(FMAItems.pStone), 
+				"   ", 
+				"XYZ", 
+				"   ", 
+				'X', new ItemStack(FMAItems.metaTest, 1, 6), 'Y', Item.netherStar, 'Z', new ItemStack(FMAItems.metaTest, 1, 7));
 		GameRegistry.addRecipe(new ItemStack(ChalkPyramid), 
 				"X X", 
 				" X ", 

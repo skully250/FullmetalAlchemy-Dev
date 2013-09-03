@@ -50,11 +50,6 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		power();
 		ItemPStone.power2 = NBThelper.getInt(new ItemStack(this), power);
 
-		if (Keyboard.isKeyDown(Keyboard.KEY_H)) {
-			chargePStone();
-		}
-
-
 		if(getState() != null && !(getState().equals(""))) {
 
 			getState();

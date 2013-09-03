@@ -2,9 +2,12 @@ package skully.fma.core.platform;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import skully.fma.client.render.RenderPlayerFMA;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
+import skully.fma.core.handler.SoundHandler;
+import skully.fma.core.util.FMAIcons;
 import skully.fma.core.util.registers.FMAEventRegister;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -28,6 +31,8 @@ public class ClientPlatform extends Platform {
 	@Override
 	public void registerHandlers() {
 		FMAEventRegister.registerOverlays();
+		MinecraftForge.EVENT_BUS.register(new SoundHandler());
+		MinecraftForge.EVENT_BUS.register(new FMAIcons());
 	}
 
 	@Override

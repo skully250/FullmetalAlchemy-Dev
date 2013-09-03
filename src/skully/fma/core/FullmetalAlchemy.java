@@ -78,8 +78,6 @@ public class FullmetalAlchemy {
 		
 		FMALanguageRegister.loadLanguageLocalizations();
 
-		MinecraftForge.EVENT_BUS.register(new SoundHandler());
-		MinecraftForge.EVENT_BUS.register(new FMAIcons());
 		platform.registerHandlers();
 		}
 
@@ -87,8 +85,7 @@ public class FullmetalAlchemy {
 	public void initialize(FMLInitializationEvent evt) {
 		
 		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-
-		//Class Initializations
+		
 		FMAItems.initialize();
 		FMABlocks.initialize();
 		FMARecipes.initialize();

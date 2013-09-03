@@ -35,8 +35,6 @@ public class FMAItems {
 	public static Item alchemicCrystal;
 	public static Item Stone;
 	public static Item stone0;
-	public static Item stone1;
-	public static Item stone2;
 	public static Item ash;
 	public static Item eash;
 	public static Item gash;
