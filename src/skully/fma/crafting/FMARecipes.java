@@ -14,6 +14,8 @@ import static skully.fma.item.FMAItems.metaTest;
 import static skully.fma.item.FMAItems.stone0;
 import static skully.fma.item.FMAItems.stone1;
 import static skully.fma.item.FMAItems.stone2;
+import skully.fma.item.FMAItems;
+import skully.fma.item.ItemFMAMeta;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -42,12 +44,12 @@ public class FMARecipes
 			new ItemStack(Item.paper), new ItemStack(Item.feather), new ItemStack(Item.dyePowder, 1, 0)
 		});
 		//Shapeless
-		GameRegistry.addRecipe(new ItemStack(stone2), 
+		GameRegistry.addRecipe(new ItemStack(FMAItems.metaTest, 1, 7), 
 				"XXX", 
 				"XYX", 
 				"XXX", 
 				'X', gash, 'Y', stone0);
-		GameRegistry.addRecipe(new ItemStack(stone1), 
+		GameRegistry.addRecipe(new ItemStack(FMAItems.metaTest, 1, 6), 
 				"XXX", 
 				"XYX", 
 				"XXX", 

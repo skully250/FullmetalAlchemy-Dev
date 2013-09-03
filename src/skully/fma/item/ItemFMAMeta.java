@@ -46,9 +46,14 @@ public class ItemFMAMeta extends ItemFMA {
 	public void registerIcons(IconRegister ir) {
 		icons = new Icon[8];
 		
-		for (int i = 0; i < icons.length; i++) {
-			icons[i] = ir.registerIcon(Resources.MOD_ID + ":meta/" + (this.getUnlocalizedName().substring(5)) + i);
-		}
+		icons[0] = ir.registerIcon(Resources.MOD_ID + ":meta/ChalkDust");
+		icons[1] = ir.registerIcon(Resources.MOD_ID + ":meta/Flacon");
+		icons[2] = ir.registerIcon(Resources.MOD_ID + ":meta/Flask");
+		icons[3] = ir.registerIcon(Resources.MOD_ID + ":meta/BloodDrop");
+		icons[4] = ir.registerIcon(Resources.MOD_ID + ":meta/AlchemicalWool");
+		icons[5] = ir.registerIcon(Resources.MOD_ID + ":meta/AlchemicalSilk");
+		icons[6] = ir.registerIcon(Resources.MOD_ID + ":meta/EStone");
+		icons[7] = ir.registerIcon(Resources.MOD_ID + ":meta/GStone");
 	}
 
 	@Override
