@@ -23,15 +23,15 @@ public class CoreConfiguration {
             cfg.load();
 
             // Blocks
-            ConfigSettings.chalkOreID = cfg.getTerrainBlock(block,
+            ConfigSettings.chalkOreID = cfg.getBlock(block,
                     "block.chalkOre.id", 211, "Chalk Ore ID").getInt();
-            ConfigSettings.circle = cfg.getTerrainBlock(block,
+            ConfigSettings.circle = cfg.getBlock(block,
                     "block.circle.id", 212, "Circle Block ID").getInt();
-            ConfigSettings.RCircle = cfg.getTerrainBlock(block,
+            ConfigSettings.RCircle = cfg.getBlock(block,
                     "block.RCircle.id", 213, "RCircle Block ID").getInt();
-            ConfigSettings.infuser = cfg.getTerrainBlock(block,
+            ConfigSettings.infuser = cfg.getBlock(block,
                     "block.infuser.id", 214, "Infuser Block ID").getInt();
-            ConfigSettings.Test = cfg.getTerrainBlock(block,
+            ConfigSettings.Test = cfg.getBlock(block,
                     "block.Test.id", 215, "Test Block ID").getInt();
 
             // Items
