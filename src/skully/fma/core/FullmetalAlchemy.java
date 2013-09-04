@@ -6,10 +6,8 @@ import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
-import skully.fma.api.CoreApi;
 import skully.fma.block.FMABlocks;
 import skully.fma.core.command.FMACommands;
 import skully.fma.core.config.ConfigSettings;
@@ -17,13 +15,11 @@ import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.handler.GuiHandler;
 import skully.fma.core.packet.PacketManager;
 import skully.fma.core.proxies.CommonProxy;
-import skully.fma.core.util.FMAIcons;
 import skully.fma.core.util.Resources;
 import skully.fma.core.util.registers.FMALanguageRegister;
 import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
 import skully.fma.item.FMAItems;
-import skully.fma.item.ItemFMAMeta;
 import skully.fma.world.FMAOreGen;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -75,6 +71,13 @@ public class FullmetalAlchemy {
 		MinecraftForge.EVENT_BUS.register(this);
 		
 		FMALanguageRegister.loadLanguageLocalizations();
+		
+		FMAItems.initialize();
+		logger.log(Level.INFO, "Items Initialized");
+		FMABlocks.initialize();
+		logger.log(Level.INFO, "Blocks Initialized");
+		FMARecipes.initialize();
+		logger.log(Level.INFO, "Recipes Initialized");
 
 		platform.registerHandlers();
 		}
@@ -84,13 +87,6 @@ public class FullmetalAlchemy {
 		
 		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
 		FMAPower power = new FMAPower();
-		FMAItems.initializeMeta();
-		FMAItems.initialize();
-		logger.log(Level.INFO, "Items Initialized");
-		FMABlocks.initialize();
-		logger.log(Level.INFO, "Blocks Initialized");
-		FMARecipes.initialize();
-		logger.log(Level.INFO, "Recipes Initialized");
 
 		GameRegistry.registerWorldGenerator(new FMAOreGen());
 	}
