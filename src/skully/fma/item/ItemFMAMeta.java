@@ -25,9 +25,9 @@ public class ItemFMAMeta extends ItemFMA {
 
 		super(par1);
 		assert names.length == icons.length;
-		setHasSubtypes(true);
 		this.names = names;
 		this.icons = icons;
+		setHasSubtypes(true);
 	}
 
 	@Override

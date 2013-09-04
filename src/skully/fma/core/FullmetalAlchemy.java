@@ -6,25 +6,24 @@ import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
+import skully.fma.api.CoreApi;
 import skully.fma.block.FMABlocks;
-import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.command.FMACommands;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.handler.GuiHandler;
-import skully.fma.core.handler.SoundHandler;
 import skully.fma.core.packet.PacketManager;
 import skully.fma.core.proxies.CommonProxy;
-import skully.fma.core.server.ServerTickHandler;
 import skully.fma.core.util.FMAIcons;
-import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
 import skully.fma.core.util.registers.FMALanguageRegister;
 import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
 import skully.fma.item.FMAItems;
+import skully.fma.item.ItemFMAMeta;
 import skully.fma.world.FMAOreGen;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -37,8 +36,6 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author viper283
@@ -80,12 +77,6 @@ public class FullmetalAlchemy {
 		FMALanguageRegister.loadLanguageLocalizations();
 
 		platform.registerHandlers();
-		FMAItems.initialize();
-		logger.log(Level.INFO, "Items Initialized");
-		FMABlocks.initialize();
-		logger.log(Level.INFO, "Blocks Initialized");
-		FMARecipes.initialize();
-		logger.log(Level.INFO, "Recipes Initialized");
 		}
 
 	@EventHandler
@@ -93,6 +84,13 @@ public class FullmetalAlchemy {
 		
 		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
 		FMAPower power = new FMAPower();
+		FMAItems.initializeMeta();
+		FMAItems.initialize();
+		logger.log(Level.INFO, "Items Initialized");
+		FMABlocks.initialize();
+		logger.log(Level.INFO, "Blocks Initialized");
+		FMARecipes.initialize();
+		logger.log(Level.INFO, "Recipes Initialized");
 
 		GameRegistry.registerWorldGenerator(new FMAOreGen());
 	}

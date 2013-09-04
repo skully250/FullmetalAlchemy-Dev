@@ -11,6 +11,6 @@ public class ConvertUtil {
 	
 	public static ChatMessageComponent toChatComponent(String message) {
 		
-		return ChatMessageComponent.func_111077_e(message);
+		return ChatMessageComponent.createFromText(message);
 	}
 }

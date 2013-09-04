@@ -38,7 +38,6 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerHandlers() {
-		FMAEventRegister.registerOverlays();
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		MinecraftForge.EVENT_BUS.register(new FMAIcons());
 	}
@@ -46,6 +45,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderThings() {
 	    RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerFMA());
+		FMAEventRegister.registerOverlays();
 		RenderUtil.instance();
 		RenderUtil.loadRenderingUtils();
 		//RenderingRegistry.registerEntityRenderingHandler(EntityKunaiEnder.class, new RenderKunaiEnder(FMAItems.KunaiEnder));

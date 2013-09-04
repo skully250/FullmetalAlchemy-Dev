@@ -81,7 +81,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 	}
 
 	@Override
-	public boolean func_111207_a(ItemStack stack, EntityPlayer player, EntityLivingBase target) {
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target) {
 		return false;
 	}
 

@@ -41,7 +41,7 @@ public class RenderUtil extends ClientTickHandler {
     
     public void bindTexture(String modid, String texture)
     {
-        renderEngine.func_110577_a(ConvertUtil.getResourceLocation(modid, texture));
+        renderEngine.bindTexture(ConvertUtil.getResourceLocation(modid, texture));
     }
 	
     /**
