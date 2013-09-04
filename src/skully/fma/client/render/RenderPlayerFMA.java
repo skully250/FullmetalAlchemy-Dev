@@ -1,5 +1,10 @@
 package skully.fma.client.render;
 
+import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
+import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
+
+import java.util.Locale;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -17,14 +22,10 @@ import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
+
 import org.lwjgl.opengl.GL11;
+
 import skully.fma.core.client.Reference;
-import skully.fma.core.util.Resources;
-
-import java.util.Locale;
-
-import static net.minecraftforge.client.IItemRenderer.ItemRenderType.*;
-import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.*;
 
 public class RenderPlayerFMA extends RenderPlayer {
 
@@ -89,9 +90,9 @@ public class RenderPlayerFMA extends RenderPlayer {
 			GL11.glPopMatrix();
 		}
 
-		if (player.getCommandSenderName().equals("deadmau5") && player.getTextureSkin().isTextureUploaded())
+		if (player.getCommandSenderName().equals("deadmau5") && player.func_110309_l().func_110557_a())
 		{
-			this.bindTexture(player.getLocationSkin());
+			this.func_110776_a(player..func_110306_p());
 
 			for (int i = 0; i < 2; ++i)
 			{
@@ -276,13 +277,13 @@ public class RenderPlayerFMA extends RenderPlayer {
 
 	private void renderCapes(AbstractClientPlayer player, float par2) {
 
-		player.getTextureCape().isTextureUploaded();
+		player.func_110310_o().func_110557_a();
 		boolean flag1 = !player.isInvisible();
 		boolean flag2 = !player.getHideCape();
 
 		if (flag1 && flag2 && Reference.staffList.contains(player.username.toLowerCase(Locale.ENGLISH)))
 		{
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Resources.MOD_ID.toLowerCase(Locale.ENGLISH), "textures/capes/admin.png"));
+			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(skully.fma.core.util.Resources.MOD_ID.toLowerCase(Locale.ENGLISH), "textures/capes/admin.png"));
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0.0F, 0.0F, 0.125F);
 			double d0 = player.field_71091_bM + (player.field_71094_bP - player.field_71091_bM) * par2 - (player.prevPosX + (player.posX - player.prevPosX) * par2);
