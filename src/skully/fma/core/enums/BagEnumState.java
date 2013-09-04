@@ -1,9 +1,11 @@
 package skully.fma.core.enums;
 
 public enum BagEnumState {
-	
-    ON("Holding"), CHARGING("charging"), OFF("Taking");
-    
+
+    ON("Holding"),
+    CHARGING("charging"),
+    OFF("Taking");
+
 
     String name;
 

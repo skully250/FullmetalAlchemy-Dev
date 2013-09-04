@@ -1,20 +1,19 @@
 package skully.fma.core.client;
 
-import java.util.EnumSet;
-
+import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
+import cpw.mods.fml.common.TickType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
 import org.lwjgl.input.Keyboard;
-
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.Resources;
-import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
-import cpw.mods.fml.common.TickType;
+
+import java.util.EnumSet;
+
 
 public class ClientKeybindHandler extends KeyHandler {
 
@@ -24,11 +23,11 @@ public class ClientKeybindHandler extends KeyHandler {
     private static EntityPlayer player;
 
     private static boolean[] flags = {
-        false, false
+            false, false
     };
 
     private static KeyBinding[] keybinds = {
-        debugKeybind, item
+            debugKeybind, item
     };
 
     public ClientKeybindHandler() {

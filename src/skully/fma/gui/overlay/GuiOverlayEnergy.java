@@ -1,10 +1,5 @@
 package skully.fma.gui.overlay;
 
-import java.util.Collection;
-import java.util.HashMap;
-
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +9,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
+import org.lwjgl.opengl.GL11;
 import skully.fma.block.BlockFuelConverter;
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
@@ -21,139 +17,127 @@ import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.energy.ItemEnergyStore;
 
+import java.util.Collection;
+import java.util.HashMap;
+
+
 public class GuiOverlayEnergy extends Gui {
-	public final Minecraft mc;
-	public Icon icon;
 
-	public GuiOverlayEnergy(Minecraft mc) {
-		super();
+    public final Minecraft mc;
+    public Icon icon;
 
-		this.mc = mc;
-	}
+    public GuiOverlayEnergy(Minecraft mc) {
+        super();
 
-	@ForgeSubscribe(priority = EventPriority.NORMAL)
-	public void renderOverlay(RenderGameOverlayEvent event) 
-	{
-		if(event.isCancelable() || event.type != ElementType.HOTBAR || mc.gameSettings.showDebugInfo)
-		{
-			return;
-		}
+        this.mc = mc;
+    }
 
-		if(mc.thePlayer.getCurrentEquippedItem() != null)
-		{
-			if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone)
-			{
-				renderPStoneOverlay(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
-			}
-		}
-		
-		if(mc.thePlayer.inventory.getCurrentItem() == new ItemStack(FMAItems.pStone)) {
-			if(mc.thePlayer.getCurrentEquippedItem() != null) {
-				if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
-					return;
-				}
-			}
-			this.renderEnergyInFuelConverter(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
-		}
+    @ForgeSubscribe(priority = EventPriority.NORMAL)
+    public void renderOverlay(RenderGameOverlayEvent event) {
+        if(event.isCancelable() || event.type != ElementType.HOTBAR || mc.gameSettings.showDebugInfo) {
+            return;
+        }
 
-		if(mc.thePlayer.inventory.getCurrentItem() == new ItemStack(FMAItems.EnergyStore))
-		{
-			if(mc.thePlayer.getCurrentEquippedItem() != null)
-			{
-				if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone)
-				{
-					return;
-				}
-			}
-			this.renderEnergyOverlay(mc, mc.thePlayer);
-		}
-	}
+        if(mc.thePlayer.getCurrentEquippedItem() != null) {
+            if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
+                renderPStoneOverlay(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
+            }
+        }
 
-	public void renderEnergyOverlay(Minecraft minecraft, EntityPlayer player)
-	{
-		int maxEnergy = 0;
-		int currentEnergy = 0;
-		int cellsInInv = 0;
-		int fullCellsInInv = 0;
+        if(mc.thePlayer.inventory.getCurrentItem() == new ItemStack(FMAItems.pStone)) {
+            if(mc.thePlayer.getCurrentEquippedItem() != null) {
+                if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
+                    return;
+                }
+            }
+            this.renderEnergyInFuelConverter(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
+        }
 
-		HashMap<Integer, ItemStack> stackList = new HashMap<Integer, ItemStack>();
+        if(mc.thePlayer.inventory.getCurrentItem() == new ItemStack(FMAItems.EnergyStore)) {
+            if(mc.thePlayer.getCurrentEquippedItem() != null) {
+                if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
+                    return;
+                }
+            }
+            this.renderEnergyOverlay(mc, mc.thePlayer);
+        }
+    }
 
-		for(int i = 0; i < player.inventory.mainInventory.length; i++)
-		{
-			ItemStack stack2 = player.inventory.mainInventory[i];
+    public void renderEnergyOverlay(Minecraft minecraft, EntityPlayer player) {
+        int maxEnergy = 0;
+        int currentEnergy = 0;
+        int cellsInInv = 0;
+        int fullCellsInInv = 0;
 
-			if(stack2 != null)
-			{
-				if(stack2.getItem() == FMAItems.EnergyStore)
-				{
-					ItemEnergyStore cell = (ItemEnergyStore) stack2.getItem();
+        HashMap<Integer, ItemStack> stackList = new HashMap<Integer, ItemStack>();
 
-					maxEnergy = maxEnergy + 1000;
-					currentEnergy = currentEnergy + (1000 - ItemEnergyStore.getEnergy(stack2));             
-					cellsInInv++;
+        for(int i = 0; i < player.inventory.mainInventory.length; i++) {
+            ItemStack stack2 = player.inventory.mainInventory[i];
 
-					if(!(cellsInInv > 1))
-					{
-						stackList.put(i, stack2);
-					}
-				}
-			}
-		}
+            if(stack2 != null) {
+                if(stack2.getItem() == FMAItems.EnergyStore) {
+                    ItemEnergyStore cell = (ItemEnergyStore)stack2.getItem();
 
-		Collection<ItemStack> stackCollection = stackList.values();
+                    maxEnergy = maxEnergy + 1000;
+                    currentEnergy = currentEnergy + (1000 - ItemEnergyStore.getEnergy(stack2));
+                    cellsInInv++;
 
-		for(ItemStack stack : stackCollection)
-		{
-			ItemEnergyStore cell = (ItemEnergyStore) stack.getItem();
-			int currentCellEnergy = (1000 - ItemEnergyStore.getEnergy(stack));
+                    if(!(cellsInInv > 1)) {
+                        stackList.put(i, stack2);
+                    }
+                }
+            }
+        }
 
-			if(ItemEnergyStore.getEnergy(stack) < 1000)
-			{
-				fullCellsInInv++;
+        Collection<ItemStack> stackCollection = stackList.values();
 
-				int scale = currentCellEnergy / 4;
-			}
-			
-			RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/ChalkCircle.png");
-			GL11.glPushMatrix();
-			GL11.glScalef(0.2f, 0.2f, 0.2f);
-			RenderUtil.instance().drawTextureRect(1, 1, 0, 0, 256, 256, 1);
-			GL11.glPopMatrix();
-			minecraft.fontRenderer.drawStringWithShadow("\2477" + currentEnergy, 13, 12, 0xffffff);
-			minecraft.fontRenderer.drawStringWithShadow("_____", 11, 20, 0xffffff);
-			minecraft.fontRenderer.drawStringWithShadow("\2477" + maxEnergy, 13, 35, 0xffffff);
-			//minecraft.standardGalacticFontRenderer.drawStringWithShadow("JakeMichie helped with this", 16, 3 + 15, 0xffffff);
-		}
-	}
+        for(ItemStack stack : stackCollection) {
+            ItemEnergyStore cell = (ItemEnergyStore)stack.getItem();
+            int currentCellEnergy = (1000 - ItemEnergyStore.getEnergy(stack));
 
-	private void renderPStoneOverlay(Minecraft minecraft, EntityPlayer player, ItemStack stack)
-	{
-		int currentEnergy = 0;
+            if(ItemEnergyStore.getEnergy(stack) < 1000) {
+                fullCellsInInv++;
 
-		for(int i = 0; i < player.inventory.mainInventory.length; i++)
-		{
-			ItemStack stack2 = player.inventory.mainInventory[i];
+                int scale = currentCellEnergy / 4;
+            }
 
-			if(stack2 != null)
-			{
-				if(stack2.getItem() == FMAItems.EnergyStore)
-				{
-					ItemEnergyStore cell = (ItemEnergyStore) stack2.getItem();
+            RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/ChalkCircle.png");
+            GL11.glPushMatrix();
+            GL11.glScalef(0.2f, 0.2f, 0.2f);
+            RenderUtil.instance().drawTextureRect(1, 1, 0, 0, 256, 256, 1);
+            GL11.glPopMatrix();
+            minecraft.fontRenderer.drawStringWithShadow("\2477" + currentEnergy, 13, 12, 0xffffff);
+            minecraft.fontRenderer.drawStringWithShadow("_____", 11, 20, 0xffffff);
+            minecraft.fontRenderer.drawStringWithShadow("\2477" + maxEnergy, 13, 35, 0xffffff);
+            //minecraft.standardGalacticFontRenderer.drawStringWithShadow("JakeMichie helped with this", 16, 3 + 15, 0xffffff);
+        }
+    }
 
-					currentEnergy = currentEnergy + (1000 - ItemEnergyStore.getEnergy(stack2));
-				}
-			}
-		}
+    private void renderPStoneOverlay(Minecraft minecraft, EntityPlayer player, ItemStack stack) {
+        int currentEnergy = 0;
 
-		ItemPStone stone = (ItemPStone) stack.getItem();
+        for(int i = 0; i < player.inventory.mainInventory.length; i++) {
+            ItemStack stack2 = player.inventory.mainInventory[i];
 
-		if(player.inventory.hasItem(FMAItems.EnergyStore.itemID))
-				this.renderEnergyOverlay(minecraft, player);
-	}
-	
-	public void renderEnergyInFuelConverter(Minecraft minecraft, EntityPlayer player, ItemStack stack) {
-		int Energy = BlockFuelConverter.Energy;
-		
-		minecraft.fontRenderer.drawStringWithShadow("Transmutation Energy: " + Energy, 100, 100, 0xFFFFFF);
-	}
+            if(stack2 != null) {
+                if(stack2.getItem() == FMAItems.EnergyStore) {
+                    ItemEnergyStore cell = (ItemEnergyStore)stack2.getItem();
+
+                    currentEnergy = currentEnergy + (1000 - ItemEnergyStore.getEnergy(stack2));
+                }
+            }
+        }
+
+        ItemPStone stone = (ItemPStone)stack.getItem();
+
+        if(player.inventory.hasItem(FMAItems.EnergyStore.itemID)) {
+            this.renderEnergyOverlay(minecraft, player);
+        }
+    }
+
+    public void renderEnergyInFuelConverter(Minecraft minecraft, EntityPlayer player, ItemStack stack) {
+        int Energy = BlockFuelConverter.Energy;
+
+        minecraft.fontRenderer.drawStringWithShadow("Transmutation Energy: " + Energy, 100, 100, 0xFFFFFF);
+    }
 }

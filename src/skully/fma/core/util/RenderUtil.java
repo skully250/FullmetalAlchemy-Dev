@@ -8,12 +8,12 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureManager;
-
 import org.lwjgl.opengl.GL11;
-
 import skully.fma.core.client.ClientTickHandler;
 
+
 public class RenderUtil extends ClientTickHandler {
+
     private static final RenderUtil INSTANCE = new RenderUtil();
 
     public ScaledResolution sr;
@@ -26,30 +26,26 @@ public class RenderUtil extends ClientTickHandler {
     public static TextureManager renderEngine;
     public static RenderManager renderManager = RenderManager.instance;
     public static RenderGlobal renderGlobal;
-    
-    public static void loadRenderingUtils()
-    {
+
+    public static void loadRenderingUtils() {
         renderGlobal = Minecraft.getMinecraft().renderGlobal;
         renderBlocks = renderGlobal.globalRenderBlocks;
         renderEngine = Minecraft.getMinecraft().renderEngine;
     }
 
-    public static RenderUtil instance()
-    {
+    public static RenderUtil instance() {
         return INSTANCE;
     }
-    
-    public void bindTexture(String modid, String texture)
-    {
+
+    public void bindTexture(String modid, String texture) {
         renderEngine.bindTexture(ConvertUtil.getResourceLocation(modid, texture));
     }
-	
+
     /**
      * Draws a textured rectangle at the stored z-value. Args: x, y, u, v,
      * width, height, xscale, yscale, zscale
      */
-    public void drawTextureRect(int par1, int par2, int par3, int par4, int par5, int par6, float xscale, float yscale, float zscale)
-    {
+    public void drawTextureRect(int par1, int par2, int par3, int par4, int par5, int par6, float xscale, float yscale, float zscale) {
         drawTextureRect(par1, par2, par3, par4, par5, par6, xscale, yscale, zscale, 1.0, 1.0, 1.0);
     }
 
@@ -57,8 +53,7 @@ public class RenderUtil extends ClientTickHandler {
      * Draws a textured rectangle at the stored z-value. Args: x, y, u, v,
      * width, height, scale
      */
-    public void drawTextureRect(int par1, int par2, int par3, int par4, int par5, int par6, float scale)
-    {
+    public void drawTextureRect(int par1, int par2, int par3, int par4, int par5, int par6, float scale) {
         drawTextureRect(par1, par2, par3, par4, par5, par6, scale, scale, scale);
     }
 
@@ -67,8 +62,7 @@ public class RenderUtil extends ClientTickHandler {
      * width, height, xscale, yscale, zscale, colourR, colourG, colourB
      */
     public void drawTextureRect(int par1, int par2, int par3, int par4, int par5, int par6, float xscale, float yscale, float zscale, double colourR,
-            double colourG, double colourB)
-    {
+            double colourG, double colourB) {
         GL11.glPushMatrix();
         GL11.glScalef(xscale, yscale, zscale);
         GL11.glDepthMask(false);

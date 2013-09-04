@@ -10,31 +10,30 @@ import net.minecraft.item.ItemPotion;
 import net.minecraft.potion.PotionHelper;
 import net.minecraft.util.Icon;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+
 public class RenderKunai extends Render {
+
     private Item field_94151_a;
     private int field_94150_f;
-	
-	public RenderKunai(Item par1Item, int par2) {
+
+    public RenderKunai(Item par1Item, int par2) {
         this.field_94151_a = par1Item;
         this.field_94150_f = par2;
-	}
-	
+    }
+
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
      * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
         Icon icon = this.field_94151_a.getIconFromDamage(this.field_94150_f);
 
-        if (icon != null)
-        {
+        if(icon != null) {
             GL11.glPushMatrix();
             GL11.glTranslatef((float)par2, (float)par4, (float)par6);
             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
@@ -42,8 +41,7 @@ public class RenderKunai extends Render {
             this.bindEntityTexture(par1Entity);
             Tessellator tessellator = Tessellator.instance;
 
-            if (icon == ItemPotion.func_94589_d("bottle_splash"))
-            {
+            if(icon == ItemPotion.func_94589_d("bottle_splash")) {
                 int i = PotionHelper.func_77915_a(((EntityPotion)par1Entity).getPotionDamage(), false);
                 float f2 = (float)(i >> 16 & 255) / 255.0F;
                 float f3 = (float)(i >> 8 & 255) / 255.0F;
@@ -64,13 +62,11 @@ public class RenderKunai extends Render {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(Entity par1Entity)
-    {
+    protected ResourceLocation getEntityTexture(Entity par1Entity) {
         return TextureMap.locationItemsTexture;
     }
 
-    private void func_77026_a(Tessellator par1Tessellator, Icon par2Icon)
-    {
+    private void func_77026_a(Tessellator par1Tessellator, Icon par2Icon) {
         float f = par2Icon.getMinU();
         float f1 = par2Icon.getMaxU();
         float f2 = par2Icon.getMinV();

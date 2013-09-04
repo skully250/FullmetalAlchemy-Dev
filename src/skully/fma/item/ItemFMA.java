@@ -1,16 +1,15 @@
 package skully.fma.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import skully.fma.core.util.Resources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
 
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * 
  */
 public class ItemFMA extends Item {
 
@@ -29,6 +28,6 @@ public class ItemFMA extends Item {
         itemIcon = iconRegister.registerIcon(Resources.MOD_ID.toLowerCase()
                 + ":"
                 + this.getUnlocalizedName().substring(
-                        this.getUnlocalizedName().indexOf(".") + 1));
+                this.getUnlocalizedName().indexOf(".") + 1));
     }
 }

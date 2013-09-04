@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package skully.fma.core.packet;
 
@@ -9,16 +9,15 @@ import net.minecraft.world.World;
 
 /**
  * @author viper283
- *
  */
 public class PacketTransmute extends PacketFMA {
-    
+
     public int x, y, z, blockID, meta;
     public EntityPlayer player;
     public World world;
-    
+
     public PacketTransmute(int x, int y, int z, int blockID, int meta, EntityPlayer player, World world) {
-        
+
         super();
         this.x = x;
         this.y = y;

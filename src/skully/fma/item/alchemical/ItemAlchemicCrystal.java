@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package skully.fma.item.alchemical;
 
@@ -9,9 +9,7 @@ import skully.fma.core.implement.IKeyBound;
 
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- *
  */
 public class ItemAlchemicCrystal extends Item implements IKeyBound {
 
@@ -23,6 +21,6 @@ public class ItemAlchemicCrystal extends Item implements IKeyBound {
     @Override
     public void keyBindActions() {
 
-        
+
     }
 }

@@ -5,11 +5,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * 
  */
 public class BlockOres extends BlockFMA {
 

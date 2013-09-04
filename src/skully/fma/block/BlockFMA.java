@@ -1,21 +1,20 @@
 package skully.fma.block;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import skully.fma.core.util.Resources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
+
 
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * 
  */
 public class BlockFMA extends Block {
 
@@ -48,7 +47,7 @@ public class BlockFMA extends Block {
 
         this.blockIcon = iconRegister.registerIcon(Resources.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
-    
+
     @Override
     public int idDropped(int par1, Random par2Random, int par3) {
 

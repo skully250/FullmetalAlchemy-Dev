@@ -1,10 +1,9 @@
 package skully.fma.item;
 
 
+public class Itemstone0 extends ItemFMA {
 
-public class Itemstone0 extends ItemFMA
-{
-	public Itemstone0(int par1) {
-		super(par1);
-	}
+    public Itemstone0(int par1) {
+        super(par1);
+    }
 }

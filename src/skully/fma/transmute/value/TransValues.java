@@ -1,9 +1,5 @@
 package skully.fma.transmute.value;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -12,52 +8,53 @@ import skully.fma.core.helper.NBThelper;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 
 public class TransValues {
 
-	private static Minecraft mc;
-	private static List<Block> blocks = new ArrayList<Block>();
+    private static Minecraft mc;
+    private static List<Block> blocks = new ArrayList<Block>();
 
-	// private static List DTrans = new Block.blocksList[5];
+    // private static List DTrans = new Block.blocksList[5];
 
-	public static Block[] block = Block.blocksList;
+    public static Block[] block = Block.blocksList;
 
-	public static int getRandomID() {
+    public static int getRandomID() {
 
-		return getRandomBlock().blockID;
-	}
+        return getRandomBlock().blockID;
+    }
 
-	/**
-	 * Only called if the pSTone is active
-	 *
-	 */
-	public static Block getRandomBlock() {
+    /**
+     * Only called if the pSTone is active
+     */
+    public static Block getRandomBlock() {
 
-		for(Block block : Block.blocksList) {
-			if(block != null)
-			{
-				boolean hasTile = block.hasTileEntity(0);
+        for(Block block : Block.blocksList) {
+            if(block != null) {
+                boolean hasTile = block.hasTileEntity(0);
 
-				if (block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
-					//this.add(DTrans);
-				}
-				else if(block.blockID != 0 && !(hasTile)) {
-					Material mat = block.blockMaterial != null  ? block.blockMaterial : Material.air;
+                if(block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
+                    //this.add(DTrans);
+                } else if(block.blockID != 0 && !(hasTile)) {
+                    Material mat = block.blockMaterial != null ? block.blockMaterial : Material.air;
 
-					if(mat.isSolid()) {
-						blocks.add(block);
-						ItemPStone.power2 = NBThelper.getInt(new ItemStack(FMAItems.pStone), ItemPStone.power) - 20;
-					} 
-				}
-			}
-		}
+                    if(mat.isSolid()) {
+                        blocks.add(block);
+                        ItemPStone.power2 = NBThelper.getInt(new ItemStack(FMAItems.pStone), ItemPStone.power) - 20;
+                    }
+                }
+            }
+        }
 
-		Random rand = new Random();
+        Random rand = new Random();
 
-		int random = rand.nextInt(blocks.size());
+        int random = rand.nextInt(blocks.size());
 
-		Block block = blocks.get(random);
+        Block block = blocks.get(random);
 
-		return block;
-	}
+        return block;
+    }
 }

@@ -1,11 +1,12 @@
 package skully.fma.core.server;
 
-import java.util.EnumSet;
-
-import net.minecraft.client.Minecraft;
-import skully.fma.core.tick.ServerTick;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import net.minecraft.client.Minecraft;
+import skully.fma.core.tick.ServerTick;
+
+import java.util.EnumSet;
+
 
 public class ServerTickHandler implements ITickHandler {
 

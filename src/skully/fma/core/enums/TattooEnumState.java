@@ -3,8 +3,10 @@ package skully.fma.core.enums;
 
 public enum TattooEnumState {
 
-    ON("Reconstruction"), CHARGING("charging"), OFF("Deconstruction");
-    
+    ON("Reconstruction"),
+    CHARGING("charging"),
+    OFF("Deconstruction");
+
 
     String name;
 

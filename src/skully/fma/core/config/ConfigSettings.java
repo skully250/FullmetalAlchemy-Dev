@@ -3,9 +3,7 @@ package skully.fma.core.config;
 
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * 
  */
 public class ConfigSettings {
 
@@ -37,14 +35,14 @@ public class ConfigSettings {
     public static int ChalkBag;
     public static int energyMeasurer;
     public static int energyStore;
-    
+
     // Blocks
     public static int chalkOreID;
     public static int circle;
     public static int RCircle;
     public static int infuser;
     public static int Test;
-    
+
     // General
     public static boolean moduleLoadingSpammyMode;
     public static boolean firstRun;

@@ -2,8 +2,10 @@ package skully.fma.core.enums;
 
 public enum EnumState {
 
-    ON("active"), CHARGING("charging"), OFF("inactive");
-    
+    ON("active"),
+    CHARGING("charging"),
+    OFF("inactive");
+
 
     String name;
 

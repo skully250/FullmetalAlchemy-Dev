@@ -1,11 +1,16 @@
 package skully.fma.core;
 
-import java.io.File;
-import java.util.List;
-import java.util.jar.JarFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import skully.fma.block.FMABlocks;
@@ -21,102 +26,96 @@ import skully.fma.crafting.FMARecipes;
 import skully.fma.energy.FMAPower;
 import skully.fma.item.FMAItems;
 import skully.fma.world.FMAOreGen;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+
+import java.io.File;
+import java.util.List;
+import java.util.jar.JarFile;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  * @author viper283
- * 
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
- * 
  */
 @Mod(modid = Resources.MOD_ID, name = Resources.MOD_NAME, version = Resources.MOD_VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"FMA"}, packetHandler = PacketManager.class)
 public class FullmetalAlchemy {
 
-	@SidedProxy(clientSide = Resources.CLIENT_PLATFORM_LOCATION, serverSide = Resources.PLATFORM_LOCATION)
-	public static CommonProxy platform;
+    @SidedProxy(clientSide = Resources.CLIENT_PLATFORM_LOCATION, serverSide = Resources.PLATFORM_LOCATION)
+    public static CommonProxy platform;
 
-	@Mod.Instance(Resources.MOD_ID)
-	public static FullmetalAlchemy instance;
+    @Mod.Instance(Resources.MOD_ID)
+    public static FullmetalAlchemy instance;
 
-	public static boolean debugMode;
+    public static boolean debugMode;
 
-	public static Logger logger = Logger.getLogger("FMA");
+    public static Logger logger = Logger.getLogger("FMA");
 
-	public static List<JarFile> modules;
-	public static List<Class<?>> classesToLoad;
-	public static List<Class<?>> loadedClasses;
-	NBTTagCompound compound;
-	
-	static {
-		
-		logger.setParent(FMLLog.getLogger());
-	}
+    public static List<JarFile> modules;
+    public static List<Class<?>> classesToLoad;
+    public static List<Class<?>> loadedClasses;
+    NBTTagCompound compound;
 
-	@EventHandler
-	public void preInitialize(FMLPreInitializationEvent evt) {
+    static {
 
-		getConfig().initialize(new File(System.getProperty("user.dir"), "FullmetalAlchemy/properties.ini"));
+        logger.setParent(FMLLog.getLogger());
+    }
 
-		MinecraftForge.EVENT_BUS.register(this);
-		
-		FMALanguageRegister.loadLanguageLocalizations();
-		
-		FMAItems.initialize();
-		logger.log(Level.INFO, "Items Initialized");
-		FMABlocks.initialize();
-		logger.log(Level.INFO, "Blocks Initialized");
-		FMARecipes.initialize();
-		logger.log(Level.INFO, "Recipes Initialized");
+    @EventHandler
+    public void preInitialize(FMLPreInitializationEvent evt) {
 
-		platform.registerHandlers();
-		}
+        getConfig().initialize(new File(System.getProperty("user.dir"), "FullmetalAlchemy/properties.ini"));
 
-	@EventHandler
-	public void initialize(FMLInitializationEvent evt) {
-		
-		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-		FMAPower power = new FMAPower();
+        MinecraftForge.EVENT_BUS.register(this);
 
-		GameRegistry.registerWorldGenerator(new FMAOreGen());
-	}
+        FMALanguageRegister.loadLanguageLocalizations();
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		
-		platform.registerTickHandlers();
-		platform.registerRenderThings();
-		platform.registerKeyBinds();
-		logger.log(Level.INFO, "FMA Completely Initialized");
-	}
+        FMAItems.initialize();
+        logger.log(Level.INFO, "Items Initialized");
+        FMABlocks.initialize();
+        logger.log(Level.INFO, "Blocks Initialized");
+        FMARecipes.initialize();
+        logger.log(Level.INFO, "Recipes Initialized");
 
-	@EventHandler
-	public void addCommands(FMLServerStartingEvent evt) {
+        platform.registerHandlers();
+    }
 
-		evt.registerServerCommand(FMACommands.commandFma);
-	}
+    @EventHandler
+    public void initialize(FMLInitializationEvent evt) {
 
-	 public static FullmetalAlchemy instance() {
-		 return instance;
-	 }
+        NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
+        FMAPower power = new FMAPower();
 
-	 public static CoreConfiguration getConfig() {
+        GameRegistry.registerWorldGenerator(new FMAOreGen());
+    }
 
-		 return new CoreConfiguration();
-	 }
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
 
-	 public static boolean isModuleSpamAllowed() {
+        platform.registerTickHandlers();
+        platform.registerRenderThings();
+        platform.registerKeyBinds();
+        logger.log(Level.INFO, "FMA Completely Initialized");
+    }
 
-		 return ConfigSettings.moduleLoadingSpammyMode;
-	 }
+    @EventHandler
+    public void addCommands(FMLServerStartingEvent evt) {
+
+        evt.registerServerCommand(FMACommands.commandFma);
+    }
+
+    public static FullmetalAlchemy instance() {
+        return instance;
+    }
+
+    public static CoreConfiguration getConfig() {
+
+        return new CoreConfiguration();
+    }
+
+    public static boolean isModuleSpamAllowed() {
+
+        return ConfigSettings.moduleLoadingSpammyMode;
+    }
 }
