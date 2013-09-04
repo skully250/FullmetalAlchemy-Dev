@@ -178,9 +178,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		if(!par3World.isRemote) {
 
 			if(te != null) {
-
 				// We dont want to do anything if the block has a tile entity
-
 				return false;
 			} else {
 				/*if (state == 0) {

@@ -28,12 +28,6 @@ public class GuiResearchProgress extends Gui {
 		{
 			return;
 		}
-
-		if (mc.thePlayer.getCurrentEquippedItem() != null) {
-			if (mc.thePlayer.getCurrentEquippedItem().getItem() == Item.appleRed) {
-				renderThis(mc, mc.thePlayer);
-			}
-		}
 	}
 	
 	public void renderThis(Minecraft mc, EntityPlayer player) {

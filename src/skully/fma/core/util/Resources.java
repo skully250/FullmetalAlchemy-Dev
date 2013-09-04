@@ -12,8 +12,8 @@ public class Resources {
 
     public static final String MOD_ID = "fullmetalalchemy";
     public static final String MOD_NAME = "Fullmetal Alchemy";
-    public static final String MOD_VERSION = "0.0.6";
-    public static final String CLIENT_PLATFORM_LOCATION = "skully.fma.core.platform.ClientPlatform";
-    public static final String PLATFORM_LOCATION = "skully.fma.core.platform.Platform";
+    public static final String MOD_VERSION = "0.5";
+    public static final String CLIENT_PLATFORM_LOCATION = "skully.fma.core.proxies.ClientProxy";
+    public static final String PLATFORM_LOCATION = "skully.fma.core.proxies.CommonProxy";
     public static boolean debugMode = false;
 }

@@ -1,7 +1,12 @@
 package skully.fma.core.packet;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import skully.fma.item.FMAItems;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
@@ -18,5 +23,12 @@ public class PacketManager implements IPacketHandler {
                 ((PacketTransmute)packet).execute();
             }
         }
+    }
+    
+    public static void sendDeconstructPacket(ItemStack stack) {
+    	if (stack == new ItemStack(FMAItems.ReconstructionCircle)) {
+    		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+    		DataOutputStream dataStream = new DataOutputStream(byteStream);
+    	}
     }
 }

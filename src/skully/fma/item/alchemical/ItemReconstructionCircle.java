@@ -2,11 +2,11 @@ package skully.fma.item.alchemical;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
@@ -16,9 +16,9 @@ import org.lwjgl.input.Keyboard;
 
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
-import skully.fma.core.helper.NBThelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
+import skully.fma.core.packet.PacketManager;
 import skully.fma.core.util.ConvertUtil;
 import skully.fma.core.util.Resources;
 import skully.fma.item.ItemFMA;
@@ -27,10 +27,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IKeyBound  {
 
+	private static final EntityPlayerMP par2EntityPlayer = null;
 	NBTTagCompound compound;
 	public static int trans;
 	public static String oState;
-	
+	public PacketManager manager;
+
 	public ItemReconstructionCircle(int par1, TattooEnumState defaultState) {
 		super(par1);
 		setMaxStackSize(1);
@@ -94,16 +96,16 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		if (Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindSneak.keyCode)) {
-		switch(state) {
-		case 0 :
-			list.add("Reconstruction");
-			list.add("Will Reconstruct 3x3x3 of dirt where clicked");
-			break;
-		case 1 :
-			list.add("Deconstruction");
-			list.add("Will Deconstruct 3x3x3 where clicked");
-			break;
-		}
+			switch(state) {
+			case 0 :
+				list.add("Reconstruction");
+				list.add("Will Reconstruct 3x3x3 of dirt where clicked");
+				break;
+			case 1 :
+				list.add("Deconstruction");
+				list.add("Will Deconstruct 3x3x3 where clicked");
+				break;
+			}
 		} else
 			list.add("Hold Shift for more info");
 	}
@@ -191,33 +193,33 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 
 		switch(state) {
 		case 0 :
-			if (trans > 0) {
-				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+			if (par3World.isRemote) {
+				if (trans > 0) {
+					par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "EarthMoving", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 
-				trans += -1;
-				//System.out.println(Trans);
-
-				par3World.setBlock(par4, par5, par6, Block.dirt.blockID) ;
-				par3World.setBlock(par4 + 1, par5, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 - 1, par5, par6, Block.dirt.blockID);
-				par3World.setBlock(par4, par5 + 1, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 + 1, par5 + 1, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 - 1, par5 + 1, par6, Block.dirt.blockID);
-				par3World.setBlock(par4, par5 + 2, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 + 1, par5 + 2, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 - 1, par5 + 2, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 + 1, par5, par6, Block.dirt.blockID);
-				par3World.setBlock(par4 - 1, par5, par6, Block.dirt.blockID);
+					trans += -1;
+					EntityPlayerMP player = (EntityPlayerMP) par2EntityPlayer;
+					//System.out.println(Trans);
+					/*par3World.setBlock(par4, par5, par6, Block.dirt.blockID) ;
+					par3World.setBlock(par4 + 1, par5, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 - 1, par5, par6, Block.dirt.blockID);
+					par3World.setBlock(par4, par5 + 1, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 + 1, par5 + 1, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 - 1, par5 + 1, par6, Block.dirt.blockID);
+					par3World.setBlock(par4, par5 + 2, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 + 1, par5 + 2, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 - 1, par5 + 2, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 + 1, par5, par6, Block.dirt.blockID);
+					par3World.setBlock(par4 - 1, par5, par6, Block.dirt.blockID);*/ 
+				}
 			} else
 				if (par3World.isRemote)
 					par2EntityPlayer.sendChatToPlayer(ConvertUtil.toChatComponent("You need to deconstruct before reconstructing"));
 			break;
 		case 1 :			
 			par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-
 			trans += 1;
-			//System.out.println(Trans);
-
+			EntityPlayerMP player = (EntityPlayerMP) par2EntityPlayer;
 			par3World.setBlock(par4, par5 - 1, par6, 0);
 			par3World.setBlock(par4 + 1, par5 - 1, par6, 0);
 			par3World.setBlock(par4 - 1, par5 - 1, par6, 0);
@@ -227,7 +229,6 @@ public class ItemReconstructionCircle extends ItemFMA implements IStatedItem, IK
 			par3World.setBlock(par4, par5 - 3, par6, 0);
 			par3World.setBlock(par4 + 1, par5 - 3, par6, 0);
 			par3World.setBlock(par4 - 1, par5 - 3, par6, 0);
-
 			break;
 		}
 		return true;

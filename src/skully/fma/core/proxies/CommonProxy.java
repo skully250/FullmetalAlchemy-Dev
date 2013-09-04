@@ -1,4 +1,4 @@
-package skully.fma.core.platform;
+package skully.fma.core.proxies;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,10 +10,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import skully.fma.core.FullmetalAlchemy;
+import skully.fma.core.client.ClientTickHandler;
+import skully.fma.core.server.ServerTickHandler;
 import skully.fma.core.util.ConvertUtil;
+import skully.fma.core.util.RenderUtil;
 import skully.fma.crafting.FMACraftingHandler;
 import skully.fma.tileEntity.TileEntityCircle;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * @author viper283
@@ -21,11 +26,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  * 
  */
-public class Platform {
+public class CommonProxy {
 
-	public static Platform instance() {
+	public static CommonProxy instance() {
 
 		return FullmetalAlchemy.platform;
+	}
+	
+	public void registerTickHandlers() {
+		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 	}
 
 	public void registerRenderThings() {

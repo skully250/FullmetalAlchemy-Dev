@@ -3,6 +3,7 @@ package skully.fma.core;
 import java.io.File;
 import java.util.List;
 import java.util.jar.JarFile;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +16,7 @@ import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.handler.GuiHandler;
 import skully.fma.core.handler.SoundHandler;
 import skully.fma.core.packet.PacketManager;
-import skully.fma.core.platform.Platform;
+import skully.fma.core.proxies.CommonProxy;
 import skully.fma.core.server.ServerTickHandler;
 import skully.fma.core.util.FMAIcons;
 import skully.fma.core.util.RenderUtil;
@@ -50,7 +51,7 @@ import cpw.mods.fml.relauncher.Side;
 public class FullmetalAlchemy {
 
 	@SidedProxy(clientSide = Resources.CLIENT_PLATFORM_LOCATION, serverSide = Resources.PLATFORM_LOCATION)
-	public static Platform platform;
+	public static CommonProxy platform;
 
 	@Mod.Instance(Resources.MOD_ID)
 	public static FullmetalAlchemy instance;
@@ -79,16 +80,18 @@ public class FullmetalAlchemy {
 		FMALanguageRegister.loadLanguageLocalizations();
 
 		platform.registerHandlers();
+		FMAItems.initialize();
+		logger.log(Level.INFO, "Items Initialized");
+		FMABlocks.initialize();
+		logger.log(Level.INFO, "Blocks Initialized");
+		FMARecipes.initialize();
+		logger.log(Level.INFO, "Recipes Initialized");
 		}
 
 	@EventHandler
 	public void initialize(FMLInitializationEvent evt) {
 		
 		NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-		
-		FMAItems.initialize();
-		FMABlocks.initialize();
-		FMARecipes.initialize();
 		FMAPower power = new FMAPower();
 
 		GameRegistry.registerWorldGenerator(new FMAOreGen());
@@ -96,15 +99,11 @@ public class FullmetalAlchemy {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
-
-		Platform.instance().registerRenderThings();
-		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
-		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
-		RenderUtil.instance();
-		RenderUtil.loadRenderingUtils();
-
+		
+		platform.registerTickHandlers();
+		platform.registerRenderThings();
 		platform.registerKeyBinds();
+		logger.log(Level.INFO, "FMA Completely Initialized");
 	}
 
 	@EventHandler

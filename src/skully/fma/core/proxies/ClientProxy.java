@@ -1,4 +1,4 @@
-package skully.fma.core.platform;
+package skully.fma.core.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -6,11 +6,14 @@ import net.minecraftforge.common.MinecraftForge;
 import skully.fma.client.render.RenderPlayerFMA;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
+import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.handler.SoundHandler;
 import skully.fma.core.util.FMAIcons;
+import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.registers.FMAEventRegister;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -21,11 +24,16 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  */
 @SideOnly(Side.CLIENT)
-public class ClientPlatform extends Platform {
+public class ClientProxy extends CommonProxy {
 
-	public static Platform instance() {
+	public static CommonProxy instance() {
 
 		return FullmetalAlchemy.platform;
+	}
+	
+	@Override
+	public void registerTickHandlers() {
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 	}
 	
 	@Override
@@ -38,6 +46,8 @@ public class ClientPlatform extends Platform {
 	@Override
 	public void registerRenderThings() {
 	    RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerFMA());
+		RenderUtil.instance();
+		RenderUtil.loadRenderingUtils();
 		//RenderingRegistry.registerEntityRenderingHandler(EntityKunaiEnder.class, new RenderKunaiEnder(FMAItems.KunaiEnder));
 	}
 

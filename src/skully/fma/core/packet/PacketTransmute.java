@@ -31,9 +31,6 @@ public class PacketTransmute extends PacketFMA {
 
     @Override
     public void execute() {
-        
-        //FullmetalAlchemy.platform.transmuteBlock(x, y, z, blockID, meta, player, world);
-        
         world.setBlock(x, y, z, blockID);
     }
 }
