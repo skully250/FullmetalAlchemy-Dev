@@ -1,10 +1,5 @@
 package skully.fma.core.proxies;
 
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,9 +8,14 @@ import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
 import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.handler.SoundHandler;
-import skully.fma.core.util.FMAIcons;
+import skully.fma.core.particle.TransmutationParticle;
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.registers.FMAEventRegister;
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
@@ -24,6 +24,8 @@ import skully.fma.core.util.registers.FMAEventRegister;
  */
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
+	
+	public static TransmutationParticle particleManager = new TransmutationParticle();
 
     public static CommonProxy instance() {
 
@@ -38,7 +40,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerHandlers() {
         MinecraftForge.EVENT_BUS.register(new SoundHandler());
-        MinecraftForge.EVENT_BUS.register(new FMAIcons());
     }
 
     @Override

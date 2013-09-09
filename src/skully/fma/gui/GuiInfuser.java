@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 import skully.fma.container.ContainerInfuser;
+import skully.fma.core.util.Resources;
 
 
 @SideOnly(Side.CLIENT)
@@ -17,7 +18,7 @@ public class GuiInfuser extends GuiContainer {
 
     Minecraft mc;
 
-    private static final ResourceLocation texture = new ResourceLocation("fullmetalalchemy: /textures/guis/transmutation.png");
+    private static final ResourceLocation texture = new ResourceLocation(Resources.MOD_ID + ":guis/infusing.png");
 
     public GuiInfuser(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
         super(new ContainerInfuser(par1InventoryPlayer, par2World, par3, par4, par5));
@@ -37,5 +38,4 @@ public class GuiInfuser extends GuiContainer {
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
     }
-
 }

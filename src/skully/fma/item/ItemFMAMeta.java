@@ -1,32 +1,32 @@
 package skully.fma.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import skully.fma.core.util.Resources;
-
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
  * @author viper283
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
-public class ItemFMAMeta extends ItemFMA {
+public class ItemFMAMeta extends Item {
 
     private String[] names;
     private Icon[] icons;
 
-    public ItemFMAMeta(int par1, String[] names, Icon[] icons) {
+    public ItemFMAMeta(int par1, String[] names) {
 
         super(par1);
+        this.setHasSubtypes(true);
         assert names.length == icons.length;
         this.names = names;
-        this.icons = icons;
-        this.setHasSubtypes(true);
     }
 
     @Override

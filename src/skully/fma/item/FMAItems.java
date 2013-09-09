@@ -7,8 +7,13 @@ import skully.fma.core.config.ConfigSettings;
 import skully.fma.core.enums.BagEnumState;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.enums.TattooEnumState;
-import skully.fma.core.util.FMAIcons;
-import skully.fma.item.alchemical.*;
+import skully.fma.item.alchemical.ItemAlchemicCrystal;
+import skully.fma.item.alchemical.ItemFireGlove;
+import skully.fma.item.alchemical.ItemIceGauntlet;
+import skully.fma.item.alchemical.ItemKunaiEnder;
+import skully.fma.item.alchemical.ItemKunaiFire;
+import skully.fma.item.alchemical.ItemPStone;
+import skully.fma.item.alchemical.ItemReconstructionCircle;
 import skully.fma.item.energy.ItemEnergyMeasurer;
 import skully.fma.item.energy.ItemEnergyStore;
 import skully.fma.item.research.ItemAlchNotebook;
@@ -72,7 +77,7 @@ public class FMAItems {
 
     public static void initialize() {
 
-        metaTest = new ItemFMAMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
+        //metaTest = new ItemFMAMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
         pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
         alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
         redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone");//.setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
@@ -100,6 +105,10 @@ public class FMAItems {
         pStone.setContainerItem(pStone);
 
         localize();
+    }
+    
+    public static void initializeMeta() {
+    	metaTest = new ItemFMAMeta(ConfigSettings.metaID, meta_names).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
     }
 
     private static void localize() {

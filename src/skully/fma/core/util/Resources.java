@@ -12,5 +12,6 @@ public class Resources {
     public static final String MOD_VERSION = "0.5";
     public static final String CLIENT_PLATFORM_LOCATION = "skully.fma.core.proxies.ClientProxy";
     public static final String PLATFORM_LOCATION = "skully.fma.core.proxies.CommonProxy";
+    public static final String PARTICLE_SHEET = "/textures/particles/particles.png";
     public static boolean debugMode = false;
 }

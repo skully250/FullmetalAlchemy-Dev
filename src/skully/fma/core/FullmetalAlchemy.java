@@ -1,16 +1,11 @@
 package skully.fma.core;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+import java.io.File;
+import java.util.List;
+import java.util.jar.JarFile;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import skully.fma.block.FMABlocks;
@@ -23,15 +18,19 @@ import skully.fma.core.proxies.CommonProxy;
 import skully.fma.core.util.Resources;
 import skully.fma.core.util.registers.FMALanguageRegister;
 import skully.fma.crafting.FMARecipes;
-import skully.fma.energy.FMAPower;
 import skully.fma.item.FMAItems;
 import skully.fma.world.FMAOreGen;
-
-import java.io.File;
-import java.util.List;
-import java.util.jar.JarFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 
 /**
@@ -71,12 +70,8 @@ public class FullmetalAlchemy {
 
         FMALanguageRegister.loadLanguageLocalizations();
 
-        FMAItems.initialize();
-        logger.log(Level.INFO, "Items Initialized");
-        FMABlocks.initialize();
-        logger.log(Level.INFO, "Blocks Initialized");
-        FMARecipes.initialize();
-        logger.log(Level.INFO, "Recipes Initialized");
+        /*FMARecipes.initialize();
+        logger.log(Level.INFO, "Recipes Initialized");*/
 
         platform.registerHandlers();
     }
@@ -85,7 +80,14 @@ public class FullmetalAlchemy {
     public void initialize(FMLInitializationEvent evt) {
 
         NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-        FMAPower power = new FMAPower();
+        //FMAPower power = new FMAPower();
+        FMAItems.initializeMeta();
+        FMAItems.initialize();
+        logger.log(Level.INFO, "Items Initialized");
+        FMABlocks.initialize();
+        logger.log(Level.INFO, "Blocks Initialized");
+        FMARecipes.initialize();
+        logger.log(Level.INFO, "Recipes Initialized");
 
         GameRegistry.registerWorldGenerator(new FMAOreGen());
     }
