@@ -51,8 +51,6 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 
 		super(par1);
 		setMaxStackSize(1);
-		power();
-		ItemPStone.power2 = NBThelper.getInt(new ItemStack(this), power);
 
 		if(getState() != null && !(getState().equals(""))) {
 
@@ -60,14 +58,6 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 		} else {
 
 			setState(defaultState);
-		}
-	}
-
-	public void power() {
-		if(NBThelper.hasTag(new ItemStack(this), power)) {
-			NBThelper.getInt(new ItemStack(this), power);
-		} else {
-			NBThelper.setInteger(new ItemStack(this), power, 0);
 		}
 	}
 
@@ -119,7 +109,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 			list.add("\u00a78" + getState());
 			list.add("Will randomly transmute, so long");
 			list.add("as power is provided");
-			list.add("Power: " + NBThelper.getInt(new ItemStack(this), power));
+			list.add("Power: " + power2);
 		} else {
 			list.add("Hold Shift for more info");
 		}
@@ -127,7 +117,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 
 	public void renderParticle(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4) {
 		double adjAngle = 25.0D;
-		double dist = 0.4D;
+		double dist = 0.1D;
 
 		EntityPlayer center = Minecraft.getMinecraft().thePlayer;
 
@@ -142,7 +132,8 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 				(rand.nextFloat() - rand.nextFloat()) * speed, (rand.nextFloat() - rand.nextFloat()) * speed, 500);
 		fx.maxAge = 40;
 
-		Minecraft.getMinecraft().effectRenderer.addEffect(fx);
+		for (int i = 0; i < 2; i++)
+			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 	}
 
 	@Override
@@ -243,10 +234,13 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 				return false;
 			} else {
 				if (state == 1) {
-					addTransCost(ID);
-					transmuteParticles(par3World, par4, par5, par6, player);
-					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
-					player.swingItem();
+					if (power2 > 30) {
+						addTransCost(ID);
+						transmuteParticles(par3World, par4, par5, par6, player);
+						TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
+						player.swingItem();
+						power2 -= 30;
+					}
 				}
 				return true;
 			}
@@ -257,7 +251,6 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlch
 	}
 
 	public void addTransCost(int blockID) {
-
 
 	}
 
