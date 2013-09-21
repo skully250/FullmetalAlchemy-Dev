@@ -1,4 +1,4 @@
-package skully.fma.crafting;
+package skully.fma.crafting.util;
 
 import cpw.mods.fml.common.ICraftingHandler;
 import net.minecraft.entity.player.EntityPlayer;

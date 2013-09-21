@@ -1,13 +1,11 @@
 package skully.fma.fx;
 
+import skully.fma.core.util.Resources;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
-import skully.fma.core.util.Resources;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class FXTransmutation extends FmaFx {
+public class FXPStone extends FmaFx {
+
 	float particleScaleOverTime;
 
 	private int maxAge;
@@ -19,7 +17,7 @@ public class FXTransmutation extends FmaFx {
 	public double travelY;
 	public double travelZ;
 
-	public FXTransmutation(World par1World, double f, double f2, double f4, double par8, double par10, double par12, int par14, int par15)
+	public FXPStone(World par1World, double f, double f2, double f4, double par8, double par10, double par12, int par14, int par15)
 	{
 		super(par1World, f, f2, f4, 0.0, 0.0, 0.0);
 		this.blendMode = 771;
@@ -49,20 +47,20 @@ public class FXTransmutation extends FmaFx {
 		this.noClip = true;
 		this.dieOnTravelCompletion = true;
 		this.setAlphaF(0.75f);
-		this.setParticleTextureIndex(32);
+		this.setParticleTextureIndex(16);
 	}
 
-	public FXTransmutation(World world, double f, double f2, double f3, double d, double d2, double d3, int par4)
+	public FXPStone(World world, double f, double f2, double f3, double d, double d2, double d3, int par4)
 	{
 		this(world, f, f2, f3, d, d2, d3, par4, par4);
 	}
-
+	
 	@Override
 	public void renderParticle(Tessellator tessellator, float f, float f1,
 			float f2, float f3, float f4, float f5) {
 		if(this.fade)
 		{
-			this.setAlphaF((1.0f - ((this.particleAge / 8.0f) / 10.0f)));
+			this.setAlphaF((1.0f - ((this.particleAge / 8.0f) / 2.0f)));
 		}
 
 		super.drawParticle(Resources.PARTICLE_SHEET, tessellator, f, f1, f2, f3, f4, f5);
@@ -89,25 +87,25 @@ public class FXTransmutation extends FmaFx {
 	 @Override
 	 public void onUpdate()
 	{
-		this.prevPosX = this.posX;
-		this.prevPosY = this.posY;
-		this.prevPosZ = this.posZ;
+		 this.prevPosX = this.posX;
+			this.prevPosY = this.posY;
+			this.prevPosZ = this.posZ;
 
-		this.motionY -= 0.04D * this.particleGravity;
-
-		moveEntity(this.motionX, this.motionY, this.motionZ);
-
-		if (this.particleAge++ >= this.particleMaxAge)
-		{
-			this.setDead();
-		}
-
-		if(this.dieOnTravelCompletion)
-		{
-			if(this.posX == this.travelX && this.posY == this.travelY && this.posZ == this.travelZ)
+			if (this.particleAge++ >= maxAge)
 			{
 				this.setDead();
 			}
-		}
+
+			this.moveEntity(this.motionX, this.motionY, this.motionZ);
+			this.motionX *= 0.9599999785423279D;
+			this.motionY *= 0.9599999785423279D;
+			this.motionZ *= 0.9599999785423279D;
+
+			if (this.onGround)
+			{
+				this.motionX *= 0.699999988079071D;
+				this.motionZ *= 0.699999988079071D;
+			}
 	}
+
 }

@@ -11,8 +11,9 @@ import net.minecraft.world.WorldServer;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.server.ServerTickHandler;
 import skully.fma.core.util.ConvertUtil;
-import skully.fma.crafting.FMACraftingHandler;
+import skully.fma.crafting.util.FMACraftingHandler;
 import skully.fma.tileEntity.TileEntityCircle;
+import skully.fma.tileEntity.TileEntityInfuser;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,6 +41,7 @@ public class CommonProxy {
 
     public void loadTileEntities() {
         GameRegistry.registerTileEntity(TileEntityCircle.class, "TileTransCircle");
+        GameRegistry.registerTileEntity(TileEntityInfuser.class, "TileInfuser");
     }
 
     public void registerHandlers() {

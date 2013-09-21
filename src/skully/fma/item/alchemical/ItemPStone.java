@@ -1,6 +1,7 @@
 package skully.fma.item.alchemical;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,6 +23,8 @@ import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.core.particle.TransmutationParticle;
 import skully.fma.core.util.Resources;
+import skully.fma.energy.IAlchEnergyRequester;
+import skully.fma.fx.FXResearch;
 import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
@@ -32,7 +35,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author viper283
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
-public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
+public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound, IAlchEnergyRequester {
 
 	private Icon icons[] = new Icon[256];
 	public static String power = "Transmutational Power";
@@ -122,6 +125,26 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 		}
 	}
 
+	public void renderParticle(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4) {
+		double adjAngle = 25.0D;
+		double dist = 0.4D;
+
+		EntityPlayer center = Minecraft.getMinecraft().thePlayer;
+
+		double posX = center.posX - Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+		double posY = center.posY - 0.2 - Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
+		double posZ = center.posZ + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+
+		Random rand = new Random();
+		float speed = 0.02F;
+
+		FXResearch fx = new FXResearch(Minecraft.getMinecraft().theWorld, posX, posY, posZ, (rand.nextFloat() - rand.nextFloat()) * speed,
+				(rand.nextFloat() - rand.nextFloat()) * speed, (rand.nextFloat() - rand.nextFloat()) * speed, 500);
+		fx.maxAge = 40;
+
+		Minecraft.getMinecraft().effectRenderer.addEffect(fx);
+	}
+
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 
@@ -135,7 +158,7 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 				stateFlag = 0;
 			} else if(state == 1) {
-
+				renderParticle(par1ItemStack, par2World, par3Entity, par4);
 				stateFlag = 1;
 			} else {
 
@@ -165,6 +188,27 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 			state = 0;
 		} else {
 			state = 0;
+		}
+	}
+
+	public static void transmuteParticles(World world, double par2, double par3, double par4, EntityPlayer player) {
+		for(int i = 0; i < 1000 / 5; i++)
+		{
+			float r1 = player.worldObj.rand.nextFloat() * 360.0F;
+			float mx = -MathHelper.sin(r1 / 180.0F * 3.141593F) / 5.0F;
+			float mz = MathHelper.cos(r1 / 180.0F * 3.141593F) / 5.0F;
+
+			double adjAngle = 35.0D;
+			double dist = 0.4D;
+
+			EntityPlayer center = player;
+
+			double posX = par2 + 0.57; //- Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+			double posY = par3 + 0.2; //- Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
+			double posZ = par4 + 0.5; //+ Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+
+			//world.spawnEntityInWorld(new EntityLightningBolt(world, par2, par3 + 1, par4));
+			TransmutationParticle.spawnPStoneFX(posX, posY + 0.9, posZ, mx, 0, mz, 20, false, true, true);
 		}
 	}
 
@@ -198,18 +242,13 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 				// We dont want to do anything if the block has a tile entity
 				return false;
 			} else {
-				if (state == 0) {
-					/*NBThelper.setInteger(new ItemStack(this), power, 50);
-				} else if(state == 1 && power2 >= 10) {*/
+				if (state == 1) {
 					addTransCost(ID);
-					TransmutationParticle.spawnTransmutationFX(par4, par5, par6, mx, 0, mz, 500, true, true, true, false);
+					transmuteParticles(par3World, par4, par5, par6, player);
 					TransHelper.transmuteRandomBlock(par4, par5, par6, ID, meta, par3World, player);
 					player.swingItem();
-					}
-			/*} else {
-					player.addChatMessage("You need more transmutational energy for this transmutation");
-					}*/
-					return true;
+				}
+				return true;
 			}
 		} else {
 
@@ -219,6 +258,21 @@ public class ItemPStone extends ItemFMA implements IStatedItem, IKeyBound {
 
 	public void addTransCost(int blockID) {
 
+
+	}
+
+	@Override
+	public void requestEnergy(int amount, boolean decayIncrease) {
+
+	}
+
+	@Override
+	public void disperseEnergy(int amount) {
+
+	}
+
+	@Override
+	public void useEnergy(int amount, boolean usesDecay) {
 
 	}
 }

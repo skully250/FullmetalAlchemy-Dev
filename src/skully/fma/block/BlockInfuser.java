@@ -1,17 +1,20 @@
 package skully.fma.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.lib.GuiIDs;
+import skully.fma.tileEntity.TileEntityInfuser;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockInfuser extends BlockFMA {
+public class BlockInfuser extends BlockContainer {
 
     @SideOnly(Side.CLIENT)
     private Icon field_94461_a;
@@ -75,4 +78,9 @@ public class BlockInfuser extends BlockFMA {
     public int getRenderType() {
         return 0;
     }
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityInfuser();
+	}
 }

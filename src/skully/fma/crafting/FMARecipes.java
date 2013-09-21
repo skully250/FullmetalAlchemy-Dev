@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import skully.fma.crafting.util.FMACraftingHandler;
+import skully.fma.crafting.util.FMACraftingManager;
 import skully.fma.item.FMAItems;
 
 import static skully.fma.item.FMAItems.*;

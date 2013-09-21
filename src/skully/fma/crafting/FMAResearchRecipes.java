@@ -1,5 +1,6 @@
 package skully.fma.crafting;
 
+import skully.fma.crafting.util.FMACraftingManager;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

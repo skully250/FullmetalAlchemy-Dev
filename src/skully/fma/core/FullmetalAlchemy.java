@@ -98,6 +98,8 @@ public class FullmetalAlchemy {
         platform.registerTickHandlers();
         platform.registerRenderThings();
         platform.registerKeyBinds();
+        platform.loadTileEntities();
+        platform.registerHandlers();
         logger.log(Level.INFO, "FMA Completely Initialized");
     }
 

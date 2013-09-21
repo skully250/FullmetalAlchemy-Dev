@@ -6,7 +6,7 @@ import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import skully.fma.block.FMABlocks;
-import skully.fma.crafting.FMACraftingManager;
+import skully.fma.crafting.util.FMACraftingManager;
 
 
 public class ContainerInfuser extends Container {
@@ -14,7 +14,7 @@ public class ContainerInfuser extends Container {
     /**
      * The crafting matrix inventory (3x3).
      */
-    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 4);
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
     private World worldObj;
     private int posX;
@@ -31,8 +31,8 @@ public class ContainerInfuser extends Container {
         int i1;
 
         for(l = 0; l < 3; ++l) {
-            for(i1 = 0; i1 < 4; ++i1) {
-                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 10 + i1 * 18, 17 + l * 18));
+            for(i1 = 0; i1 < 3; ++i1) {
+                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 20 + i1 * 20, 17 + l * 18));
                 this.detectAndSendChanges();
             }
         }

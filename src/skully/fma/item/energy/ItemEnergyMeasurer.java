@@ -1,16 +1,16 @@
 package skully.fma.item.energy;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import skully.fma.energy.FMAPower;
+import skully.fma.energy.IAlchEnergyRequester;
 import skully.fma.item.ItemFMA;
 import skully.fma.tileEntity.TileEntityCircle;
 
-import java.util.List;
 
-
-public class ItemEnergyMeasurer extends ItemFMA {
+public class ItemEnergyMeasurer extends ItemFMA implements IAlchEnergyRequester {
 
     public ItemEnergyMeasurer(int par1) {
         super(par1);
@@ -18,13 +18,6 @@ public class ItemEnergyMeasurer extends ItemFMA {
 
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-        //if (player.isSneaking()){
-        list.add("Trans Energy: " + FMAPower.transEnergy);
-        list.add("Trans Decay: " + FMAPower.transDecay);
-        list.add(FMAPower.decayDisplay());
-        //} else {
-        //list.add("Hold shift for more info");
-        //}
     }
 
     public void onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int x, int y, int z) {
@@ -33,4 +26,22 @@ public class ItemEnergyMeasurer extends ItemFMA {
         System.out.println(l);
         par3EntityPlayer.addChatMessage("Energy: " + l);
     }
+
+	@Override
+	public void requestEnergy(int amount, boolean decayIncrease) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disperseEnergy(int amount) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void useEnergy(int amount, boolean usesDecay) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,11 +1,16 @@
 package skully.fma.block;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import skully.fma.core.particle.TransmutationParticle;
 import skully.fma.item.FMAItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
@@ -18,6 +23,27 @@ public class BlockCircles extends BlockFMA {
         super(par1, Material.snow);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
     }
+    
+    public static void transmuteParticles(World world, double par2, double par3, double par4, EntityPlayer player) {
+		for(int i = 0; i < 1000 / 5; i++)
+		{
+			float r1 = player.worldObj.rand.nextFloat() * 360.0F;
+			float mx = -MathHelper.sin(r1 / 180.0F * 3.141593F) / 5.0F;
+			float mz = MathHelper.cos(r1 / 180.0F * 3.141593F) / 5.0F;
+
+			double adjAngle = 35.0D;
+			double dist = 0.4D;
+
+			EntityPlayer center = player;
+
+			double posX = par2 + 0.57; //- Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+			double posY = par3 + 0.2; //- Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
+			double posZ = par4 + 0.5; //+ Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+			
+			world.spawnEntityInWorld(new EntityLightningBolt(world, par2, par3 + 1, par4));
+			TransmutationParticle.spawnTransmutationFX(posX, posY + 0.2, posZ, mx, -0.1, mz, 9, false, true, true);
+		}
+	}
 
     /**
      * Called upon block activation (right click on the block.)
@@ -28,19 +54,24 @@ public class BlockCircles extends BlockFMA {
             return true;
         } else {
             if(player.getCurrentEquippedItem() != null) {
-                if(player.getCurrentEquippedItem().getItem() == Item.enderPearl && player.inventory.hasItem(FMAItems.Kunai.itemID)) {
-                    int i1 = world.getBlockMetadata(par2, par3, par4);
-                    int k1 = 8 - (i1 & 8);
+                if(player.getCurrentEquippedItem().getItem() == Item.enderPearl 
+                		&& player.inventory.hasItem(FMAItems.Kunai.itemID)) {
+                	
                     player.inventory.consumeInventoryItem(Item.enderPearl.itemID);
                     player.inventory.consumeInventoryItem(FMAItems.Kunai.itemID);
-                    world.playSoundEffect(par2 + 0.5D, par3 + 0.5D, par4 + 0.5D, "Transmute", 0.3F, k1 > 0 ? 0.6F : 0.5F);
+                    transmuteParticles(world, par2, par3, par4, player);
                     player.inventoryContainer.detectAndSendChanges();
                     player.inventory.addItemStackToInventory(new ItemStack(FMAItems.KunaiEnder));
-                } else if(player.getCurrentEquippedItem().getItem() == Item.blazePowder && player.inventory.hasItem(FMAItems.Kunai.itemID)) {
+                    
+                } else if(player.getCurrentEquippedItem().getItem() == Item.blazePowder 
+                		&& player.inventory.hasItem(FMAItems.Kunai.itemID)) {
+                	
                     player.inventory.consumeInventoryItem(Item.blazePowder.itemID);
                     player.inventory.consumeInventoryItem(FMAItems.Kunai.itemID);
+                    transmuteParticles(world, par2, par3, par4, player);
                     player.inventoryContainer.detectAndSendChanges();
                     player.inventory.addItemStackToInventory(new ItemStack(FMAItems.KunaiFire));
+                    
                 }
             }
         }

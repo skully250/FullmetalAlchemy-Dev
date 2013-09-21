@@ -1,4 +1,4 @@
-package skully.fma.crafting;
+package skully.fma.crafting.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
