@@ -51,14 +51,17 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 
 		for (Object obj : playerEntities) {
 			EntityPlayer player = (EntityPlayer) obj;
+			if (player.inventory.getCurrentItem() != null)
 				if (player.inventory.getCurrentItem().getItem() == FMAItems.EnergyStore) {
-					if (decay > 10) {
-						FXChargingBeam fx = new FXChargingBeam(this.worldObj, xCoord + 0.5, yCoord + 1, zCoord + 0.5, player.posX,
-								player.posY - 0.1, player.posZ, 10);
-						Minecraft.getMinecraft().effectRenderer.addEffect(fx);
-						ItemEnergyStore.energy -= 10;
-						decay -= 10;
-						System.out.println(decay);
+					while (ItemEnergyStore.energy > 0) {
+						if (decay > 10) {
+							FXChargingBeam fx = new FXChargingBeam(this.worldObj, xCoord + 0.5, yCoord + 1, zCoord + 0.5, player.posX,
+									player.posY - 0.1, player.posZ, 10);
+							Minecraft.getMinecraft().effectRenderer.addEffect(fx);
+							ItemEnergyStore.energy -= 10;
+							decay -= 10;
+							System.out.println(decay);
+						}
 					}
 				}
 		}

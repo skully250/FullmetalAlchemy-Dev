@@ -14,13 +14,17 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 import skully.fma.core.FMAParticle;
+import skully.fma.core.config.ConfigSettings;
+import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
 import skully.fma.energy.IAlchEnergyRequester;
 import skully.fma.fx.FXPStone;
+import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
+import skully.fma.item.energy.ItemEnergyStore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -50,6 +54,8 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 			oState = "Off";
 		else if (state == 1)
 			oState = "On";
+		else if (state == 2)
+			oState = "Corruption";
 		return oState;
 	}
 
@@ -94,28 +100,29 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 
 	@Override
 	public void keyBindActions() {
-		if (state == 0)
-			state = 1;
-		else
+		state = state + 1;
+		if (state == 3)
 			state = 0;
 	}
 
 	private void transmuteParticles(World world, double x, double y, double z, EntityPlayer player) {
-		float r1 = player.worldObj.rand.nextFloat() * 360.0F;
-		float mx = -MathHelper.sin(r1 / 180.0F * 3.141593F) / 5.0F;
-		float mz = MathHelper.cos(r1 / 180.0F * 3.141593F) / 5.0F;
+		for(int i = 0; i < 1000 / 5; i++)
+		{
+			float r1 = player.worldObj.rand.nextFloat() * 360.0F;
+			float mx = -MathHelper.sin(r1 / 180.0F * 3.141593F) / 5.0F;
+			float mz = MathHelper.cos(r1 / 180.0F * 3.141593F) / 5.0F;
 
-		double adjAngle = 35.0D;
-		double dist = 0.4D;
+			double adjAngle = 35.0D;
+			double dist = 0.4D;
 
-		EntityPlayer center = player;
+			EntityPlayer center = player;
 
-		double posX = x + 0.57; // - Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
-		double posY = y + 0.2; // - Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
-		double posZ = z + 0.5; // + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+			double posX = x + 0.57; // - Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+			double posY = y + 0.2; // - Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
+			double posZ = z + 0.5; // + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
 
-		for (int i = 0; i < 100; i++)
-			FMAParticle.spawnResearchFX(posX, posY + 0.9, posZ, mx, 0, mz, 500, false, true, true);
+			FMAParticle.spawnTransmutationFX(posX, posY + 0.9, posZ, mx, 0, mz, 500, false, true, true).setParticleTextureIndex(16);
+		}
 	}
 
 	private void renderParticle(ItemStack stack, World world, Entity entity, int par4) {
@@ -138,6 +145,27 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 		Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 	}
 
+	private void renderCorruption(ItemStack stack, World world, Entity entity, int par4) {
+		double adjAngle = 25.0D;
+		double dist = 0.4D;
+
+		EntityPlayer center = Minecraft.getMinecraft().thePlayer;
+
+		double posX = center.posX + 0.12 - Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+		double posY = center.posY - 0.2 - Math.sin(center.rotationPitch / 540.0F * Math.PI) * dist;
+		double posZ = center.posZ - 0.1 + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
+
+		Random rand = new Random();
+		float speed = 0.02F;
+
+		FXPStone fx = new FXPStone(Minecraft.getMinecraft().theWorld, posX, posY, posZ, (rand.nextFloat() - rand.nextFloat()) * speed,
+				(rand.nextFloat() - rand.nextFloat()) * speed, (rand.nextFloat() - rand.nextFloat()) * speed);
+		fx.setParticleTextureIndex(32);
+		fx.maxAge = 40;
+
+		Minecraft.getMinecraft().effectRenderer.addEffect(fx);
+	}
+
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean isEquipped) {
 		if (state == 0)
@@ -145,8 +173,11 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 		else if (state == 1) {
 			renderParticle(stack, world, entity, par4);
 			stateFlag = 1;
-		} else
-			stateFlag = 0;
+		} else if (state == 2) {
+			renderCorruption(stack, world, entity, par4);
+			stateFlag = 2;
+		}
+		stateFlag = 0;
 	}
 
 	@Override
@@ -155,6 +186,7 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 		int ID = world.getBlockId(x, y, z);
 		int meta = world.getBlockId(x, y, z);
 		TileEntity te = world.getBlockTileEntity(x, y, z);
+		ItemStack stack2 = new ItemStack(FMAItems.EnergyStore);
 
 		if (te != null)
 			return false;
@@ -168,8 +200,23 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 						useEnergy(30, false);
 					}
 				return true;
-			} else
+			} else if (state == 2) {
+				if (!world.isRemote)
+					if (player.inventory.hasItem(ConfigSettings.energyStore)) {
+						if (ItemEnergyStore.getEnergy(stack2) >= 30) {
+							transmuteParticles(world, x, y, z, player);
+							System.out.println("Rendering Particles");
+							TransHelper.transmuteCorruption(x, y, z, ID, meta, world, player);
+							System.out.println("Finding ID");
+							player.swingItem();
+							System.out.println("swinging Item");
+							ItemEnergyStore.setEnergy(stack, ItemEnergyStore.getEnergy(stack) - 30);
+							System.out.println("setting Energy");
+						}
+					}
 				return true;
+			}
+			return false;
 		}
 	}
 }

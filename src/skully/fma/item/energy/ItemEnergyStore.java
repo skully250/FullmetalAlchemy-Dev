@@ -36,8 +36,8 @@ public class ItemEnergyStore extends ItemFMA {
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean isEquipped) {
 		if (energy <= 1000)
 		setEnergy(stack, energy);
-		else if (energy < 1000);
-		setEnergy(stack, 0);
+		else
+		setEnergy(stack, 1000);
 		stack.setItemDamage(ItemEnergyStore.getEnergy(stack));
 	}
 
