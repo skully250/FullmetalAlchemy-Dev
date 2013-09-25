@@ -3,11 +3,6 @@ package skully.fma.transmute.value;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import skully.fma.core.helper.NBThelper;
-import skully.fma.item.FMAItems;
-import skully.fma.item.alchemical.ItemPStone;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -43,7 +38,6 @@ public class TransValues {
 
                     if(mat.isSolid()) {
                         blocks.add(block);
-                        ItemPStone.power2 = NBThelper.getInt(new ItemStack(FMAItems.pStone), ItemPStone.power) - 20;
                     }
                 }
             }

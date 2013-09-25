@@ -1,4 +1,4 @@
-package skully.fma.core.particle;
+package skully.fma.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
@@ -9,7 +9,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class TransmutationParticle {
+public class FMAParticle {
 	private static Minecraft mc = Minecraft.getMinecraft();
 
 	public static EntityFX spawnTransmutationFX(double x, double y, double z, double motX, double motY, double motZ, int age, boolean noClip,
@@ -28,34 +28,6 @@ public class TransmutationParticle {
 			boolean fade, boolean handleParticleSettings)
 	{
 		FXTransmutation fx = new FXTransmutation(Minecraft.getMinecraft().theWorld, x, y, z, 0, 0, 0, age);
-
-		fx.motionX = motX;
-		fx.motionY = motY;
-		fx.motionZ = motZ;
-		fx.noClip = noClip;
-		fx.fade = fade;
-		fx.dieOnTravelCompletion = false;
-
-		spawnParticle(fx, handleParticleSettings);
-		return fx;
-	}
-	
-	public static EntityFX spawnPStoneFX(double x, double y, double z, double motX, double motY, double motZ, int age, boolean noClip,
-			boolean fade, boolean dieOnTravelCompletion, boolean handleParticleSettings) {
-		
-		FXPStone fx = new FXPStone(Minecraft.getMinecraft().theWorld, x, y, z, motX, motY, motZ, age);
-		
-		fx.noClip = noClip;
-		fx.fade = fade;
-		fx.dieOnTravelCompletion = dieOnTravelCompletion;
-		
-		spawnParticle(fx, handleParticleSettings);
-		return fx;
-	}
-
-	public static EntityFX spawnPStoneFX(double x, double y, double z, double motX, double motY, double motZ, int age, boolean noClip,
-			boolean fade, boolean handleParticleSettings) {
-		FXPStone fx = new FXPStone(Minecraft.getMinecraft().theWorld, x, y, z, 0, 0, 0, age);
 
 		fx.motionX = motX;
 		fx.motionY = motY;

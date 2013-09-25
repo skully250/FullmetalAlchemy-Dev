@@ -30,7 +30,8 @@ public class RenderKunai extends Render {
      * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
         Icon icon = this.field_94151_a.getIconFromDamage(this.field_94150_f);
 
         if(icon != null) {
@@ -43,9 +44,9 @@ public class RenderKunai extends Render {
 
             if(icon == ItemPotion.func_94589_d("bottle_splash")) {
                 int i = PotionHelper.func_77915_a(((EntityPotion)par1Entity).getPotionDamage(), false);
-                float f2 = (float)(i >> 16 & 255) / 255.0F;
-                float f3 = (float)(i >> 8 & 255) / 255.0F;
-                float f4 = (float)(i & 255) / 255.0F;
+                float f2 = (i >> 16 & 255) / 255.0F;
+                float f3 = (i >> 8 & 255) / 255.0F;
+                float f4 = (i & 255) / 255.0F;
                 GL11.glColor3f(f2, f3, f4);
                 GL11.glPushMatrix();
                 this.func_77026_a(tessellator, ItemPotion.func_94589_d("overlay"));
@@ -62,7 +63,8 @@ public class RenderKunai extends Render {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(Entity par1Entity) {
+    @Override
+	protected ResourceLocation getEntityTexture(Entity par1Entity) {
         return TextureMap.locationItemsTexture;
     }
 
@@ -78,10 +80,10 @@ public class RenderKunai extends Render {
         GL11.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         par1Tessellator.startDrawingQuads();
         par1Tessellator.setNormal(0.0F, 1.0F, 0.0F);
-        par1Tessellator.addVertexWithUV((double)(0.0F - f5), (double)(0.0F - f6), 0.0D, (double)f, (double)f3);
-        par1Tessellator.addVertexWithUV((double)(f4 - f5), (double)(0.0F - f6), 0.0D, (double)f1, (double)f3);
-        par1Tessellator.addVertexWithUV((double)(f4 - f5), (double)(f4 - f6), 0.0D, (double)f1, (double)f2);
-        par1Tessellator.addVertexWithUV((double)(0.0F - f5), (double)(f4 - f6), 0.0D, (double)f, (double)f2);
+        par1Tessellator.addVertexWithUV(0.0F - f5, 0.0F - f6, 0.0D, f, f3);
+        par1Tessellator.addVertexWithUV(f4 - f5, 0.0F - f6, 0.0D, f1, f3);
+        par1Tessellator.addVertexWithUV(f4 - f5, f4 - f6, 0.0D, f1, f2);
+        par1Tessellator.addVertexWithUV(0.0F - f5, f4 - f6, 0.0D, f, f2);
         par1Tessellator.draw();
     }
 }

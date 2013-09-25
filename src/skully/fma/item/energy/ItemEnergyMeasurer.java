@@ -28,20 +28,17 @@ public class ItemEnergyMeasurer extends ItemFMA implements IAlchEnergyRequester 
     }
 
 	@Override
-	public void requestEnergy(int amount, boolean decayIncrease) {
-		// TODO Auto-generated method stub
-		
+	public int requestEnergy(int amount, boolean decayIncrease) {
+		return amount;
 	}
 
 	@Override
-	public void disperseEnergy(int amount) {
-		// TODO Auto-generated method stub
-		
+	public int disperseEnergy(int amount) {
+		return amount;
 	}
 
 	@Override
-	public void useEnergy(int amount, boolean usesDecay) {
-		// TODO Auto-generated method stub
-		
+	public int useEnergy(int amount, boolean usesDecay) {
+		return amount;
 	}
 }

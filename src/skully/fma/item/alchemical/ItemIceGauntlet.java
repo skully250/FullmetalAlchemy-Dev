@@ -1,11 +1,8 @@
 package skully.fma.item.alchemical;
 
 import java.util.List;
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,8 +10,6 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
-import skully.fma.fx.FXResearch;
-import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
 
 
@@ -73,7 +68,7 @@ public class ItemIceGauntlet extends ItemFMA {
 				if(par2EntityPlayer.inventory.mainInventory[i] != null) {
 					if(par2EntityPlayer.inventory.mainInventory[i].getItem() == Item.snowball) {
 						{
-							if (par3World.isBlockFreezable(par4, par5 + 1, par6)) {
+							//if (par3World.isBlockFreezable(par4, par5 + 1, par6)) {
 								par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 								par3World.setBlock(par4, par5, par6, Block.ice.blockID);
 								par3World.setBlock(par4 + 1, par5, par6 - 1, Block.ice.blockID);
@@ -84,7 +79,7 @@ public class ItemIceGauntlet extends ItemFMA {
 								par3World.setBlock(par4, par5, par6 + 1, Block.ice.blockID);
 								par3World.setBlock(par4 - 1, par5, par6, Block.ice.blockID);
 								par3World.setBlock(par4, par5, par6 - 1, Block.ice.blockID);
-							}
+							//}
 						}
 						break;
 					}

@@ -1,111 +1,94 @@
 package skully.fma.fx;
 
-import skully.fma.core.util.Resources;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
+import skully.fma.core.util.Resources;
 
 public class FXPStone extends FmaFx {
 
 	float particleScaleOverTime;
-
-	private int maxAge;
-	private final int speed;
-	public boolean fade;
-	public boolean dieOnTravelCompletion;
-
-	public double travelX;
-	public double travelY;
-	public double travelZ;
-
-	public FXPStone(World par1World, double f, double f2, double f4, double par8, double par10, double par12, int par14, int par15)
-	{
-		super(par1World, f, f2, f4, 0.0, 0.0, 0.0);
-		this.blendMode = 771;
-
-		this.prevPosX = this.posX;
-		this.prevPosY = this.posY;
-		this.prevPosZ = this.posZ;
-
-		this.travelX = par8;
-		this.travelY = par10;
-		this.travelZ = par12;
-
-		this.particleScaleOverTime = this.particleScale = 2.5f;
-		this.particleRed = this.particleGreen = this.particleBlue = 0.25F;
-		this.particleMaxAge = maxAge = par14;
-		this.speed = par15;
-		this.fade = false;
-
-		double dx = par8 - this.posX;
-		double dy = par10 - this.posY;
-		double dz = par12 - this.posZ;
-
-		this.motionX = (dx / speed);
-		this.motionY = (dy / speed);
-		this.motionZ = (dz / speed);
-
-		this.noClip = true;
-		this.dieOnTravelCompletion = true;
-		this.setAlphaF(0.75f);
-		this.setParticleTextureIndex(16);
-	}
-
-	public FXPStone(World world, double f, double f2, double f3, double d, double d2, double d3, int par4)
-	{
-		this(world, f, f2, f3, d, d2, d3, par4, par4);
-	}
-	
-	@Override
-	public void renderParticle(Tessellator tessellator, float f, float f1,
-			float f2, float f3, float f4, float f5) {
-		if(this.fade)
-		{
-			this.setAlphaF((1.0f - ((this.particleAge / 8.0f) / 2.0f)));
-		}
-
-		super.drawParticle(Resources.PARTICLE_SHEET, tessellator, f, f1, f2, f3, f4, f5);
-	}
-
-	@Override
-	public int getBrightnessForRender(float par1)
-	{
-		return 100;
-	}
-
-	/**
-	 * Gets how bright this entity is.
-	 */
-	 @Override
-	 public float getBrightness(float par1)
-	{
-		return 1.0f;
-	}
-
-	/**
-	 * Called to update the entity's position/logic.
-	 */
-	 @Override
-	 public void onUpdate()
-	{
-		 this.prevPosX = this.posX;
-			this.prevPosY = this.posY;
-			this.prevPosZ = this.posZ;
-
-			if (this.particleAge++ >= maxAge)
-			{
-				this.setDead();
-			}
-
-			this.moveEntity(this.motionX, this.motionY, this.motionZ);
-			this.motionX *= 0.9599999785423279D;
-			this.motionY *= 0.9599999785423279D;
-			this.motionZ *= 0.9599999785423279D;
-
-			if (this.onGround)
-			{
-				this.motionX *= 0.699999988079071D;
-				this.motionZ *= 0.699999988079071D;
-			}
-	}
+    public int maxAge = 80;
+    
+    public FXPStone(World par1World, double f, double f2, double f4, double par8, double par10, double par12)
+    {
+        super(par1World, f, f2, f4, par8, par10, par12);
+        this.motionX = this.motionX * 0.009999999776482582D + par8;
+        this.motionY = this.motionY * 0.009999999776482582D + par10 + 0.005f;
+        this.motionZ = this.motionZ * 0.009999999776482582D + par12;
+        double var10000 = f + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
+        var10000 = f2 + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
+        var10000 = f4 + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.05F;
+        this.particleScaleOverTime = this.particleScale = (this.rand.nextFloat() * 0.5F + 0.5F) * 2f;
+        this.particleRed = 1.0F;
+        this.particleGreen = (float) (0.75 + Math.random());
+        this.particleBlue = (float) (0.75 + Math.random());
+        this.particleMaxAge = maxAge;
+        this.noClip = true;
+        this.blendMode = 1;
+        this.setAlphaF(0.8f);
+        this.setParticleTextureIndex(33);
+    }
+    
+    @Override
+    public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
+    {
+        this.setAlphaF((1.0f - ((this.particleAge / 2.0f) / 10.0f)));
+        super.drawParticle(Resources.PARTICLE_SHEET, tessellator, f, f1, f2, f3, f4, f5);
+    }
+    
+    @Override
+    public int getBrightnessForRender(float par1)
+    {
+        return 1;
+    }
+    
+    /**
+     * Gets how bright this entity is.
+     */
+    @Override
+    public float getBrightness(float par1)
+    {
+        float var2 = (this.particleAge + par1) / maxAge;
+        
+        if (var2 < 0.0F)
+        {
+            var2 = 0.0F;
+        }
+        
+        if (var2 > 1.0F)
+        {
+            var2 = 1.0F;
+        }
+        
+        float var3 = super.getBrightness(par1);
+        return var3 * var2 + (1.0F - var2);
+    }
+    
+    /**
+     * Called to update the entity's position/logic.
+     */
+    @Override
+    public void onUpdate()
+    {
+        this.prevPosX = this.posX;
+        this.prevPosY = this.posY;
+        this.prevPosZ = this.posZ;
+        
+        if (this.particleAge++ >= maxAge)
+        {
+            this.setDead();
+        }
+        
+        this.moveEntity(this.motionX, this.motionY, this.motionZ);
+        this.motionX *= 0.9599999785423279D;
+        this.motionY *= 0.9599999785423279D;
+        this.motionZ *= 0.9599999785423279D;
+        
+        if (this.onGround)
+        {
+            this.motionX *= 0.699999988079071D;
+            this.motionZ *= 0.699999988079071D;
+        }
+    }
 
 }

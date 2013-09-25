@@ -17,7 +17,7 @@ public class GuiResearchProgress extends Gui {
 
     public GuiResearchProgress(Minecraft mc) {
         super();
-        this.mc = mc;
+        GuiResearchProgress.mc = mc;
     }
 
     @ForgeSubscribe(priority = EventPriority.NORMAL)
@@ -41,10 +41,6 @@ public class GuiResearchProgress extends Gui {
     }
 
     public void renderFireResearch(Minecraft mc, EntityPlayer player) {
-
-    }
-
-    public void renderNothing() {
 
     }
 

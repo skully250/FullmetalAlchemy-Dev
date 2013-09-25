@@ -2,7 +2,6 @@ package skully.fma.fx;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
-import skully.fma.core.client.Reference;
 import skully.fma.core.util.Resources;
 
 

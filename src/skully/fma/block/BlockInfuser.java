@@ -10,12 +10,13 @@ import net.minecraft.world.World;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.lib.GuiIDs;
 import skully.fma.energy.IAlchEnergyProvider;
+import skully.fma.energy.decay.IDecayProvider;
 import skully.fma.tileEntity.TileEntityInfuser;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockInfuser extends BlockContainer implements IAlchEnergyProvider {
+public class BlockInfuser extends BlockContainer {
 
     @SideOnly(Side.CLIENT)
     private Icon field_94461_a;
@@ -83,15 +84,5 @@ public class BlockInfuser extends BlockContainer implements IAlchEnergyProvider 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityInfuser();
-	}
-
-	@Override
-	public int provideEnergy(int amount) {
-		return amount;
-	}
-
-	@Override
-	public int increaseDecay(int amount) {
-		return amount;
 	}
 }

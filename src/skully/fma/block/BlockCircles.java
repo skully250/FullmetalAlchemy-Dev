@@ -7,10 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import skully.fma.core.particle.TransmutationParticle;
+import skully.fma.core.FMAParticle;
 import skully.fma.item.FMAItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
@@ -41,7 +39,7 @@ public class BlockCircles extends BlockFMA {
 			double posZ = par4 + 0.5; //+ Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
 			
 			world.spawnEntityInWorld(new EntityLightningBolt(world, par2, par3 + 1, par4));
-			TransmutationParticle.spawnTransmutationFX(posX, posY + 0.2, posZ, mx, -0.1, mz, 9, false, true, true);
+			FMAParticle.spawnTransmutationFX(posX, posY + 0.2, posZ, mx, -0.1, mz, 9, false, true, true);
 		}
 	}
 

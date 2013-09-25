@@ -5,7 +5,7 @@ public interface IAlchEnergyProvider {
 	/*
 	 * says how much energy the item or block can give
 	 */
-	public int provideEnergy(int amount);
+	public int provideEnergy(int amount, int decayIncrease);
 	
 	/*
 	 * decay will play a larger role later :)

@@ -5,10 +5,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import skully.fma.client.render.RenderPlayerFMA;
 import skully.fma.core.FullmetalAlchemy;
+import skully.fma.core.FMAParticle;
 import skully.fma.core.client.ClientKeybindHandler;
 import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.handler.SoundHandler;
-import skully.fma.core.particle.TransmutationParticle;
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.registers.FMAEventRegister;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 	
-	public static TransmutationParticle particleManager = new TransmutationParticle();
+	public static FMAParticle particleManager = new FMAParticle();
 
     public static CommonProxy instance() {
 

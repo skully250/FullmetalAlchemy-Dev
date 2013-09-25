@@ -1,5 +1,8 @@
 package skully.fma.gui.overlay;
 
+import java.util.Collection;
+import java.util.HashMap;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,16 +12,14 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
+
 import org.lwjgl.opengl.GL11;
-import skully.fma.block.BlockFuelConverter;
+
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.energy.ItemEnergyStore;
-
-import java.util.Collection;
-import java.util.HashMap;
 
 
 public class GuiOverlayEnergy extends Gui {
@@ -50,7 +51,6 @@ public class GuiOverlayEnergy extends Gui {
                     return;
                 }
             }
-            this.renderEnergyInFuelConverter(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
         }
 
         if(mc.thePlayer.inventory.getCurrentItem() == new ItemStack(FMAItems.EnergyStore)) {
@@ -133,11 +133,5 @@ public class GuiOverlayEnergy extends Gui {
         if(player.inventory.hasItem(FMAItems.EnergyStore.itemID)) {
             this.renderEnergyOverlay(minecraft, player);
         }
-    }
-
-    public void renderEnergyInFuelConverter(Minecraft minecraft, EntityPlayer player, ItemStack stack) {
-        int Energy = BlockFuelConverter.Energy;
-
-        minecraft.fontRenderer.drawStringWithShadow("Transmutation Energy: " + Energy, 100, 100, 0xFFFFFF);
     }
 }
