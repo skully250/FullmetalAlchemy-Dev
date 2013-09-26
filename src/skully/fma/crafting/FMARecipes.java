@@ -87,6 +87,11 @@ public class FMARecipes {
                 "YXY",
                 "ZG ",
                 'X', Item.ingotIron, 'Y', Item.silk, 'Z', new ItemStack(Item.dyePowder, 1, 9), 'G', Item.feather);
+        GameRegistry.addRecipe(new ItemStack(FMAItems.EnergyStore),
+        		"XYX",
+        		"YXY",
+        		"XYX",
+        		'X', new ItemStack(FMAItems.metaTest, 1, 5), 'Y',Item.enderPearl);
         //shaped
         FurnaceRecipes.smelting().addSmelting(Item.coal.itemID, 1, new ItemStack(ash), 1);
         //Furnace

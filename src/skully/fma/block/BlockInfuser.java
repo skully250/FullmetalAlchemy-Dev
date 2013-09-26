@@ -9,8 +9,6 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.lib.GuiIDs;
-import skully.fma.energy.IAlchEnergyProvider;
-import skully.fma.energy.decay.IDecayProvider;
 import skully.fma.tileEntity.TileEntityInfuser;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

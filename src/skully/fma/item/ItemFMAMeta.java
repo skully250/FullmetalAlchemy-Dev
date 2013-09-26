@@ -22,9 +22,8 @@ public class ItemFMAMeta extends Item {
     private Icon[] icons;
 
     public ItemFMAMeta(int par1, String[] names) {
-
         super(par1);
-        this.setHasSubtypes(true);
+        setHasSubtypes(true);
         assert names.length == icons.length;
         this.names = names;
     }

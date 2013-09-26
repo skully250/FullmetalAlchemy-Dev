@@ -3,8 +3,10 @@ package skully.fma.fx;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
 import skully.fma.core.util.Resources;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-
+@SideOnly(Side.CLIENT)
 public class FXResearch extends FmaFx {
 
 	float particleScaleOverTime;

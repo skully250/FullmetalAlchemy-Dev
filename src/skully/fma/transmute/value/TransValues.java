@@ -10,84 +10,81 @@ import java.util.Random;
 
 public class TransValues {
 
-    private static Minecraft mc;
-    private static List<Block> blocks = new ArrayList<Block>();
+	private static Minecraft mc;
+	private static List<Block> blocks = new ArrayList<Block>();
+	private static List<Block> corruptBlocks = new ArrayList<Block>();
 
-    // private static List DTrans = new Block.blocksList[5];
+	// private static List DTrans = new Block.blocksList[5];
 
-    public static Block[] block = Block.blocksList;
-    
-    public static Block[] corrupt = {
-    	Block.obsidian,
-    	Block.netherBrick,
-    	Block.netherrack,
-    	Block.skull,
-    	Block.stairsNetherBrick
-    };
+	public static Block[] block = Block.blocksList;
 
-    public static int getRandomID() {
+	public static Block[] corrupt = {
+		Block.obsidian,
+		Block.netherBrick,
+		Block.netherrack,
+		Block.skull,
+		Block.stairsNetherBrick
+	};
 
-        return getRandomBlock().blockID;
-    }
-    
-    public static int getCorruptionID() {
-    	return getCorruptionBlock().blockID;
-    }
+	public static int getRandomID() {
+		return getRandomBlock().blockID;
+	}
 
-    /**
-     * Only called if the pSTone is active
-     */
-    public static Block getRandomBlock() {
+	public static int getCorruptionID() {
+		return getCorruptionBlock().blockID;
+	}
 
-        for(Block block : Block.blocksList) {
-            if(block != null) {
-                boolean hasTile = block.hasTileEntity(0);
+	/**
+	 * Only called if the pSTone is active
+	 */
+	public static Block getRandomBlock() {
 
-                if(block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
-                    //this.add(DTrans);
-                } else if(block.blockID != 0 && !(hasTile)) {
-                    Material mat = block.blockMaterial != null ? block.blockMaterial : Material.air;
+		for(Block block : Block.blocksList) {
+			if(block != null) {
+				boolean hasTile = block.hasTileEntity(0);
 
-                    if(mat.isSolid()) {
-                        blocks.add(block);
-                    }
-                }
-            }
-        }
+				if(block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
+					//this.add(DTrans);
+				} else if(block.blockID != 0 && !(hasTile)) {
+					Material mat = block.blockMaterial != null ? block.blockMaterial : Material.air;
 
-        Random rand = new Random();
+					if(mat.isSolid()) {
+						blocks.add(block);
+					}
+				}
+			}
+		}
 
-        int random = rand.nextInt(blocks.size());
+		Random rand = new Random();
 
-        Block block = blocks.get(random);
+		int random = rand.nextInt(blocks.size());
 
-        return block;
-    }
-    
-    public static Block getCorruptionBlock() {
-    	
-    	for(Block block : corrupt) {
-            if(block != null) {
-                boolean hasTile = block.hasTileEntity(0);
+		Block block = blocks.get(random);
 
-                if(block.blockID != 0 && !(hasTile) && block.blockID == Block.dirt.blockID) {
-                    //this.add(DTrans);
-                } else if(block.blockID != 0 && !(hasTile)) {
-                    Material mat = block.blockMaterial != null ? block.blockMaterial : Material.air;
+		return block;
+	}
 
-                    if(mat.isSolid()) {
-                        blocks.add(block);
-                    }
-                }
-            }
-        }
+	public static Block getCorruptionBlock() {
 
-        Random rand = new Random();
+		for(Block block : corrupt) {
+			if(block != null) {
+				boolean hasTile = block.hasTileEntity(0);
+				if(block.blockID != 0 && !(hasTile)) {
+					Material mat = block.blockMaterial != null ? block.blockMaterial : Material.air;
 
-        int random = rand.nextInt(blocks.size());
+					if(mat.isSolid()) {
+						corruptBlocks.add(block);
+					}
+				}
+			}
+		}
 
-        Block block = blocks.get(random);
+		Random rand = new Random();
 
-        return block;
-    }
+		int random = rand.nextInt(corruptBlocks.size());
+
+		Block block = corruptBlocks.get(random);
+
+		return block;
+	}
 }

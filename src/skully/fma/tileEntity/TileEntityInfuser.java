@@ -21,6 +21,7 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 
 	private ItemStack[] infuserStacks = new ItemStack[10];
 	public int addTime = 20;
+	private ItemStack energyStore = new ItemStack(FMAItems.EnergyStore);
 
 	public static int decay = 0;
 
@@ -53,15 +54,13 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 			EntityPlayer player = (EntityPlayer) obj;
 			if (player.inventory.getCurrentItem() != null)
 				if (player.inventory.getCurrentItem().getItem() == FMAItems.EnergyStore) {
-					while (ItemEnergyStore.energy > 0) {
-						if (decay > 10) {
-							FXChargingBeam fx = new FXChargingBeam(this.worldObj, xCoord + 0.5, yCoord + 1, zCoord + 0.5, player.posX,
-									player.posY - 0.1, player.posZ, 10);
-							Minecraft.getMinecraft().effectRenderer.addEffect(fx);
-							ItemEnergyStore.energy -= 10;
-							decay -= 10;
-							System.out.println(decay);
-						}
+					if (decay > 10) {
+						FXChargingBeam fx = new FXChargingBeam(this.worldObj, xCoord + 0.5, yCoord + 1, zCoord + 0.5, player.posX,
+								player.posY - 0.1, player.posZ, 10);
+						Minecraft.getMinecraft().effectRenderer.addEffect(fx);
+						ItemEnergyStore.setEnergy(player.inventory.getCurrentItem(), ItemEnergyStore.getEnergy(energyStore) - 10);
+						decay -= 10;
+						System.out.println(decay);
 					}
 				}
 		}
@@ -106,8 +105,8 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 	@Override
 	public int provideEnergy(int amount, int decayIncrease) {
 		int finalDecay = amount / decayIncrease;
-		this.decay += (int)finalDecay;
-		System.out.println(this.decay);
+		TileEntityInfuser.decay += finalDecay;
+		System.out.println(TileEntityInfuser.decay);
 		return amount;
 	}
 

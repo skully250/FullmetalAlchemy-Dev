@@ -8,7 +8,10 @@ import org.lwjgl.opengl.GL11;
 
 import skully.fma.core.handler.RenderHandler;
 import skully.fma.core.util.RenderUtil;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class FXChargingBeam extends FmaFx {
 	private float rotYaw = 0.0F;
     private float rotPitch = 0.0F;

@@ -67,11 +67,16 @@ public class FullmetalAlchemy {
         getConfig().initialize(new File(System.getProperty("user.dir"), "FullmetalAlchemy/properties.ini"));
 
         MinecraftForge.EVENT_BUS.register(this);
+        
+        FMAItems.initialize();
+        FMAItems.initializeMeta();
+        logger.log(Level.INFO, "Items Initialized");
+        FMABlocks.initialize();
+        logger.log(Level.INFO, "Blocks Initialized");
+        FMARecipes.initialize();
+        logger.log(Level.INFO, "Recipes Initialized");
 
         FMALanguageRegister.loadLanguageLocalizations();
-
-        /*FMARecipes.initialize();
-        logger.log(Level.INFO, "Recipes Initialized");*/
 
         platform.registerHandlers();
     }
@@ -80,21 +85,13 @@ public class FullmetalAlchemy {
     public void initialize(FMLInitializationEvent evt) {
 
         NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
-        //FMAPower power = new FMAPower();
-        FMAItems.initializeMeta();
-        FMAItems.initialize();
-        logger.log(Level.INFO, "Items Initialized");
-        FMABlocks.initialize();
-        logger.log(Level.INFO, "Blocks Initialized");
-        FMARecipes.initialize();
-        logger.log(Level.INFO, "Recipes Initialized");
 
         GameRegistry.registerWorldGenerator(new FMAOreGen());
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-
+    	
         platform.registerTickHandlers();
         platform.registerRenderThings();
         platform.registerKeyBinds();

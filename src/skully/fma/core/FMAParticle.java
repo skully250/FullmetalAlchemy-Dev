@@ -2,15 +2,15 @@ package skully.fma.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
-import skully.fma.fx.FXPStone;
 import skully.fma.fx.FXResearch;
 import skully.fma.fx.FXTransmutation;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class FMAParticle {
-	private static Minecraft mc = Minecraft.getMinecraft();
+	private static Minecraft mc = FMLClientHandler.instance().getClient();
 
 	public static EntityFX spawnTransmutationFX(double x, double y, double z, double motX, double motY, double motZ, int age, boolean noClip,
 			boolean fade, boolean dieOnTravelCompletion, boolean handleParticleSettings) {

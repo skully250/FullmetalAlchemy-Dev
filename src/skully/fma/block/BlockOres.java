@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 public class BlockOres extends BlockFMA {
 
     public BlockOres(int id) {
-
         super(id, Material.rock);
     }
 

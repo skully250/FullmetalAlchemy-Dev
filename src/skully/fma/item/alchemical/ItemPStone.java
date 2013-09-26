@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 import skully.fma.core.FMAParticle;
-import skully.fma.core.config.ConfigSettings;
-import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
@@ -32,6 +30,7 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 
 	public static String power = "Transmutational Power";
 	public static int PStoneEnergy;
+	public static int decayEnergy;
 	public static boolean isGettingCharged = false;
 
 	private int stateFlag;
@@ -39,7 +38,6 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 
 	public ItemPStone(int par1, EnumState defaultState) {
 		super(par1);
-		setMaxStackSize(1);
 
 		if (getState() != null && !(getState().equals("")))
 			getState();
@@ -71,9 +69,25 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 			list.add("Will randomly transmute, so long");
 			list.add("as power is provided");
 			list.add("Power: " + PStoneEnergy);
+			list.add("Dark Energy: " + decayEnergy);
 		} else {
 			list.add("Hold shift for more info");
 		}
+	}
+
+	@Override
+	public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
+	{
+		if (decayEnergy >= PStoneEnergy * 1.5)
+			return 0x54003C;
+		else if (decayEnergy >= PStoneEnergy * 2)
+			return 0x615D5E;
+		else if (decayEnergy >= PStoneEnergy * 3)
+			return 0x2E2B2C;
+		else if (decayEnergy >= PStoneEnergy * 4)
+			return 000000;
+		else
+			return 0xFFFFFF;
 	}
 
 	@Override
@@ -94,7 +108,10 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 
 	@Override
 	public int useEnergy(int amount, boolean usesDecay) {
+		if (!usesDecay)
 		PStoneEnergy -= amount;
+		if (usesDecay)
+			decayEnergy -= amount;
 		return amount;
 	}
 
@@ -171,10 +188,12 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 		if (state == 0)
 			stateFlag = 0;
 		else if (state == 1) {
-			renderParticle(stack, world, entity, par4);
+			if (isEquipped)
+				renderParticle(stack, world, entity, par4);
 			stateFlag = 1;
 		} else if (state == 2) {
-			renderCorruption(stack, world, entity, par4);
+			if (isEquipped)
+				renderCorruption(stack, world, entity, par4);
 			stateFlag = 2;
 		}
 		stateFlag = 0;
@@ -186,7 +205,6 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 		int ID = world.getBlockId(x, y, z);
 		int meta = world.getBlockId(x, y, z);
 		TileEntity te = world.getBlockTileEntity(x, y, z);
-		ItemStack stack2 = new ItemStack(FMAItems.EnergyStore);
 
 		if (te != null)
 			return false;
@@ -202,17 +220,11 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 				return true;
 			} else if (state == 2) {
 				if (!world.isRemote)
-					if (player.inventory.hasItem(ConfigSettings.energyStore)) {
-						if (ItemEnergyStore.getEnergy(stack2) >= 30) {
-							transmuteParticles(world, x, y, z, player);
-							System.out.println("Rendering Particles");
-							TransHelper.transmuteCorruption(x, y, z, ID, meta, world, player);
-							System.out.println("Finding ID");
-							player.swingItem();
-							System.out.println("swinging Item");
-							ItemEnergyStore.setEnergy(stack, ItemEnergyStore.getEnergy(stack) - 30);
-							System.out.println("setting Energy");
-						}
+					if (decayEnergy >= 30) {
+						transmuteParticles(world, x, y, z, player);
+						TransHelper.transmuteCorruption(x, y, z, ID, meta, world, player);
+						player.swingItem();
+						useEnergy(30, true);
 					}
 				return true;
 			}

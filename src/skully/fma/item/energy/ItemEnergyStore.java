@@ -1,24 +1,25 @@
 package skully.fma.item.energy;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import org.lwjgl.input.Keyboard;
+
 import skully.fma.core.helper.NBThelper;
 import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
-
-import java.util.List;
+import skully.fma.item.alchemical.ItemPStone;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 public class ItemEnergyStore extends ItemFMA {
-	
-	public static int energy = 1000;
 
 	public ItemEnergyStore(int par1) {
 		super(par1);
@@ -29,15 +30,11 @@ public class ItemEnergyStore extends ItemFMA {
 
 	@Override
 	public boolean hasEffect(ItemStack stack) {
-		return getEnergy(stack) != 1000;
+		return getEnergy(stack) != 1000 && getEnergy(stack) == 0;
 	}
 
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean isEquipped) {
-		if (energy <= 1000)
-		setEnergy(stack, energy);
-		else
-		setEnergy(stack, 1000);
 		stack.setItemDamage(ItemEnergyStore.getEnergy(stack));
 	}
 
@@ -58,6 +55,12 @@ public class ItemEnergyStore extends ItemFMA {
 			list.add("Hold Shift for more info");
 		}
 	}
+	
+	@Override
+	public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
+    {
+        return 0xFFFFFF;
+    }
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -72,13 +75,16 @@ public class ItemEnergyStore extends ItemFMA {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, 
-			int par4, int par5, int par6, int par7, float par8, float par9, float par10) 
+	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, 
+			int x, int y, int z, int par7, float par8, float par9, float par10) 
 	{
-		if (getEnergy(new ItemStack(this)) < 1000) {
-			setEnergy(new ItemStack(this), 1000);
+		if (player.inventory.hasItem(FMAItems.pStone.itemID)) {
+			if (getEnergy(itemStack) != 1000) {
+				ItemPStone.decayEnergy += 10;
+				setEnergy(itemStack, getEnergy(itemStack) + 10);
+			}
 			return true;
-		} else
-			return false;
+		}
+		return false;
 	}
 }

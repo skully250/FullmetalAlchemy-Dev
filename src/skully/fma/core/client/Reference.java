@@ -18,7 +18,9 @@ public class Reference {
             "Bumert_59".toLowerCase(Locale.ENGLISH),
             "ddebo3".toLowerCase(Locale.ENGLISH),
             "saukawolf".toLowerCase(Locale.ENGLISH),
-            "llamafagot".toLowerCase(Locale.ENGLISH)
+            "llamafagot".toLowerCase(Locale.ENGLISH),
+            "drakkillen".toLowerCase(Locale.ENGLISH),
+            "ShadezX".toLowerCase(Locale.ENGLISH)
     };
 
     public static List<String> staffList = Arrays.asList(staff);

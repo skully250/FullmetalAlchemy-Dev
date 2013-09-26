@@ -64,23 +64,12 @@ public class FMAItems {
             "EStone",
             "GStone"
     };
-    public static String[] meta_localized_names = new String[] {
-            "Chalk Dust",
-            "Flacon",
-            "Flask",
-            "Blood Drop",
-            "Alchemical Wool",
-            "Alchemical Silk",
-            "Evil Stone",
-            "Good Stone"
-    };
 
     public static void initialize() {
 
-        //metaTest = new ItemFMAMeta(ConfigSettings.metaID, meta_names, FMAIcons.metaItemIcons).setUnlocalizedName("fmaMetaItem").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
-        pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+        pStone = new ItemPStone(ConfigSettings.pStoneID, EnumState.OFF).setUnlocalizedName("pStone").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools)).setMaxStackSize(1);
         alchemicCrystal = new ItemAlchemicCrystal(ConfigSettings.alchemicCrystal).setUnlocalizedName("alchemicCrystal");
-        redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone");//.setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
+        redStone = new ItemRedStone(ConfigSettings.redStone, EnumState.OFF).setUnlocalizedName("redStone");
         stone0 = new Itemstone0(ConfigSettings.stone0).setUnlocalizedName("stone0").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
         ash = new ItemAsh(ConfigSettings.ash).setUnlocalizedName("ash").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));
         eash = new ItemEash(ConfigSettings.eash).setUnlocalizedName("eash").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabMisc));

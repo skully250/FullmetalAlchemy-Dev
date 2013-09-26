@@ -24,13 +24,13 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
-	
-	public static FMAParticle particleManager = new FMAParticle();
 
     public static CommonProxy instance() {
 
         return FullmetalAlchemy.platform;
     }
+    
+    public static FMAParticle particleManager = new FMAParticle();
 
     @Override
     public void registerTickHandlers() {
@@ -53,13 +53,11 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerKeyBinds() {
-
         KeyBindingRegistry.registerKeyBinding(new ClientKeybindHandler());
     }
 
     @Override
     public void transmuteBlock(int x, int y, int z, int blockID, int meta, EntityPlayer player, World world) {
-
         world.setBlock(x, y, z, blockID);
     }
 }
