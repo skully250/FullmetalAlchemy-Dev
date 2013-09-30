@@ -21,11 +21,9 @@ public class GuiOverlayReconstructions extends Gui {
 
     public final Minecraft mc;
     private Icon icon;
-    private RenderItem itemRender;
 
     public GuiOverlayReconstructions(Minecraft mc) {
         super();
-
         this.mc = mc;
     }
 
@@ -53,7 +51,7 @@ public class GuiOverlayReconstructions extends Gui {
     }
 
     public void renderReconstructionOverlay(Minecraft mc, EntityPlayer player) {
-        RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/pStoneOff.png");
+        RenderUtil.instance().bindTexture(Resources.MOD_ID, "textures/items/pStone.png");
         GL11.glPushMatrix();
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
         GL11.glScalef(0.2f, 0.2f, 0.2f);
@@ -66,7 +64,6 @@ public class GuiOverlayReconstructions extends Gui {
             mc.fontRenderer.drawStringWithShadow(ItemReconstructionCircle.oState, 3, 8, 0xffffff);
             mc.fontRenderer.drawStringWithShadow("" + (ItemReconstructionCircle.trans / 2), 22, 22, 0xffffff);
         }
-        //mc.standardGalacticFontRenderer.drawStringWithShadow("ShadowChild is Awesome", 16, 3 + 15, 0xffffff);
     }
 
     public void renderPStoneOverlay(Minecraft minecraft, EntityPlayer player, ItemStack stack) {

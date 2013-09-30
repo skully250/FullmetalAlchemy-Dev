@@ -1,21 +1,24 @@
-package skully.fma.block;
+package skully.fma.block.circle;
 
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import skully.fma.core.FMAParticle;
 import skully.fma.item.FMAItems;
+import skully.fma.tileEntity.TileEntityCircle;
 
 
 /**
  * @author viper283
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
-public class BlockCircles extends BlockFMA {
+public class BlockCircles extends BlockContainer {
 
     public BlockCircles(int par1) {
         super(par1, Material.snow);
@@ -101,4 +104,9 @@ public class BlockCircles extends BlockFMA {
     public int getRenderType() {
         return 0;
     }
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityCircle();
+	}
 }

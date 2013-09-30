@@ -56,9 +56,7 @@ public class ItemFMAMeta extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-
         for(int j = 0; j < names.length; ++j) {
-
             par3List.add(new ItemStack(par1, 1, j));
         }
     }

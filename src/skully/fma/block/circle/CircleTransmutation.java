@@ -1,10 +1,11 @@
-package skully.fma.block;
+package skully.fma.block.circle;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import skully.fma.block.BlockFMA;
 import skully.fma.core.util.FMADamageSource;
 import skully.fma.item.FMAItems;
 import skully.fma.tileEntity.TileEntityCircle;

@@ -6,10 +6,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import skully.fma.energy.IAlchEnergyProvider;
-import skully.fma.energy.decay.IDecayProvider;
+import skully.fma.api.blocks.IInfuser;
 import skully.fma.fx.FXChargingBeam;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
@@ -17,27 +17,18 @@ import skully.fma.item.energy.ItemEnergyStore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider, IDecayProvider {
+public class TileEntityInfuser extends TileEntity implements IInfuser {
 
 	private ItemStack[] infuserStacks = new ItemStack[10];
 	public int addTime = 20;
 	private ItemStack energyStore = new ItemStack(FMAItems.EnergyStore);
 
-	public static int decay = 0;
+	public int decay;
 
 	public TileEntityInfuser() {
-
+		decay = 0;
 	}
-
-	public ItemStack getStackInSlotOnClosing(int par1)
-	{
-		return null;
-	}
-
-	public void completeCraft() {
-
-	}
-
+	
 	@Override
 	public void updateEntity() {
 		providePStoneEnergy();
@@ -60,7 +51,7 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 						Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 						ItemEnergyStore.setEnergy(player.inventory.getCurrentItem(), ItemEnergyStore.getEnergy(energyStore) - 10);
 						decay -= 10;
-						System.out.println(decay);
+						System.out.println(xCoord + " " + yCoord + " " + zCoord + " " + decay);
 					}
 				}
 		}
@@ -94,20 +85,25 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
+		decay = compound.getInteger("Decay");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
+		compound.setInteger("Decay", this.decay);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public int provideEnergy(int amount, int decayIncrease) {
+		if (this.worldObj.isRemote) {
 		int finalDecay = amount / decayIncrease;
-		TileEntityInfuser.decay += finalDecay;
-		System.out.println(TileEntityInfuser.decay);
+		decay += finalDecay;
+		System.out.println(xCoord + " " + yCoord + " " + zCoord + " " + decay);
 		return amount;
+		}
+		return 0;
 	}
 
 	@Override
@@ -118,5 +114,15 @@ public class TileEntityInfuser extends TileEntity implements IAlchEnergyProvider
 	@Override
 	public int provideDecay(int amount)  {
 		return amount;
+	}
+
+	@Override
+	public int getDecay() {
+		return decay;
+	}
+
+	@Override
+	public void setDecay(int decayAmount) {
+		decay = decayAmount;
 	}
 }

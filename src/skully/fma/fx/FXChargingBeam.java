@@ -125,7 +125,7 @@ public class FXChargingBeam extends FmaFx {
             
             GL11.glRotatef(60.0F, 0.0F, 1.0F, 0.0F);
             tessellator.startDrawingQuads();
-            tessellator.setBrightness(200);
+            tessellator.setBrightness(500);
             tessellator.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, op);
             tessellator.addVertexWithUV(var44b, var29, 0.0D, var33, var37);
             tessellator.addVertexWithUV(var44, 0.0D, 0.0D, var33, var35);

@@ -15,6 +15,7 @@ public class GuiOverlayInfusionInternal extends Gui {
 
 	public final Minecraft mc;
 	public Icon icon;
+	TileEntityInfuser infuser;
 
 	public GuiOverlayInfusionInternal(Minecraft mc) {
 		super();
@@ -35,7 +36,7 @@ public class GuiOverlayInfusionInternal extends Gui {
 	}
 
 	public void renderInfusionInternal() {
-		mc.fontRenderer.drawStringWithShadow(TileEntityInfuser.decay + "", 10, 10, 10);
+		mc.fontRenderer.drawStringWithShadow(infuser.decay + "", 10, 10, 10);
 	}
 
 }

@@ -16,7 +16,6 @@ import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.Resources;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
-import skully.fma.item.energy.ItemEnergyStore;
 
 
 public class GuiOverlayEnergy extends Gui {
@@ -38,7 +37,7 @@ public class GuiOverlayEnergy extends Gui {
 
 		if(mc.thePlayer.getCurrentEquippedItem() != null) {
 			if(mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
-				renderPStoneOverlay(mc, mc.thePlayer, mc.thePlayer.getCurrentEquippedItem());
+				renderEnergyOverlay(mc, mc.thePlayer);
 			}
 		}
 
@@ -74,27 +73,5 @@ public class GuiOverlayEnergy extends Gui {
 		minecraft.fontRenderer.drawStringWithShadow("_____", 11, 20, 0xffffff);
 		minecraft.fontRenderer.drawStringWithShadow("\2477" + maxEnergy, 13, 35, 0xffffff);
 		//minecraft.standardGalacticFontRenderer.drawStringWithShadow("JakeMichie helped with this", 16, 3 + 15, 0xffffff);
-	}
-
-	private void renderPStoneOverlay(Minecraft minecraft, EntityPlayer player, ItemStack stack) {
-		int currentEnergy = 0;
-
-		for(int i = 0; i < player.inventory.mainInventory.length; i++) {
-			ItemStack stack2 = player.inventory.mainInventory[i];
-
-			if(stack2 != null) {
-				if(stack2.getItem() == FMAItems.EnergyStore) {
-					ItemEnergyStore cell = (ItemEnergyStore)stack2.getItem();
-
-					currentEnergy = currentEnergy + (1000 - ItemEnergyStore.getEnergy(stack2));
-				}
-			}
-		}
-
-		ItemPStone stone = (ItemPStone)stack.getItem();
-
-		if(player.inventory.hasItem(FMAItems.EnergyStore.itemID)) {
-			this.renderEnergyOverlay(minecraft, player);
-		}
 	}
 }

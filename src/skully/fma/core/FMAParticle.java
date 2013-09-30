@@ -2,6 +2,7 @@ package skully.fma.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
+import skully.fma.fx.FXFissure;
 import skully.fma.fx.FXResearch;
 import skully.fma.fx.FXTransmutation;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -59,6 +60,12 @@ public class FMAParticle {
 		fx.noClip = noClip;
 		
 		spawnParticle(fx, handleParticleSettings);
+		return fx;
+	}
+	
+	public static EntityFX spawnFissureFX(double x, double y, double z, int age) {
+		FXFissure fx = new FXFissure(Minecraft.getMinecraft().theWorld, x, y + 1, z, age);
+		spawnParticle(fx, false);
 		return fx;
 	}
 

@@ -9,7 +9,7 @@ public class Reference {
 
     public static String colour;
 
-    public static String[] staff = new String[] {
+    public static String[] Helpers = new String[] {
 
             "skully250".toLowerCase(Locale.ENGLISH),
             "vydax".toLowerCase(Locale.ENGLISH),
@@ -20,8 +20,14 @@ public class Reference {
             "saukawolf".toLowerCase(Locale.ENGLISH),
             "llamafagot".toLowerCase(Locale.ENGLISH),
             "drakkillen".toLowerCase(Locale.ENGLISH),
-            "ShadezX".toLowerCase(Locale.ENGLISH)
+            "ShadezX".toLowerCase(Locale.ENGLISH),
+            "thechessbeast".toLowerCase(Locale.ENGLISH)
+    };
+    
+    public static String[] Donators = new String[] {
+    	
     };
 
-    public static List<String> staffList = Arrays.asList(staff);
+    public static List<String> helperList = Arrays.asList(Helpers);
+    public static List<String> donatorList = Arrays.asList(Donators);
 }

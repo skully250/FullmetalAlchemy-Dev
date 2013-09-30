@@ -1,4 +1,4 @@
-package skully.fma.energy;
+package skully.fma.api.energy;
 
 public interface IAlchEnergyRequester {
 	

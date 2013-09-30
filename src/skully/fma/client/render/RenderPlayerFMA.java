@@ -258,7 +258,7 @@ public class RenderPlayerFMA extends RenderPlayer {
         boolean flag1 = !player.isInvisible();
         boolean flag2 = !player.getHideCape();
 
-        if(flag1 && flag2 && Reference.staffList.contains(player.username.toLowerCase(Locale.ENGLISH))) {
+        if(flag1 && flag2 && Reference.helperList.contains(player.username.toLowerCase(Locale.ENGLISH))) {
             Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Resources.MOD_ID.toLowerCase(Locale.ENGLISH), "textures/capes/admin.png"));
             GL11.glPushMatrix();
             GL11.glTranslatef(0.0F, 0.0F, 0.125F);

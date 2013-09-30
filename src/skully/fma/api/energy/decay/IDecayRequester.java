@@ -1,4 +1,4 @@
-package skully.fma.energy.decay;
+package skully.fma.api.energy.decay;
 
 public interface IDecayRequester {
 	

@@ -5,6 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import skully.fma.api.CoreApi;
+import skully.fma.block.circle.BlockCircles;
+import skully.fma.block.circle.BlockRCircle;
+import skully.fma.block.circle.CircleTransmutation;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.item.FMAItems;
 

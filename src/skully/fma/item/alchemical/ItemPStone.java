@@ -13,16 +13,14 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
+import skully.fma.api.energy.IAlchEnergyRequester;
 import skully.fma.core.FMAParticle;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
-import skully.fma.energy.IAlchEnergyRequester;
 import skully.fma.fx.FXPStone;
-import skully.fma.item.FMAItems;
 import skully.fma.item.ItemFMA;
-import skully.fma.item.energy.ItemEnergyStore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -78,6 +76,8 @@ public class ItemPStone extends ItemFMA implements IAlchEnergyRequester, IStated
 	@Override
 	public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
 	{
+		if (PStoneEnergy == 0)
+			return 0xFFFFFF;
 		if (decayEnergy >= PStoneEnergy * 1.5)
 			return 0x54003C;
 		else if (decayEnergy >= PStoneEnergy * 2)

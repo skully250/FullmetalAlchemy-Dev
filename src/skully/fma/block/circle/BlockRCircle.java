@@ -1,19 +1,22 @@
-package skully.fma.block;
+package skully.fma.block.circle;
 
 import java.util.concurrent.TimeUnit;
 
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import skully.fma.core.FMAParticle;
 import skully.fma.core.util.ConvertUtil;
 import skully.fma.crafting.FMAResearchRecipes;
 import skully.fma.item.FMAItems;
+import skully.fma.tileEntity.TileEntityCircle;
 
 
-public class BlockRCircle extends BlockFMA {
+public class BlockRCircle extends BlockContainer {
 
 	public Minecraft mc = Minecraft.getMinecraft();
 	public static boolean First = true;
@@ -44,7 +47,7 @@ public class BlockRCircle extends BlockFMA {
 			double posZ = par4 + 0.5; //+ Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist;
 
 			//world.spawnEntityInWorld(new EntityLightningBolt(world, par2, par3 + 1, par4));
-			FMAParticle.spawnResearchFX(posX, posY - 0.2, posZ, mx, 0, mz, 500, false, true, true);
+			FMAParticle.spawnResearchFX(posX, posY - 0.2, posZ, mx, 0, mz, 75, false, true, true);
 		}
 	}
 
@@ -153,5 +156,10 @@ public class BlockRCircle extends BlockFMA {
 	@Override
 	public int getRenderType() {
 		return 0;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return null;
 	}
 }
