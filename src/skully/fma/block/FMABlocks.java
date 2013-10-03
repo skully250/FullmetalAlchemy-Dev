@@ -5,9 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import skully.fma.api.CoreApi;
-import skully.fma.block.circle.BlockCircles;
+import skully.fma.block.circle.BlockCCircle;
 import skully.fma.block.circle.BlockRCircle;
-import skully.fma.block.circle.CircleTransmutation;
+import skully.fma.block.circle.BlockFMACircles;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.item.FMAItems;
 
@@ -34,7 +34,7 @@ public class FMABlocks {
                 .setCreativeTab(
                         CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));
 
-        craftingCircle = new BlockCircles(ConfigSettings.circle)
+        craftingCircle = new BlockCCircle(ConfigSettings.circle)
                 .setUnlocalizedName("BCircle")
                 .setHardness(0.0F);
 
@@ -42,7 +42,7 @@ public class FMABlocks {
                 .setUnlocalizedName("TCircle")
                 .setHardness(0.0F);
 
-        Test = new CircleTransmutation(ConfigSettings.Test)
+        Test = new BlockFMACircles(ConfigSettings.Test)
                 .setUnlocalizedName("BCircle");
         //.setCreativeTab(
         //CoreApi.getInstance().fmaTab(CreativeTabs.tabMaterials));

@@ -2,21 +2,23 @@ package skully.fma.block.circle;
 
 import java.util.concurrent.TimeUnit;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import skully.fma.core.FMAParticle;
 import skully.fma.core.util.ConvertUtil;
+import skully.fma.core.util.Resources;
 import skully.fma.crafting.FMAResearchRecipes;
 import skully.fma.item.FMAItems;
-import skully.fma.tileEntity.TileEntityCircle;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class BlockRCircle extends BlockContainer {
+public class BlockRCircle extends BlockFMACircles {
 
 	public Minecraft mc = Minecraft.getMinecraft();
 	public static boolean First = true;
@@ -25,7 +27,7 @@ public class BlockRCircle extends BlockContainer {
 	public static boolean Fourth = true;
 
 	public BlockRCircle(int par1) {
-		super(par1, Material.snow);
+		super(par1);
 		this.setBlockBounds(-1.0F, 0.0F, -1.0F, 2.0F, 0.125F, 2.0F);
 
 	}

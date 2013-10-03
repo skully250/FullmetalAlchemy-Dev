@@ -90,9 +90,7 @@ public class FMAItems {
         energyMeasurer = new ItemEnergyMeasurer(ConfigSettings.energyMeasurer).setUnlocalizedName("EnergyMeasure").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
         EnergyStore = new ItemEnergyStore(ConfigSettings.energyStore).setUnlocalizedName("EnergyStore").setCreativeTab(CoreApi.getInstance().fmaTab(CreativeTabs.tabTools));
 
-
         pStone.setContainerItem(pStone);
-
         localize();
     }
     

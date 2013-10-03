@@ -154,17 +154,6 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound {
         } else {
             bagState = 0;
         }
-		/*if(getState().equals("Holding")) {
-
-			setState(BagEnumState.OFF);
-		} else if(getState().equals("Taking")) {
-
-			setState(BagEnumState.ON);
-			ReconstructionRecipes.initialize();
-		} else {
-
-			setState(BagEnumState.OFF);
-		}*/
     }
 
 
@@ -177,12 +166,10 @@ public class ItemChalkBag extends ItemFMA implements IStatedItem, IKeyBound {
         if(par2World.isRemote) {
             if(bagState == 0 && player.inventory.hasItem(FMAItems.ChalkStick.itemID)) {
                 player.inventory.consumeInventoryItem(FMAItems.ChalkStick.itemID);
-                //compound.setInteger("Chalk Sticks", compound.getInteger("Chalk Sticks") + 1);
                 player.inventoryContainer.detectAndSendChanges();
                 return par1ItemStack;
 
-            } else if(bagState == 1 /*&&compound.getInteger("Chalk Sticks") > 0*/) {
-                //compound.setInteger("ChalkSticks", compound.getInteger("Chalk Sticks") + -1);
+            } else if(bagState == 1) {
                 player.inventory.addItemStackToInventory(new ItemStack(FMAItems.ChalkStick, 1));
                 player.inventoryContainer.detectAndSendChanges();
                 return par1ItemStack;

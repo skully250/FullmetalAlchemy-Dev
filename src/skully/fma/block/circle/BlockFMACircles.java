@@ -1,33 +1,26 @@
 package skully.fma.block.circle;
 
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import skully.fma.block.BlockFMA;
-import skully.fma.core.util.FMADamageSource;
-import skully.fma.item.FMAItems;
-import skully.fma.tileEntity.TileEntityCircle;
+import skully.fma.core.util.Resources;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
-public class CircleTransmutation extends BlockFMA {
+public class BlockFMACircles extends BlockContainer {
 
-    public CircleTransmutation(int par1) {
-        super(par1, Material.snow);
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+    public BlockFMACircles(int par1) {
+    	super(par1, Material.snow);
     }
-
-    public boolean onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity, EntityPlayer player) {
-        if(player.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
-            player.attackEntityFrom(FMADamageSource.crimsonAlchemy, 9001);
-        }
-        return true;
-    }
-
+    
     @Override
-    public TileEntity createTileEntity(World world, int metadata) {
-        return new TileEntityCircle();
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister iconRegister) {
+        this.blockIcon = iconRegister.registerIcon(Resources.MOD_ID.toLowerCase() + 
+        		":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
 
     /**
@@ -54,4 +47,9 @@ public class CircleTransmutation extends BlockFMA {
     public int getRenderType() {
         return 0;
     }
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return null;
+	}
 }

@@ -16,16 +16,4 @@ public class FMAUtils {
 
     public static NBTTagCompound tagCompound = new NBTTagCompound();
     public static final NBThelper nbtHelper = new NBThelper();
-
-    @Deprecated
-    public static void addIcons() {
-
-        //        Resources.index.addIconToIndex("chalkStick", "chalkStick");
-        //        Resources.index.addIconToIndex("chalkDust", "chalkDust");
-        //        Resources.index.addIconToIndex("flacon", "flacon");
-        //        Resources.index.addIconToIndex("flask", "flask");
-        //        Resources.index.addIconToIndex("bloodDrop", "bloodDrop");
-        //        Resources.index.addIconToIndex("alchemicalWool", "alchemicalWool");
-        //        Resources.index.addIconToIndex("alchemicalSilk", "alchemicalSilk");
-    }
 }

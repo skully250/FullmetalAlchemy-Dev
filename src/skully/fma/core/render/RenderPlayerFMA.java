@@ -1,4 +1,4 @@
-package skully.fma.client.render;
+package skully.fma.core.render;
 
 import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
 import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;

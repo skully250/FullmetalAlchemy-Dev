@@ -1,7 +1,7 @@
 package skully.fma.block.circle;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -10,18 +10,21 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import skully.fma.core.FMAParticle;
+import skully.fma.core.util.Resources;
 import skully.fma.item.FMAItems;
 import skully.fma.tileEntity.TileEntityCircle;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
  * @author viper283
  * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
-public class BlockCircles extends BlockContainer {
+public class BlockCCircle extends BlockFMACircles {
 
-    public BlockCircles(int par1) {
-        super(par1, Material.snow);
+    public BlockCCircle(int par1) {
+        super(par1);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
     }
     
