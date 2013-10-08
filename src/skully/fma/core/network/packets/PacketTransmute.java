@@ -1,10 +1,14 @@
-/**
- *
- */
-package skully.fma.core.packet;
+package skully.fma.core.network.packets;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetworkManager;
 import net.minecraft.world.World;
+import skully.fma.core.network.PacketFMA;
+import cpw.mods.fml.common.network.Player;
 
 
 /**
@@ -17,7 +21,6 @@ public class PacketTransmute extends PacketFMA {
     public World world;
 
     public PacketTransmute(int x, int y, int z, int blockID, int meta, EntityPlayer player, World world) {
-
         super();
         this.x = x;
         this.y = y;
@@ -28,8 +31,8 @@ public class PacketTransmute extends PacketFMA {
         this.world = world;
     }
 
-    @Override
-    public void execute() {
-        world.setBlock(x, y, z, blockID);
-    }
+	@Override
+	public void execute() {
+		world.setBlock(x, y, z, blockID);
+	}
 }

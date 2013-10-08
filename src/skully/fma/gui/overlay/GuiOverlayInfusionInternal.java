@@ -30,8 +30,8 @@ public class GuiOverlayInfusionInternal extends Gui {
 
 		if (mc.thePlayer.getCurrentEquippedItem() != null)
 			if (mc.thePlayer.getCurrentEquippedItem().getItem() == FMAItems.pStone) {
-				if (ItemPStone.isGettingCharged)
-					renderInfusionInternal();
+				if (ItemPStone.isGettingCharged);
+					//renderInfusionInternal();
 			}
 	}
 

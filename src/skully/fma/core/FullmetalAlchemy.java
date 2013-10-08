@@ -13,7 +13,7 @@ import skully.fma.core.command.FMACommands;
 import skully.fma.core.config.ConfigSettings;
 import skully.fma.core.config.CoreConfiguration;
 import skully.fma.core.handler.GuiHandler;
-import skully.fma.core.packet.PacketManager;
+import skully.fma.core.network.PacketManager;
 import skully.fma.core.proxies.CommonProxy;
 import skully.fma.core.util.Resources;
 import skully.fma.core.util.registers.FMALanguageRegister;

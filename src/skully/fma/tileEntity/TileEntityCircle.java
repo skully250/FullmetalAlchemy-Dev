@@ -20,10 +20,12 @@ public class TileEntityCircle extends TileEntity {
 	List<Item> itemList = new ArrayList<Item>();
 
 	public static int craftTime;
-	public static boolean crafting;
+	private boolean craftingFire;
+	private boolean craftingEnder;
 
 	public TileEntityCircle() {
-		crafting = false;
+		craftingFire = false;
+		craftingEnder = false;
 	}
 
 	public static void transmuteParticles(World world, double par2, double par3, double par4) {
@@ -46,14 +48,13 @@ public class TileEntityCircle extends TileEntity {
 		}
 	}
 
-	public void completeCraft(Item craftItem) {
+	public void completeCraft(Item craftItem, Item component1, Item component2) {
 		if (!worldObj.isRemote)
 			this.worldObj.spawnEntityInWorld(new EntityItem(worldObj, xCoord, yCoord, zCoord, 
 					new ItemStack(craftItem)));
 		
-		itemList.remove(FMAItems.Kunai);
-		itemList.remove(Item.blazePowder);
-		this.crafting = false;
+		itemList.remove(component1);
+		itemList.remove(component2);
 	}
 	
 	public void clearList() {
@@ -83,19 +84,39 @@ public class TileEntityCircle extends TileEntity {
 					itemList.add(FMAItems.Kunai);
 				if (item.getEntityItem().getItem() == Item.blazePowder)
 					itemList.add(Item.blazePowder);
+				if (item.getEntityItem().getItem() == Item.enderPearl)
+					itemList.add(Item.enderPearl);
 
 				if (itemList.contains(FMAItems.Kunai) && itemList.contains(Item.blazePowder)) {
-					if (!crafting) {
-						crafting = true;
+					if (!craftingFire) {
+						craftingFire = true;
 						craftTime = 20;
 						transmuteParticles(worldObj, xCoord, yCoord + 0.2, zCoord);
+						itemList.clear();
 					}
-					if (crafting && craftTime == 1) {
-						completeCraft(FMAItems.KunaiFire);
+					else if (itemList.contains(FMAItems.Kunai) && itemList.contains(Item.enderPearl)) {
+						if (!craftingEnder) {
+							craftingEnder = true;
+							craftTime = 20;
+							transmuteParticles(worldObj, xCoord, yCoord + 0.2, zCoord);
+							itemList.clear();
+						}
+					}
+					if (craftingFire && craftTime == 1) {
+						completeCraft(FMAItems.KunaiFire, FMAItems.Kunai, Item.blazePowder);
 						for(Object object : list) {
 							EntityItem desitem = (EntityItem)object;
 							desitem.setDead();
 						}
+						craftingFire = false;
+					}
+					if (craftingEnder && craftTime == 1) {
+						completeCraft(FMAItems.KunaiEnder, FMAItems.Kunai, Item.enderPearl);
+						for(Object object : list) {
+							EntityItem fireItem = (EntityItem)object;
+							fireItem.setDead();
+						}
+						craftingEnder = false;
 					}
 				}
 			}

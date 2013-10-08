@@ -3,12 +3,15 @@ package skully.fma.tileEntity;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
+import org.lwjgl.opengl.GL11;
+
 import skully.fma.api.blocks.IInfuser;
 import skully.fma.fx.FXChargingBeam;
 import skully.fma.item.FMAItems;
@@ -68,12 +71,11 @@ public class TileEntityInfuser extends TileEntity implements IInfuser {
 			EntityPlayer player = (EntityPlayer) obj;
 			if (player.inventory.getCurrentItem() != null)
 				if (player.inventory.getCurrentItem().getItem() == FMAItems.pStone) {
-					ItemPStone.isGettingCharged = true;
 					FXChargingBeam fx = new FXChargingBeam(this.worldObj, xCoord + 0.5, yCoord + 1, zCoord + 0.5, player.posX,
 							player.posY - 0.1, player.posZ, 10);
 					Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 					addTime--;
-					if (addTime == 0) { 
+					if (addTime == 0) {
 						ItemPStone.PStoneEnergy += provideEnergy(5, 2);
 						addTime = 20;
 					}
