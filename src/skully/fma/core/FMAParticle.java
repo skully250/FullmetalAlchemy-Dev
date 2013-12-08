@@ -2,9 +2,9 @@ package skully.fma.core;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
-import skully.fma.fx.FXFissure;
-import skully.fma.fx.FXResearch;
-import skully.fma.fx.FXTransmutation;
+import skully.fma.client.fx.FXFissure;
+import skully.fma.client.fx.FXResearch;
+import skully.fma.client.fx.FXTransmutation;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

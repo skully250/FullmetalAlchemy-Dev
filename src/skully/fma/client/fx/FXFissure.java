@@ -1,4 +1,4 @@
-package skully.fma.fx;
+package skully.fma.client.fx;
 
 import java.util.Random;
 

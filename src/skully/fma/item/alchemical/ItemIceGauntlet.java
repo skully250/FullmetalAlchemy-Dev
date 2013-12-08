@@ -69,6 +69,8 @@ public class ItemIceGauntlet extends ItemFMA {
 					if(par2EntityPlayer.inventory.mainInventory[i].getItem() == Item.snowball) {
 						{
 							//if (par3World.isBlockFreezable(par4, par5 + 1, par6)) {
+								par2EntityPlayer.inventory.consumeInventoryItem(Item.snowball.itemID);
+								par2EntityPlayer.inventory.inventoryChanged = true;
 								par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "FingerClick", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 								par3World.setBlock(par4, par5, par6, Block.ice.blockID);
 								par3World.setBlock(par4 + 1, par5, par6 - 1, Block.ice.blockID);

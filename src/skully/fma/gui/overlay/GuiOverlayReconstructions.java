@@ -59,10 +59,10 @@ public class GuiOverlayReconstructions extends Gui {
         GL11.glPopMatrix();
         if(ItemReconstructionCircle.trans >= 20) {
             mc.fontRenderer.drawStringWithShadow(ItemReconstructionCircle.oState, 3, 8, 0xffffff);
-            mc.fontRenderer.drawStringWithShadow("" + (ItemReconstructionCircle.trans / 2), 18, 22, 0xffffff);
+            mc.fontRenderer.drawStringWithShadow("" + ItemReconstructionCircle.trans, 18, 22, 0xffffff);
         } else {
             mc.fontRenderer.drawStringWithShadow(ItemReconstructionCircle.oState, 3, 8, 0xffffff);
-            mc.fontRenderer.drawStringWithShadow("" + (ItemReconstructionCircle.trans / 2), 22, 22, 0xffffff);
+            mc.fontRenderer.drawStringWithShadow("" + ItemReconstructionCircle.trans, 22, 22, 0xffffff);
         }
     }
 

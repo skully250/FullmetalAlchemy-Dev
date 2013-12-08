@@ -9,4 +9,8 @@ public class RenderHandler {
     public static void bindTexture(String texture) {
         RenderUtil.instance().bindTexture(Resources.MOD_ID, texture);
     }
+    
+    public static void bindVanillaTexture(String texture) {
+    	RenderUtil.instance().bindTexture("Minecraft", texture);
+    }
 }

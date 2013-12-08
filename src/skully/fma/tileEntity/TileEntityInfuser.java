@@ -13,7 +13,7 @@ import net.minecraft.util.AxisAlignedBB;
 import org.lwjgl.opengl.GL11;
 
 import skully.fma.api.blocks.IInfuser;
-import skully.fma.fx.FXChargingBeam;
+import skully.fma.client.fx.FXChargingBeam;
 import skully.fma.item.FMAItems;
 import skully.fma.item.alchemical.ItemPStone;
 import skully.fma.item.energy.ItemEnergyStore;

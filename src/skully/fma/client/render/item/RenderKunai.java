@@ -1,4 +1,4 @@
-package skully.fma.core.render;
+package skully.fma.client.render.item;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;

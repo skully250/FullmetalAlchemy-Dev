@@ -21,14 +21,8 @@ public class PacketManager implements IPacketHandler {
 
 		if(packet.channel == "FMA") {
 
-			if(packet instanceof PacketTransmute) {
-				((PacketTransmute)packet).execute();
-			}
-			if (packet instanceof PacketReconstruct) {
-				((PacketReconstruct)packet).execute();
-			}
-			if (packet instanceof PacketDeconstruct) {
-				((PacketDeconstruct)packet).execute();
+			if(packet instanceof PacketFMA) {
+				((PacketFMA)packet).execute();
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package skully.fma.fx;
+package skully.fma.client.fx;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.MathHelper;
@@ -78,7 +78,7 @@ public class FXChargingBeam extends FmaFx {
         
         float op = 0.25F;
         
-        RenderHandler.bindTexture("textures/items/pStoneOn.png");
+        RenderHandler.bindTexture("textures/particles/beam.png");
         
         GL11.glTexParameterf(3553, 10242, 10497.0F);
         GL11.glTexParameterf(3553, 10243, 10497.0F);
@@ -115,7 +115,7 @@ public class FXChargingBeam extends FmaFx {
         double var17b = 0.15D * size * 1.0f;
         
         GL11.glRotatef(rot, 0.0F, 1.0F, 0.0F);
-        for (int t = 0; t < 3; t++)
+        for (int t = 0; t < 1; t++)
         {
             double var29 = length * size * var9;
             double var31 = 0.0D;

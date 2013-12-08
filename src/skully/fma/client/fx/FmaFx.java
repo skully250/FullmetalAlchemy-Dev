@@ -1,4 +1,4 @@
-package skully.fma.fx;
+package skully.fma.client.fx;
 
 import net.minecraft.world.World;
 import skully.fma.core.util.FMAFXUtil;

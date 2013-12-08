@@ -3,7 +3,6 @@ package skully.fma.core.command;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-
 public class FMACommands {
 
     public static CommandBase commandFma = new FMACommand();
@@ -12,20 +11,21 @@ public class FMACommands {
 
         @Override
         public String getCommandName() {
-
             return "fma";
         }
 
         @Override
         public void processCommand(ICommandSender sender, String[] args) {
-
-
         }
 
         @Override
         public String getCommandUsage(ICommandSender icommandsender) {
-
             return "/fma <params>";
         }
+
+		@Override
+		public int compareTo(Object arg0) {
+			return 0;
+		}
     }
 }

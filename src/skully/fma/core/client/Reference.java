@@ -21,7 +21,8 @@ public class Reference {
             "llamafagot".toLowerCase(Locale.ENGLISH),
             "drakkillen".toLowerCase(Locale.ENGLISH),
             "ShadezX".toLowerCase(Locale.ENGLISH),
-            "thechessbeast".toLowerCase(Locale.ENGLISH)
+            "thechessbeast".toLowerCase(Locale.ENGLISH),
+            "Optik_Chiron".toLowerCase(Locale.ENGLISH)
     };
     
     public static String[] Donators = new String[] {

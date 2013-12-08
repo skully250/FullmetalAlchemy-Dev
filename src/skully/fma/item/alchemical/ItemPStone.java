@@ -14,12 +14,12 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 import skully.fma.api.energy.IAlchEnergyRequester;
+import skully.fma.client.fx.FXPStone;
 import skully.fma.core.FMAParticle;
 import skully.fma.core.enums.EnumState;
 import skully.fma.core.helper.TransHelper;
 import skully.fma.core.implement.IKeyBound;
 import skully.fma.core.implement.IStatedItem;
-import skully.fma.fx.FXPStone;
 import skully.fma.item.ItemFMA;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

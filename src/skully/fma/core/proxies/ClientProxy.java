@@ -2,15 +2,18 @@ package skully.fma.core.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-import skully.fma.core.FullmetalAlchemy;
+import skully.fma.client.render.RenderPlayerFMA;
+import skully.fma.client.render.item.RenderReconstructionGauntlet;
 import skully.fma.core.FMAParticle;
+import skully.fma.core.FullmetalAlchemy;
 import skully.fma.core.client.ClientKeybindHandler;
 import skully.fma.core.client.ClientTickHandler;
 import skully.fma.core.handler.SoundHandler;
-import skully.fma.core.render.RenderPlayerFMA;
 import skully.fma.core.util.RenderUtil;
 import skully.fma.core.util.registers.FMAEventRegister;
+import skully.fma.item.FMAItems;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -45,6 +48,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerRenderThings() {
         RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new RenderPlayerFMA());
+        MinecraftForgeClient.registerItemRenderer(FMAItems.ReconstructionCircle.itemID, new RenderReconstructionGauntlet());
         FMAEventRegister.registerOverlays();
         RenderUtil.instance();
         RenderUtil.loadRenderingUtils();
