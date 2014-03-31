@@ -1,0 +1,41 @@
+# Fullmetal Alchemy Language File
+
+# Items
+item.PStone.name=Perfect Philosophers Stone
+item.stone0.name=Uninbued Stone
+item.Astone2.name=Uninfused Stone
+item.EStone.name=Evil Infused Stone
+item.GStone.name=Good Infused Stone
+item.ash.name=Ash
+item.eash.name=Evil Infused Ash
+item.gash.name=Good Infused Ash
+item.Stone.name=Uninfused Stone
+item.FireGlove.name=Fire Alchemist Glove
+item.ChalkStick.name=Chalk Stick
+item.chalkDust.name=Chalk Dust
+item.AlchSilk.name=Alchemical Silk
+item.FireCircle.name=Alchemical Fire Circle
+item.ChalkCircle.name=Chalk Circle
+item.ChalkPyramid.name=Chalk Pyramid
+item.IceGauntlet.name=Ice Gauntlet
+item.ReconstructionCircle.name=Reconstruction Tatoo
+item.alchemicalWool.name=Alchemical Wool
+item.alchemicalSilk.name=Alchemical Silk
+item.AlchNotes.name=Alchemical Notes
+item.AlchNotebook.name=Alchemist's Notebook
+item.Kunai.name=Kunai
+item.KunaiFire.name=Fire Tipped Kunai
+item.KunaiEnder.name=Ender Tipped Kunai
+item.ChalkBag.name=Chalk Bag
+
+# GUI Names
+container.infusion=Infusion
+container.trans=Transmutation
+
+# Blocks/Tiles
+tile.chalkOre.name=Chalk Ore
+tile.TCircle.name=Crafting Circle
+tile.infuser.name=Infusion Altar
+
+# Creative Tab
+itemGroup.FMA=Fullmetal Alchemy
