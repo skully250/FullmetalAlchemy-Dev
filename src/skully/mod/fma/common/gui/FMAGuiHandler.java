@@ -11,7 +11,7 @@ public class FMAGuiHandler implements IGuiHandler {
 			int x, int y, int z) {
 		switch (ID) {
 		case 0:
-			return new GuiChalkCircle(player.inventory);
+			return new GuiChalkCircle(player.inventory, world, x, y, z);
 		}
 		return null;
 	}
@@ -21,9 +21,8 @@ public class FMAGuiHandler implements IGuiHandler {
 			int x, int y, int z) {
 		switch (ID) {
 		case 0:
-			return new GuiChalkCircle(player.inventory);
+			return new GuiChalkCircle(player.inventory, world, x, y, z);
 		}
 		return null;
 	}
-
 }
