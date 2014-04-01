@@ -10,6 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import skully.mod.fma.common.gui.FMAGuiHandler;
 import skully.mod.fma.common.items.FMAItems;
 import skully.mod.fma.common.proxy.CommonProxy;
 
@@ -21,6 +22,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = FullmetalAlchemy.constants.MOD_ID, name = FullmetalAlchemy.constants.MOD_NAME, version = FullmetalAlchemy.constants.MOD_VERSION)
 public class FullmetalAlchemy {
@@ -33,9 +35,11 @@ public class FullmetalAlchemy {
 		
 		public static final Logger LOGGER = LogManager.getLogger("FMA");
 		
-		public static CreativeTabs tab = new CTabTech();
+		public static CreativeTabs tab = new CTabFMA();
 		
 		public static Configuration cfg;
+		
+		public static final int ChalkGuiID = 0;
 		
 		
 		public static class constants {
@@ -46,8 +50,8 @@ public class FullmetalAlchemy {
 			public static final String MOD_VERSION = "Dev Version";
 		}
 		
-		public static class CTabTech extends CreativeTabs {
-			public CTabTech() {
+		public static class CTabFMA extends CreativeTabs {
+			public CTabFMA() {
 				super("FMA");
 			}
 
@@ -88,7 +92,7 @@ public class FullmetalAlchemy {
 		
 		@EventHandler
 		public void postInit() {
-			
+			NetworkRegistry.INSTANCE.registerGuiHandler(this, new FMAGuiHandler());
 		}
 		
 		public void updateMeta(ModMetadata meta) {
