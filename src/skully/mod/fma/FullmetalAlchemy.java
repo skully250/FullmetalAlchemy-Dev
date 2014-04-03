@@ -10,7 +10,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import skully.mod.fma.common.gui.FMAGuiHandler;
+import skully.mod.fma.client.gui.FMAGuiHandler;
 import skully.mod.fma.common.items.FMAItems;
 import skully.mod.fma.common.proxy.CommonProxy;
 

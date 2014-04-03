@@ -1,4 +1,4 @@
-package skully.mod.fma.common.gui;
+package skully.mod.fma.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

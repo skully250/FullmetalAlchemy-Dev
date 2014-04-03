@@ -11,7 +11,6 @@ import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
-import skully.mod.fma.common.items.FMAItems;
 
 public class ContainerChalkCircle extends Container {
 
@@ -57,9 +56,47 @@ public class ContainerChalkCircle extends Container {
 	/**
 	 * Callback for when the crafting matrix is changed.
 	 */
-	 public void onCraftMatrixChanged(IInventory par1IInventory)
+	public void onCraftMatrixChanged(IInventory par1IInventory)
 	{
-		 this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+	}
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer player, int clickedIndex) {
+		ItemStack var2 = null;
+		Slot grabbedSlot = (Slot)this.inventorySlots.get(clickedIndex);
+
+		if (grabbedSlot != null && grabbedSlot.getHasStack()) {
+			ItemStack var4 = grabbedSlot.getStack();
+			var2 = var4.copy();
+			
+			if (clickedIndex < 10) {
+				if (!this.mergeItemStack(var4, 10, 36, true)) {
+					return null;
+				}
+			} else if (clickedIndex > 10 && clickedIndex < 37) {
+				if (!this.mergeItemStack(var4, 0, 9, true)) {
+					return null;
+				}
+			} else if (clickedIndex >= 37 && clickedIndex < 62) {
+				if (!this.mergeItemStack(var4, 0, 36, true)) {
+					return null;
+				}
+			}
+
+			if (var4.stackSize == 0) {
+				grabbedSlot.putStack((ItemStack)null);
+			} else {
+				grabbedSlot.onSlotChanged();
+			}
+			if (var4.stackSize == var2.stackSize) {
+				return null;
+			}
+			
+			grabbedSlot.onPickupFromSlot(player, var4);
+		}
+		this.onCraftMatrixChanged(this.craftMatrix);
+		return var2;
 	}
 
 	@Override
