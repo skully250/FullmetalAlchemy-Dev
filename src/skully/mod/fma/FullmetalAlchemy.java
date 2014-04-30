@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import skully.mod.fma.client.gui.FMAGuiHandler;
+import skully.mod.fma.common.crafting.RecipesFMA;
 import skully.mod.fma.common.items.FMAItems;
 import skully.mod.fma.common.proxy.CommonProxy;
 
@@ -87,7 +88,7 @@ public class FullmetalAlchemy {
 		
 		@EventHandler
 		public void init() {
-			
+			RecipesFMA.registerRecipes();
 		}
 		
 		@EventHandler

@@ -1,4 +1,4 @@
-package skully.mod.fma.common.crafting;
+package skully.mod.fma.common.api;
 
 import java.util.Comparator;
 
